@@ -1,0 +1,189 @@
+
+
+
+  <body scroll="no">
+    <div class="overlap"></div>
+    <nav>
+      <input type="checkbox" id="check">
+      <label for="check" class="checkbtn">
+        <i class="fa fa-bars"></i>
+      </label>
+      <label class="logo">Plant</label>
+      <ul>
+        <li><button class="btn" routerLink="/signup">Signup</button></li>
+        <li><button class="btn" routerLink="/login">Login</button></li>
+      </ul>
+    </nav>
+  </body>
+  
+  
+  <div class="most_main">
+    <div class="main_1">
+      <div class="main_1_2">
+        <div class="main_text">
+          <b> Sign Up </b>
+        </div>
+        <form action="" (ngSubmit)="signup(formdata)"> 
+        <div class="ml-5 m-2">
+          <div>
+            <label for="username" class="label1 ml-3">Username :-</label>
+          </div>
+          <div>
+            <input type="text" class="w-90 email1" id="username" name="username" [(ngModel)]="formdata.username">
+          </div>
+        </div>
+        <div class="ml-5 m-2">
+          <div>
+            <label for="email" class="label1 ml-3">Email :-</label>
+          </div>
+          <div>
+            <input type="email" class="w-90 email1" id="email" name="email" [(ngModel)]="formdata.email">
+          </div>
+        </div>
+        <div class="ml-5 m-2">
+          <div>
+            <label for="phone" class="label1 ml-3">phone Number :-</label>
+          </div>
+          <div>
+            <input type="Number" class="w-90 email1" id="phone" name="phone" [(ngModel)]="formdata.phone">
+          </div>
+        </div>
+        <div class="ml-5 m-2">
+          <div>
+            <label for="address" class="label1 ml-3">Address:-</label>
+          </div>
+          <div>
+            <input type="text" class="w-90 email1" id="address" name="address" [(ngModel)]="formdata.address">
+          </div>
+        </div>
+        <div class="ml-5 m-2">
+          <div>
+            <label for="Password" class="label1 ml-3 ">Password :-</label>
+          </div>
+          <div>
+            <input type="password" class="w-90 Password1" id="password" name="password" [(ngModel)]="formdata.password">
+          </div>
+        </div>
+        <div class="ml-5 m-2">
+          <div>
+            <label for="cPassword" class="label1 ml-3 ">Confirm Password :-</label>
+          </div>
+          <div>
+            <input type="password" class="w-90 Password1"  id="cpassword" name="cpassword" [(ngModel)]="formdata.cpassword">
+          </div>
+        </div>
+        <div class="ml-5 m-2">
+        <div *ngIf="errormessage" class="errorMessage">{{errormessage}}</div>
+        <div *ngIf="success" class="success">{{success}}</div>
+        </div>
+        <div>
+          <div class="center1">
+            <input type="submit" class="btn btn-success w p-1 m-2">
+          </div>
+        </div>
+        </form>
+      </div>
+      <div class="main_1_1">
+        <img src="../../assets/back4.jpg" alt="" class="main_img">
+      </div>
+      
+    </div>
+  </div>
+
+  <div class="md_main" scroll="no">
+    <div class="md_ma">
+      <div class="we">
+        <br>
+        <b>WelCome</b>
+      </div>
+      <div class="a">
+        <div class="w-90">
+          <div class="main_text">
+            <b>Sign Up</b>
+          </div>
+          <form action="" (ngSubmit)="signup(formdata)"> 
+          <div>
+            <div>
+              <b>
+                <label for="username" class="label1 ml-2">Username :-</label>
+              </b>
+            </div>
+            <div>
+              <input type="text" class="w-90 email1" id="username" name="username" [(ngModel)]="formdata.username">
+            </div>
+          </div>
+          <div>
+            <div>
+              <b>
+                <label for="email" class="label1 ml-3">Email :-</label>
+              </b>
+            </div>
+            <div>
+              <input type="email" class="w-90 email1" id="email" name="email" [(ngModel)]="formdata.email">
+            </div>
+          </div>
+           <div>
+            <div>
+              <b>
+                <label for="phone" class="label1 ml-3">phone Number :-</label>
+              </b>
+            </div>
+            <div>
+              <input type="Number" class="w-90 email1" id="phone" name="phone" [(ngModel)]="formdata.phone" value="">
+            </div>
+          </div>
+         
+          <div>
+            <div>
+              <b>
+                <label for="address" class="label1 ml-3">Address:-</label>
+              </b>
+            </div>
+            <div>
+              <input type="text" class="w-90 email1" id="address" name="address" [(ngModel)]="formdata.address">
+            </div>
+          </div>
+          <div>
+            <div>
+              <b>
+                <label for="password" class="label1 ml-2">Password :-</label>
+              </b>
+            </div>
+            <div>
+              <input type="password" class="w-90 Password1" id="password" name="password" [(ngModel)]="formdata.password">
+            </div>
+          </div>
+          <div>
+            <div>
+              <b>
+                <label for="password" class="label1 ml-2">Confirm Password :-</label>
+              </b>
+            </div>
+            <div>
+              <input type="password" class="w-90 Password1"  id="cpassword" name="cpassword" [(ngModel)]="formdata.cpassword">
+            </div>
+          </div>
+          <div class="">
+            <div *ngIf="errormessage" class="errorMessage">{{errormessage}}</div>
+            <div *ngIf="success" class="success">{{success}}</div>
+          </div>
+          <div>
+            <div class="f_md m-2">
+              <b>Forget Password</b>
+            </div>
+          </div>       
+          
+          <div>
+            <div>
+              <b>
+                <input type="submit" class="btn btn-success btn_md m-2" >
+              </b>
+            </div>
+          </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+    <!-- <app-footer></app-footer> -->

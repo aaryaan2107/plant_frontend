@@ -1,0 +1,132 @@
+<div class="sidenav" [ngClass]="{'active': navOpen}">
+  <a (click)="changeSection('add_admin')">Add Admin</a>
+  <a (click)="getcurrentorder({statusbar:'current'})">Current Order</a>
+  <a (click)="getcurrentorder({statusbar:'cancel'})">Cancle Order</a>
+  <a (click)="getcurrentorder({statusbar:'past'})">Past Order</a>
+  <a (click)="changeSection('setting')">Setting</a>
+  <a routerLink="addplant">Add Plant</a>
+
+</div>
+<div class=" main " [ngClass]="{ 'active': navOpen} ">
+  <nav class="navbar ">
+      <div class="logo_item ">
+          <div class="first d-flex ">
+              <i class="fa fa-bars " id="sidebarOpen " (click)="toggleNav() "></i>
+              <h4 (click)="changeSection( 'home') ">Plant website</h4>
+          </div>
+          
+      </div>
+  </nav>
+  <div class="second ">
+      <!-- main content -->
+      <div class="col-sm-10 bg-dafault pt-3 ">
+          <div *ngIf="selectedSection==='home' ">
+             <h1>WELCOME</h1>
+          </div>
+
+
+          <div *ngIf="selectedSection==='setting' ">
+              <div class="container p-5 ">
+                  <h3 style="display:flex; gap:20px "><i class="fa fa-folder "></i><span>Setting</span></h3>
+              </div>
+          </div>
+
+
+
+          <div *ngIf="selectedSection==='add_admin' ">
+              <div class="">
+                  <form (ngSubmit)="signup(formdata) ">
+                      <div class="form-group ">
+                          <label for="username ">Username</label>
+                          <input type="text " class="form-control " name="username " id="username " [(ngModel)]="formdata.username " placeholder="Enter username ">
+                      </div>
+
+                      <div class="form-group ">
+                          <label for="username ">Email</label>
+                          <input type="email " class="form-control " name="email " id="email " [(ngModel)]="formdata.email " placeholder="Enter email ">
+                      </div>
+
+                      <div class="form-group ">
+                          <label for="username ">Phone Number</label>
+                          <input type="number " class="form-control " name="phone " id="phone " [(ngModel)]="formdata.phone " placeholder="Enter phone number ">
+                      </div>
+
+                      <div class="form-group ">
+                          <label for="username ">Address</label>
+                          <input type="text " class="form-control " name="address " id="address " [(ngModel)]="formdata.address " placeholder="Enter address ">
+                      </div>
+
+                      <div class="form-group ">
+                          <label for="username ">Password</label>
+                          <input type="password " class="form-control " name="password " id="password " [(ngModel)]="formdata.password " placeholder="Enter password ">
+                      </div>
+
+
+                      <div class="form-group ">
+                          <label for="username ">Confirm Password</label>
+                          <input type="password " class="form-control " name="cpassword " id="cpassword " [(ngModel)]="formdata.cpassword " placeholder="Enter confirm password ">
+                      </div>
+
+                      <div class="ml-5 m-2 ">
+                          <div *ngIf="errormessage " class="errorMessage ">{{errormessage}}</div>
+                          <div *ngIf="success " class="success ">{{success}}</div>
+                      </div>
+
+
+                      <button type="submit " class="btn btn-primary ">Submit</button>
+                  </form>
+              </div>
+          </div>
+
+          <div *ngIf="order ">
+              <table class="w-100 ">
+                  <tr>
+                      <th class="col-1 text-center ">Order ID</th>
+                      <th class="col-2 text-center ">Product ID</th>
+                      <th class="col-1 text-center ">Price</th>
+                      <th class="col-2 text-center ">Quantity</th>
+                      <th class="col-2 text-center ">Status</th>
+                      <th class="col-2 text-center ">Date</th>
+                      <th class="col-2 text-center " *ngIf="a ">Past Order</th>
+
+                  </tr>
+              </table>
+
+              <div *ngFor="let u of alluser ">
+                  <!-- <h5><b class="text-secondary ">UserName :- {{u.username}}</b></h5> -->
+                  <div>
+                      <table class="w-100 table sc ">
+                          <thead class="sc ">
+
+                          </thead>
+                          <tbody *ngFor="let c of current | paginate: { itemsPerPage: 9, currentPage: p } " class="sc ">
+
+                              <tr *ngIf="c.userId==u ._id ">
+                                  <td class=" col-1 text-center ">{{c.orderID}}</td>
+                                  <td class="col-2 text-center ">{{c.productId}}</td>
+                                  <td class="col-1 text-center ">{{c.Price}}</td>
+                                  <td class="col-1 text-center ">{{c.quantity}} </td>
+                                  <td class="col-3 text-center ">{{c.statusbar}}</td>
+                                  <td class="col-2 text-center ">{{c.date}}</td>
+                                  <td style="visibility: hidden; ">reer</td>
+                                  <td *ngIf="data.statusbar=='current' ">
+                                      <button class="btn btn-outline-success " (click)="pastorder(c._id) ">Past Order</button>
+                                  </td>
+                              </tr>
+                          </tbody>
+
+
+                      </table>
+                  </div>
+              </div>
+
+              <pagination-controls (pageChange)="p=$event "></pagination-controls>
+
+          </div>
+      </div>
+
+
+
+  </div>
+
+</div>

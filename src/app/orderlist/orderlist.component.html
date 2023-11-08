@@ -1,0 +1,49 @@
+<app-header></app-header>
+<section class="h-100" style="background-color: #eee;">
+    <div class="container h-100 py-5">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-10">
+
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div class="col-sm-10">
+                        <h3 class="fw-normal mb-0 text-black">Payment Info</h3>
+                    </div>
+                    <div>
+                    </div>
+                </div>
+                <div class="card card-body">
+                    <div class="row">
+                        <div class="col-sm-3">orderID</div>
+                        <div class="col-sm-3">Quantity</div>
+                        <div class="col-sm-4">Price</div>
+                        <div class="col-sm-2">Payment info</div>
+                    </div>
+                </div>
+                <div class="card rounded-3 mb-4" style="overflow-y: scroll; height: 400px;">
+                    <div class="card-body p-4 mb-2">
+                        <div *ngFor="let o of orderlist" style="margin-bottom: 10px;">
+                            <div class="row d-flex justify-content-between align-items-center">
+                                <div class="col-md-2 ">
+                                    <p> {{o.orderID}} </p>
+                                </div>
+                                <div class="col-md-3 col-lg-2 col-xl-1 offset-lg-1">
+                                    <h6 class="mb-0" style="font-size: 1.0em;"> {{o.quantity}} </h6>
+                                </div>
+                                <div class="col-sm-1 col-lg-1 col-xl-2 text-end">
+                                    <a> {{o.Price}} </a>
+                                </div>
+                                <div class="col-sm-1 col-lg-1 col-xl-2 text-end">
+                                    <div class="btn btn-danger" routerLink="payment/{{o.randomId}}">
+                                        Payment Info
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<app-footer></app-footer>

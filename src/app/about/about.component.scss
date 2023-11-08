@@ -1,0 +1,13 @@
+
+img
+{
+  transition: all ease .5s;
+  overflow: hidden;
+  filter: grayscale(50);
+
+}
+img:hover
+{
+  transform: scale(1.05);
+  filter: grayscale(0%);
+}

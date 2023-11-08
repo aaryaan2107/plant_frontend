@@ -1,0 +1,55 @@
+<app-header></app-header>
+<section class="h-100" style="background-color: #eee;">
+    <div class="container h-100 py-5">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-10">
+              
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div class="col-sm-10">
+                    <h3 class="fw-normal mb-0 text-black">WishList</h3>
+                    </div>
+                    <div class="col-sm-3">
+                        <div *ngIf="message" class="text-end"style="cursor: pointer;"  routerLink="/cart">{{message}} <i
+                                class=" fa fa-arrow-right"></i>
+                        </div>
+                    </div>
+                    <div>
+                    </div>
+                </div>
+
+                <div class="card rounded-3 mb-4" style="overflow-y: scroll; height: 400px;">
+                    <div class="card-body p-4 mb-2">
+                        <div *ngFor="let u of plant1">
+                        <div *ngFor="let w of data">
+                        <div class="row d-flex justify-content-between align-items-center" *ngIf="w.productId == u.ID">
+                            <div class="col-md-2 col-lg-2 col-xl-2 mb-2">
+                                <img [src]="u.Photo_1" class="img-fluid rounded-3" alt=" ">
+                            </div>
+                            <div class="col-md-3 ">
+                                <p >{{u.Common_Name}}</p>
+
+                            </div>
+
+                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                                <h6 class="mb-0" style="font-size: 1.0em;"> {{u.Price}} </h6>
+                            </div>
+                            <div class="col-sm-1 col-lg-1 col-xl-2 text-end">
+                                <a class="text-danger" style="cursor: pointer;" (click)="addtocart(u.ID,u.Price)">Add To Cart</a>
+                              
+                            </div>
+                            <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                                <a class="text-danger" (click)="deletewishlist(w._id)"><i class="fa fa-trash fa-lg"></i></a>
+                            </div>
+
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+          
+
+            </div>
+        </div>
+    </div>
+</section>
+<app-footer></app-footer>

@@ -1,0 +1,124 @@
+<!-- <body scroll="no">
+	<div class="overlap"></div>
+	<nav>
+		<input type="checkbox" id="check">
+		<label for="check" class="checkbtn">
+			<i class="fa fa-bars"></i>
+		</label>
+		<label class="logo">Plant</label>
+		<ul>
+			<li><button class="btn" routerLink="/signup">Signup</button></li>
+			<li><button class="btn" routerLink="/login">Login</button></li>
+		
+			</ul>
+	</nav>
+</body> -->
+<app-header></app-header>
+<div class="most_main">
+	<div class="main_1">
+		<div class="main_1_1">
+			<img src="../../assets/back4.jpg" alt="" class="main_img">
+		</div>
+		<div class="main_1_2">
+			<div class="main_text">
+				<b> Login</b>
+			</div>
+      <form (ngSubmit)="login()" >
+			<div class="ml-5 m-2">
+				<div>
+					<label for="username" class="label1 ml-3">Username :-</label>
+				</div>
+				<div>
+					<input type="text"class="w-90 email1" id="username" [(ngModel)]="username" name="username">
+				</div>
+			</div>
+			<div class="ml-5 m-2">
+				<div>
+					<label for="Password" class="label1 ml-3 ">Password :-</label>
+				</div>
+				<div>
+					<input type="password" class="w-90 Password1" id="password" [(ngModel)]="password" name="password">
+				</div>
+			</div>
+      <div>
+		<div>
+			<p style="cursor:poiter; padding-left: 50px;" routerLink="/signup">You don't have account | Sign Up</p>
+		</div>
+        <div *ngIf="errorMessage" class="errorMessage">
+          {{errorMessage}}
+        </div>
+      </div>
+			<div>
+				<div class="center1">
+					<input type="submit" class="btn btn-success w p-1 m-2">
+				</div>
+			</div>
+      
+    </form>
+		</div>
+	</div>
+</div>
+
+<!-- Media Query-->
+<div class="md_main" scroll="no">
+	<div class="md_ma">
+		<div class="we">
+			<br>
+			<b>WelCome</b>
+		</div>
+		<div class="a">
+			<div class="w-90">
+				<div class="main_text">
+					<b>Login</b>
+				</div>
+        <form (ngSubmit)="login()" >
+				<div>
+					<div>
+						<b>
+							<label for="username" class="label1 ml-2">Username :-</label>
+						</b>
+					</div>
+					<div>
+            <input type="text"class="w-90 email1" id="username" [(ngModel)]="username" name="username">
+					</div>
+				</div>
+				<div>
+					<div>
+						<b>
+							<label for="password" class="label1 ml-2">Password :-</label>
+						</b>
+					</div>
+					<div>
+            <input type="password" class="w-90 Password1" id="password" [(ngModel)]="password" name="password">
+					</div>
+				</div>
+				
+        <div class="mt-2">
+			<div>
+				<p style="cursor:pointer; padding-left: 10px;" routerLink="/signup">You don't have account | Sign Up</p>
+			</div>
+          <div *ngIf="errorMessage" class="errorMessage2">
+            {{errorMessage}}
+          </div>
+        </div>
+				<div>
+					<div class="f_md m-2">
+						<b>Forget Password</b>
+					</div>
+				</div>
+      
+				<div>
+					<div>
+						<b>
+							<input type="submit" class="btn btn-success btn_md m-2">
+						</b>
+					</div>
+				</div>
+        </form>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<app-footer></app-footer>

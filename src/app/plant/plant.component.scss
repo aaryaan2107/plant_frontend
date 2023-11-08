@@ -1,0 +1,205 @@
+.txt
+{
+    color: black;
+    transition: all 500ms ease-in-out;
+}
+.txt:hover{
+    color: rgb(150, 24, 24);
+    font-weight: bold;
+}
+.hover:hover
+{
+    background-color: rgb(0, 255, 106,0.1);
+}
+
+.search-hero 
+{
+    max-width: 400px;
+    padding-bottom: 50px;
+    margin:auto;
+  }
+  
+  .form-control {
+    padding: 20px;
+    box-shadow: 0 10px 40px 0 #B0C1D9;
+  }
+  .form-control::placeholder  {
+
+    font-family: FontAwesome;
+  }
+
+  
+.load-more{
+  background-color:#000;
+  color:#fff !important;
+  margin-left: 610px;
+  margin-bottom: 100px;
+  padding:5px 10px;
+  border-radius:4px;
+  font-size:20px;
+  display:inline-block;
+}
+
+
+
+@media(max-width:600px)
+{
+
+  .load-more{
+    margin: 0 0 ;
+    margin-left: 140px;
+    margin-bottom: 50px;
+  }
+}
+
+/* toast.component.css */
+
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #333;
+  color: #fff;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.toast-show {
+  opacity: 1;
+}
+.res1{
+  color: red;
+  position: absolute;
+  z-index: 1;
+  margin-top:3px ;
+}
+.fix{
+  position:static;
+  z-index: -1;
+  color: rgb(199, 195, 195);
+  
+}
+
+::placeholder {
+ color: #a09999;
+ font-size: 18px;
+}
+
+
+li a {
+  text-decoration: none;
+  color: #2d2f31;
+}
+
+nav {
+  width: 300px;
+  background: #d9d9d9;
+  margin: 40px auto;
+}
+
+.dropdown-btn {
+  padding: 15px;
+  background: #2d2f31;
+  color: white;
+  font-size: 1.2em;
+  font-variant: small-caps;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dropdown-btn i {
+  margin-left: 10px;
+}
+
+.dropdown-content {
+  padding: 10px;
+}
+
+.dropdown-content select {
+  margin-bottom: 10px;
+}
+
+.dropdown-content button {
+  margin-top: 10px;
+}
+
+.dropdown-content .collapse {
+  transition: height 0.4s ease;
+  height: 0;
+  overflow: hidden;
+}
+
+.show .dropdown-content .collapse {
+  height: auto;
+}
+
+.custom-select::-ms-expand {
+  display: none;
+}
+
+.custom-select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding-right: 1.75rem; /* Add some padding to the right for a cleaner look */
+  background-image: url('../../assets/arrow.png'); /* Add your own custom arrow if needed */
+  background-repeat: no-repeat;
+  background-position: right 0.75rem top 50%;
+}
+/* sidebar.component.css */
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: rgb(41, 167, 47);
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+
+
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.closebtn {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 36px;
+  margin-right: 10px;
+}
+
+span {
+//   font-size: 30px;
+//   cursor: pointer;
+//   float: right;
+}
+
+
+.icon 
+{
+  // margin-right: 0px;
+}
+select{
+  width: 200px;
+}
