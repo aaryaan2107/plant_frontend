@@ -29,7 +29,8 @@
               "src/favicon.ico",
               "src/assets", 
               "src/.htaccess",
-              "src/_redirects"
+              "src/_redirects",
+              "_redirects"
           
             ],
             "styles": [
