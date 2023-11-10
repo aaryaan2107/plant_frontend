@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class PlantserviceService {
 
-  private url = 'http://192.168.68.53:3000';
+  private url = 'https://plant-backend6.onrender.com';
   private isAuth = false;
   private isLoggedIn = false;
   cartdata: EventEmitter<number> = new EventEmitter<number>();
@@ -123,7 +123,7 @@ export class PlantserviceService {
   //cart to mongodb
 
   sendCartDataToServer(cartData: any[]): Observable<any> {
-    const url = 'http://192.168.68.53:3000/Apis/cartnew';
+    const url = 'https://plant-backend6.onrender.com/Apis/cartnew';
     const headers = {
       'Authorization': "Bearer " + localStorage.getItem('token')
     }
