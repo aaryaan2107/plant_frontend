@@ -115,7 +115,7 @@
 
             <div *ngFor="let w of data">
               <a (click)="deletewishlist(w._id)" *ngIf="w.productId == plant.ID">
-                <i class="fa fa-heart mb-2" [ngClass]="w.class"></i>
+                <i class="fa fa-heart mb-2" [ngClass]="w.class" style="z-index: 0;"></i>
               </a>
             </div>
             <a  (click)="wishlist({productId:plant.ID,userId:userID})">
