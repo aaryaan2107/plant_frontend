@@ -182,7 +182,7 @@ nav {
 /* Styling for the horizontal navbar */
 .horizontal-navbar {
   display: none; /* Initially hide the horizontal navbar */
-  background: url('../../assets/hero-bg.jpg'),linear-gradient(to right, rgba(32, 106, 93, 0.6), rgba(32, 106, 93, 0.7), rgba(32, 106, 93, 0.6));
+  // background: url('../../assets/hero-bg.jpg'),linear-gradient(to right, rgba(32, 106, 93, 0.6), rgba(32, 106, 93, 0.7), rgba(32, 106, 93, 0.6));
   background-blend-mode: darken;
   background-size: cover;
   background-repeat: no-repeat;
@@ -194,7 +194,7 @@ nav {
 .horizontal-navbar a {
   float: left;
   display: block;
-  color: white;
+  color: rgb(0, 0, 0);
   text-align: center;
  padding: 14px 16px;
   text-decoration: none;
@@ -203,11 +203,16 @@ justify-content: center;
 display: flex;
 flex-wrap: wrap;
 margin-top: 15px;
+transition: all 0.3s ease-in-out;
 }
 
 .horizontal-navbar a:hover {
-  background-color: #ddd;
-  color: black;
+  // background-color: #ddd;
+  border-radius: 20px;
+  // color: black;
+
+  box-shadow: inset 100px 0 0 0 #7e7d7d;
+  color: white;
 }
 
 /* Media query to show the horizontal navbar on larger screens */
