@@ -1,7 +1,7 @@
 
 
 <div class="horizontal-navbar">
-  <label class="logo col-5"  routerLink="/index"><img src="../../assets/plantmainlogo.png" width="50px" height="50px" >Plant</label>
+  <label class="logo col-5" style="color: black; "  routerLink="/index"><img src="../../assets/plantmainlogo.png" width="50px" height="50px"  >Plant</label>
   
   <!-- <a href="#">Home</a>
   <a href="#">Features</a>
@@ -9,7 +9,7 @@
   <a href="#">Blog</a>
   <a href="#">Contact</a> -->
   <a routerLink="/index" style="margin-left: 125px;">Home</a>
-  <a routerLink="/plants">plants</a>
+  <a routerLink="/plants">Plants</a>
   <a routerLink="/about">About</a>
   <a routerLink="/contact-us">Contact Us</a>
 
@@ -17,12 +17,12 @@
   <a *ngIf="!isLoggedIn() "  routerLink="/login">Login</a>
   <a *ngIf="isLoggedIn()"  (click)="onLogout()" >Logout</a>
 
-  <a *ngIf="!loggin" routerLink="/cart" class="text-light fw-bold"><i class="fa  fa-shopping-cart"><sup style="background-color: red; border-radius: 50%; padding: 3px;" >{{cartitem}}</sup></i></a>
-  <a  *ngIf=" loggin" routerLink="/cart" class="text-light fw-bold"><i class="fa  fa-shopping-cart"><sup style="background-color: red; border-radius: 50%; padding: 3px;" >{{total}}</sup></i></a>
-  <a  routerLink="/wishlist" class="text-light fw-bold"><i class="fa fa-heart"></i></a>
+  <a *ngIf="!loggin" routerLink="/cart" class="text-light fw-bold"><i class="fa  fa-shopping-cart" style="color: black;"><sup style="background-color: red; border-radius: 50%; padding: 3px;" >{{cartitem}}</sup></i></a>
+  <a  *ngIf=" loggin" routerLink="/cart" class="text-light fw-bold"><i class="fa  fa-shopping-cart" style="color: black;"><sup style="background-color: red; border-radius: 50%; padding: 3px;" >{{total}}</sup></i></a>
+  <a  routerLink="/wishlist" class="text-light fw-bold"><i class="fa fa-heart"style="color: red;"></i></a>
 
   <a *ngIf=" loggin"  routerLink="/user" class="fa fa-address-card"></a>
-  <a style="color: white; font-weight: bold;"><i class="fa fa-search" routerLink="/plants" ></i></a>
+  <a style="color: white; font-weight: bold;"><i class="fa fa-search" style="color: black;" routerLink="/plants" ></i></a>
   </div>
   
 <div id="mySidenav" class="sidenav" style="background-color:aquamarine; font-weight: bolder; ">
