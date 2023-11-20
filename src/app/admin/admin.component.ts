@@ -44,7 +44,21 @@ export class AdminComponent {
         this.alluser = user;
       }
     )
+    this.allplants()
   }
+  
+  allplants()
+  {
+    this.plantservice.Allplant().subscribe(
+      (data)=>{
+        this.plant=data
+        console.log(this.plant);
+        
+      }
+    )
+    
+  }
+
   signup(userdata: any) {
     if (userdata.password == userdata.cpassword) {
       this.plantservice.adminsignup(userdata).subscribe(

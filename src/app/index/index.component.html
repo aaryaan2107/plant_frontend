@@ -1,65 +1,81 @@
 <app-header></app-header>
 <section class="plant_section layout_padding">
+  <div class="main">
+  <div class="filter">
+    <div>
+      <img src="../../assets/filter/indoor_plant.png" style="border-radius: 50%; " >
+      <h5 class="text">Indoor Plant</h5>
+    </div>
+    <div>
+      <img src="../../assets/filter/outdoor_plant.png" style="border-radius: 50%; " >
+      <h5 class="text">Outdoor Plant</h5>
+    </div>
+    <div>
+      <img src="../../assets/filter/toxic_plant.png" style="border-radius: 50%; " >
+      <h5 class="text">Toxic Plant</h5>
+    </div>
+    <div>
+      <img src="../../assets/filter/non-toxic_plant.png" style="border-radius: 50%; " >
+      <h5 class="text">Non Toxic Plant</h5>
+    </div>
+    <div>
+      <img src="../../assets/filter/season_plant.png" style="border-radius: 50%; " >
+      <h5 class="text">Season Plant</h5>
+    </div>
+    <div>
+      <img src="../../assets/filter/foliage_plant.png" style="border-radius: 50%; " >
+      <h5 class="text">Foliage Plant</h5>
+    </div>
+  </div>
+  </div>
   <div class="container">
+
     <div class="heading_container heading_center">
       <h2>
-        Our <span>Plants</span>
+        <!-- Our <span>Plants</span> -->
       </h2>
     </div>
-    <div class="row">
-      <div class="col-sm-6 col-md-4 col-lg-3">
-        <div class="box">
-          <div class="option_container">
-          </div>
-          <div class="img-box">
-            <img src="images/p1.png" alt="">
-          </div>
-          <div class="detail-box">
-            <a href=""> Indoor Plant</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-4 col-lg-3">
-        <div class="box">
-          <div class="option_container">
-          </div>
-          <div class="img-box">
-            <img src="images/p1.png" alt="">
-          </div>
-          <div class="detail-box">
-            <a href=""> Indoor Plant</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-4 col-lg-3">
-        <div class="box">
-          <div class="option_container">
-          </div>
-          <div class="img-box">
-            <img src="images/p1.png" alt="">
-          </div>
-          <div class="detail-box">
-            <a href=""> Indoor Plant</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-4 col-lg-3">
-        <div class="box">
-          <div class="option_container">
-          </div>
-          <div class="img-box">
-            <img src="images/p1.png" alt="">
-          </div>
-          <div class="detail-box">
-            <a href=""> Indoor Plant</a>
-          </div>
-        </div>
-      </div>
-     
-      
-    
-      
+<!-- carousel -->
+
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="../../assets/carousel/image1.jpg" class="d-block w-100" alt="...">
     </div>
+    <div class="carousel-item">
+      <img src="../../assets/carousel/image2.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="../../assets/carousel/image3.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="../../assets/carousel/image4.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="../../assets/carousel/image5.jpg" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" style="background-color: transparent; border: 0; "  type="button" data-target="#carouselExampleIndicators" data-slide="prev">
+    <span class="fa fa-chevron-circle-left text-dark" style="font-size: 35px;" aria-hidden="true"></span>
+
+  </button>
+  <button class="carousel-control-next" style="background-color: transparent; border: 0; " type="button" data-target="#carouselExampleIndicators" data-slide="next">
+    <span class="fa fa-chevron-circle-right text-dark" style="font-size: 35px;"   aria-hidden="true"></span>
+    
+  </button>
+</div>
+
+
+
+
     <div class="btn-box">
       <a routerLink="/plants">
         View All plants
@@ -82,11 +98,10 @@
           </div>
           <div class="detail-box">
             <h5>
-              Free Delivery
+              <i class="fa fa-truck" style="font-size:24px;color:rgb(0, 0, 0); transform: scaleX(-1); "></i>   Free Delivery
             </h5>
             <p>
-              Nihil molestiae non culpa dignissimos dolorem, facere amet reiciendis esse nulla ut aperiam voluptate
-              ipsum nemo temporibus inventore hic accusantium nesciunt vero iste odit
+        We Provide free delivery all over the India
             </p>
           </div>
         </div>
@@ -98,11 +113,11 @@
           </div>
           <div class="detail-box">
             <h5>
-              Safe Payment
-            </h5>
+              <i class='fa fa-thumbs-up' style='font-size:24px'></i> Safe Payment
+            </h5>                
             <p>
-              Nihil molestiae non culpa dignissimos dolorem, facere amet reiciendis esse nulla ut aperiam voluptate
-              ipsum nemo temporibus inventore hic accusantium nesciunt vero iste odit
+              We have safe payment system you can trust us. 
+              Your payment details are kept secret.
             </p>
           </div>
         </div>
@@ -114,11 +129,47 @@
           </div>
           <div class="detail-box">
             <h5>
-              Satisfied Customers
+              <i class='fa fa-user' style='font-size:24px'></i>     Satisfied Customers
             </h5>
             <p>
-              Nihil molestiae non culpa dignissimos dolorem, facere amet reiciendis esse nulla ut aperiam voluptate
-              ipsum nemo temporibus inventore hic accusantium nesciunt vero iste odit
+             We have more than 1,00,000 satisfied customer all over the India. 
+            </p>
+          </div>
+          
+        </div>
+      </div>
+
+      <div class="col-md-6 mx-auto">
+        <div class="box">
+          <div class="img-box">
+            <img src="images/w3.png" alt="">
+          </div>
+          <div class="detail-box">
+            <h5>
+              <i class="fa fa-bullhorn" style="font-size:24px"></i>  Our Other Feature
+            </h5>
+            <p>
+              Secure and Recyclable Packaging
+              
+              Free Replacements if Damaged
+            </p>
+          </div>   
+        </div>
+      </div>
+
+
+      <div class="col-md-6 mx-auto">
+        <div class="box">
+          <div class="img-box">
+            <img src="images/w3.png" alt="">
+          </div>
+        
+          <div class="detail-box">
+            <h5>
+              <u>Our Motive</u>
+            </h5>
+            <p>
+             Grow More is here to inspire you to have plants around you. To look at life in a very different way, helping you connect with nature. Each plant you buy is packed and shipped with care, from our 18-acre farm to your doorstep.
             </p>
           </div>
         </div>
