@@ -111,6 +111,7 @@ h2 {
   position: relative;
   margin-bottom: 0;
   font-size: 2.5rem;
+  margin-top: 50px;
   font-weight: bold;
 }
 
@@ -998,7 +999,7 @@ a:focus {
     line-height: 1.5;
     color: #212529;
     text-align: left;
-    background-color: #fff;
+    background-color:rgba(248, 231, 214, 0.227)
   }
   
   [tabindex="-1"]:focus {
@@ -3390,15 +3391,15 @@ a:focus {
   }
   
   .btn-secondary {
-    color: #fff;
-    background-color: #6c757d;
-    border-color: #6c757d;
+    color: #000000;
+    // background-color: #6c757d;
+    // border-color: #6c757d;
   }
   
   .btn-secondary:hover {
-    color: #fff;
-    background-color: #5a6268;
-    border-color: #545b62;
+    color: #000000;
+    // background-color: #5a6268;
+    // border-color: #545b62;
   }
   
   .btn-secondary:focus, .btn-secondary.focus {
