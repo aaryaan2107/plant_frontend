@@ -159,8 +159,9 @@ nav {
   z-index: 1;
   top: 0;
   right: 0;
-  // background-color: rgb(41, 167, 47);
-background-image: url('../../assets/1.png');
+  background-color: rgba(194, 226, 143, 1); 
+  background-image: url('../../assets/1.png');
+  background-size: auto 100%;
   overflow-x: hidden;
   transition: 0.5s;
   padding-top: 60px;
