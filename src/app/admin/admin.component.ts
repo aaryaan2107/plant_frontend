@@ -31,6 +31,7 @@ export class AdminComponent {
   alluser:any[]=[];
   @ViewChild('content1') content1!: ElementRef;
   @ViewChild('content2') content2!: ElementRef;
+  trend: any[]=[];
 
 
   constructor(private plantservice: PlantserviceService,private router:Router) {}
@@ -45,6 +46,7 @@ export class AdminComponent {
       }
     )
     this.allplants()
+    this.alltrendingplants()
   }
   
   allplants()
@@ -151,8 +153,6 @@ export class AdminComponent {
       $(this.content1.nativeElement).collapse('hide');
       $(this.content2.nativeElement).collapse('toggle');
     }
-
-
   }
 
 
@@ -168,7 +168,29 @@ export class AdminComponent {
 
 
 
-
+  trending(id:any,id2:any){
+    this.plantservice.TrendingPlants(id,id2).subscribe((res)=>{
+       console.log(res);
+     })
+   }
+ 
+ 
+   alltrendingplants(){
+     this.plantservice.tplants().subscribe((res)=>{
+       this.trend = res;
+       console.log(this.trend);
+       
+     })
+   }
+ 
+ 
+   removetrend(id:any){
+     this.plantservice.removertrend(id).subscribe((res)=>{
+         console.log(res);
+         this.alltrendingplants()
+     })
+     
+       }
 
 
 

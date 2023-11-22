@@ -4,7 +4,7 @@ display: flex;
 gap: 30px;
 width: 150px;
 height: 150px;
-margin-top: -10px;
+margin-top: -30px;
 margin-bottom: 40px;
 padding-left: 7%;
 }
@@ -13,6 +13,13 @@ padding-left: 7%;
   margin-left: 25px;
   margin-top: 10px;
 } 
+
+
+
+
+
+
+
 
 .search {
     &__container {
@@ -129,7 +136,20 @@ padding-left: 7%;
         width: 120%;
         margin-top: 30%;
     }
-}
+    .filter
+    {
+      // background-color: #000;
+      display: grid;
+      grid-template-columns: auto auto auto;
+      margin-bottom: 130px;
+    }
+    .filter img
+    {
+      height: 80px;
+      width: 80px;
+    }
+   
+  }
 
 
 //slidenavbar

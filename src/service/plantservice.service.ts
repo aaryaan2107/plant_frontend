@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class PlantserviceService {
 
-  private url = 'https://plant-backend6.onrender.com';
+  private url = 'http://localhost:3000';
   private isAuth = false;
   private isLoggedIn = false;
   cartdata: EventEmitter<number> = new EventEmitter<number>();
@@ -35,13 +35,17 @@ export class PlantserviceService {
 
   //All Plant
 
-  Allplant(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.url}/Api/data`);
-  }
-  getPlants(page: number): Observable<any> {
-    return this.http.get(`${this.url}/Apis/plant?page=${page}`);
-  }
+  
+Allplant(): Observable<any[]> {
+  return this.http.get<any[]>(`${this.url}/Apis/allplant`);
+}
+getPlants1(page: number): Observable<any> {
+  return this.http.get(`${this.url}/Apis/plant?page=${page}`);
+}
+getPlants(page: number,pageSize: number ): Observable<any> {
 
+  return this.http.get(`${this.url}/Apis/plant?page=${page}&pageSize=${pageSize}`);
+}
 
   //login and signup
 
@@ -123,7 +127,7 @@ export class PlantserviceService {
   //cart to mongodb
 
   sendCartDataToServer(cartData: any[]): Observable<any> {
-    const url = 'https://plant-backend6.onrender.com/Apis/cartnew';
+    const url = 'https://localhost:4200';
     const headers = {
       'Authorization': "Bearer " + localStorage.getItem('token')
     }
@@ -189,9 +193,14 @@ export class PlantserviceService {
   }
 
 
-  searchPlants(query:String)
+   
+  searchPlants(query:String,page: number,pageSize: number )
   {
-    return this.http.get(`${this.url}/Apis/search?search=${query}`);
+    return this.http.get(`${this.url}/Apis/search?search=${query}&page=${page}&pageSize=${pageSize}`);
+  }
+  searchPlants2(query:String )
+  {
+    return this.http.get(`${this.url}/Apis/search2?search=${query}`);
   }
 
 
@@ -265,6 +274,24 @@ currentorder(data:any):Observable<any> {
     }
     return this.http.post(`${this.url}/Apis/currentorder`, data,{headers:headers});
 }
+//trending
+TrendingPlants(trendid:any,trendid2:any) : Observable<any>{
+  return this.http.post(`${this.url}/admin/trending`, {trendid,trendid2} );
+}
+tplants():Observable<any>{
+  console.log('ghhgghghghghhghghg')
+  return this.http.get(`${this.url}/admin/gettplants`);
+}
+
+removertrend(tid:any):Observable<any>{
+  return this.http.delete(`${this.url}/admin/removertrend/${tid}`);
+}
+trending(): Observable<any[]> {
+  console.log('kshdhsd');
+  
+  return this.http.get<any[]>(`${this.url}/admin/trend`);
+}
+
 
 
 }

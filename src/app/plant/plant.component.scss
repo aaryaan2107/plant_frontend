@@ -73,13 +73,15 @@
 .res1{
   color: red;
   position: absolute;
-  z-index: 1;
+  z-index: 0;
   margin-top:3px ;
 }
 .fix{
   position:static;
   z-index: -1;
   color: rgb(199, 195, 195);
+  
+
   
 }
 
@@ -160,8 +162,8 @@ nav {
   top: 0;
   right: 0;
   background-color: rgba(194, 226, 143, 1); 
-  background-image: url('../../assets/1.png');
-  background-size: auto 100%;
+background-image: url('../../assets/1.png');
+background-size: auto 100%;
   overflow-x: hidden;
   transition: 0.5s;
   padding-top: 60px;
@@ -191,17 +193,69 @@ nav {
   margin-right: 10px;
 }
 
-span {
-//   font-size: 30px;
-//   cursor: pointer;
-//   float: right;
-}
 
 
-.icon 
-{
-  // margin-right: 0px;
-}
+
 select{
   width: 200px;
 }
+
+.filter
+{
+display: flex;
+gap: 30px;
+width: 150px;
+height: 150px;
+margin-top: 30px;
+margin-bottom: 40px;
+padding-left: 7%;
+}
+.text
+{
+  margin-left: 25px;
+  margin-top: 10px;
+} 
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination button {
+  background-color: #3498db;
+  border: 1px solid #3498db;
+  color: white;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  cursor: pointer;
+  margin: 0 4px;
+  transition: background-color 0.3s;
+}
+
+.pagination button:hover {
+  background-color: #2980b9;
+}
+
+.pagination button:disabled {
+  background-color: #bdc3c7;
+  border: 1px solid #bdc3c7;
+  cursor: not-allowed;
+}
+
+.pagination .active {
+  background-color: #2980b9;
+}
+/* Optional: Add a subtle box-shadow for a lifted effect */
+
+.pagination button {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+/* Optional: Add a slight border-radius for rounded edges */
+
+.pagination button {
+  border-radius: 4px;
+}
+
