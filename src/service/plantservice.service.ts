@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class PlantserviceService {
 
-  private url = 'http://localhost:3000';
+  private url = 'https://plant-backend6.onrender.com';
   private isAuth = false;
   private isLoggedIn = false;
   cartdata: EventEmitter<number> = new EventEmitter<number>();
@@ -127,7 +127,7 @@ getPlants(page: number,pageSize: number ): Observable<any> {
   //cart to mongodb
 
   sendCartDataToServer(cartData: any[]): Observable<any> {
-    const url = 'https://localhost:4200';
+    const url = 'https://growmoreplant.netlify.app';
     const headers = {
       'Authorization': "Bearer " + localStorage.getItem('token')
     }
