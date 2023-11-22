@@ -127,12 +127,12 @@ getPlants(page: number,pageSize: number ): Observable<any> {
   //cart to mongodb
 
   sendCartDataToServer(cartData: any[]): Observable<any> {
-    const url = 'https://growmoreplant.netlify.app';
     const headers = {
       'Authorization': "Bearer " + localStorage.getItem('token')
     }
-    return this.http.post(url, { cartData }, { headers: headers });
+    return this.http.post(`${this.url}/Apis/cartnew`, { cartData }, { headers: headers });
   }
+
 
 
   //store
