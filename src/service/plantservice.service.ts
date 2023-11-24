@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class PlantserviceService {
 
-  private url = 'http://localhost:3000';
+  private url = 'https://plant-backend6.onrender.com';
   private isAuth = false;
   private isLoggedIn = false;
   cartdata: EventEmitter<number> = new EventEmitter<number>();
