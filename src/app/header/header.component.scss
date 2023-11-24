@@ -183,12 +183,13 @@ nav {
 .horizontal-navbar {
   display: none; /* Initially hide the horizontal navbar */
   // background: url('../../assets/hero-bg.jpg'),linear-gradient(to right, rgba(32, 106, 93, 0.6), rgba(32, 106, 93, 0.7), rgba(32, 106, 93, 0.6));
-  background-blend-mode: darken;
+  background-blend-mode:darken;
   background-size: cover;
   background-repeat: no-repeat;
   height:100%;
   width: 100%;
   overflow: hidden;
+
 }
 
 .horizontal-navbar a {
@@ -229,6 +230,8 @@ transition: all 0.3s ease-in-out;
   span {
     display: none;
   }
+
+
 }
 label.logo{
   color: white;
