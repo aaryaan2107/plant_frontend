@@ -1002,7 +1002,8 @@ background-color: rgb(255, 255, 255);
     line-height: 1.5;
     color: #212529;
     text-align: left;
-    background-color:rgba(248, 231, 214, 0.227)
+    background-color:rgba(248, 231, 214, 0.227);
+
   }
   
   [tabindex="-1"]:focus {
@@ -11060,8 +11061,8 @@ background-color: rgb(255, 255, 255);
   @media (max-width: 600px) {
     .loader
     {
-      margin-top: 70%;
-      margin-left: 15%;
+      margin-top: 100%;
+      margin-left: 27%;
       padding: 0;
     }
   }

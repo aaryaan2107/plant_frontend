@@ -58,16 +58,15 @@ export class PlantComponent  implements OnInit {
     this.plantservice.Allplant().subscribe((res)=>{
         this.plants3= res;
     });
+    this.plantservice.trending().subscribe((res)=>{
+      this.trending = res;
+    })
     this.get();
     this.user = localStorage.getItem('token');
     var decoded:any = jwt_decode(this.user);
     this.userID=decoded.userId;
 
-    this.plantservice.trending().subscribe((res)=>{
-      this.trending = res;
-      console.log(this.trending);
-      
-    })
+
   }
 
   loadPlants() {
@@ -76,10 +75,7 @@ export class PlantComponent  implements OnInit {
     this.plantservice.getPlants(this.p, this.pageSize).subscribe(
       (data) => {
         this.loading = false;
-         this.plants = data;
-         console.log(this.p,this.pageSize,this.plants);
-         
-        console.log( this.totalPlantss);
+        this.plants = data;
       },
       (error) => {
         console.error('Error fetching plants', error);
