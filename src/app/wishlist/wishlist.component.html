@@ -19,22 +19,21 @@
 
                 <div class="card rounded-3 mb-4" style="overflow-y: scroll; height: 400px;">
                     <div class="card-body p-4 mb-2">
-                        <div *ngFor="let u of plant1">
                         <div *ngFor="let w of data">
-                        <div class="row d-flex justify-content-between align-items-center" *ngIf="w.productId == u.ID">
+                        <div class="row d-flex justify-content-between align-items-center">
                             <div class="col-md-2 col-lg-2 col-xl-2 mb-2">
-                                <img [src]="u.Photo_1" class="img-fluid rounded-3" alt=" ">
+                                <img [src]="w.Photo_1" class="img-fluid rounded-3" alt=" ">
                             </div>
                             <div class="col-md-3 ">
-                                <p >{{u.Common_Name}}</p>
+                                <p >{{w.Common_Name}}</p>
 
                             </div>
 
                             <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                <h6 class="mb-0" style="font-size: 1.0em;"> {{u.Price}} </h6>
+                                <h6 class="mb-0" style="font-size: 1.0em;"> {{w.Price}} </h6>
                             </div>
                             <div class="col-sm-1 col-lg-1 col-xl-2 text-end">
-                                <a class="text-danger" style="cursor: pointer;" (click)="addtocart(u.ID,u.Price)">Add To Cart</a>
+                                <a class="text-danger" style="cursor: pointer;" (click)="addtocart(w.ID,w.Price)">Add To Cart</a>
                               
                             </div>
                             <div class="col-md-1 col-lg-1 col-xl-1 text-end">
@@ -49,7 +48,7 @@
           
 
             </div>
-        </div>
     </div>
 </section>
 <app-footer></app-footer>
+

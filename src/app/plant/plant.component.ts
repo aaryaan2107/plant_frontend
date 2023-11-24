@@ -4,6 +4,7 @@ import jwt_decode from "jwt-decode";
 import { flush } from '@angular/core/testing';
 import { FormControl } from '@angular/forms';
 import { debounceTime, switchMap, map } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -40,93 +41,179 @@ export class PlantComponent  implements OnInit {
   priceFilter: number = 0;
   page: number = 1;
   p : number = 1;
+  p1:number=1;
   p2:number=1;
   p3: number = 1;
   pageSize: number = 8;
+  pageSiz1: number = 8;
   pagesize2:number=8;
   pageSize3: number = 8;
   totalFilteredPages!:number;
+  a!:any;
   
   
   
   
-  
-  constructor(private plantservice: PlantserviceService,private el: ElementRef, private renderer: Renderer2) { }
+  constructor(private plantservice: PlantserviceService,private el: ElementRef, private renderer: Renderer2,   private avroute:ActivatedRoute) { }
   
   ngOnInit() {
-    this.loadPlants();
-    this.plantservice.Allplant().subscribe((res)=>{
-        this.plants3= res;
+    this.getwishlist();
+    this.avroute.paramMap.subscribe(params=>{
+      let code=params.get('code');
+      this.a = code;
     });
+   if(this.a){
+    this.setDefaultFilter();
+    // this.filterPlants();
+   }
+   else{
+    this.loadPlants();
+    // this.get();
+
     this.plantservice.trending().subscribe((res)=>{
       this.trending = res;
     })
-    this.get();
+    
     this.user = localStorage.getItem('token');
     var decoded:any = jwt_decode(this.user);
     this.userID=decoded.userId;
-
-
+   }
+    
+      
+   
+    
   }
 
+
+   
+
+
   loadPlants() {
-    this.loading=true;
-    if (this.totalPlantss !== undefined) {
-    this.plantservice.getPlants(this.p, this.pageSize).subscribe(
+    // this.loading=true;
+   
+    this.plantservice.getPlants(this.p1, this.pageSize).subscribe(
       (data) => {
         this.loading = false;
-        this.plants = data;
+         this.plants = data.plants; 
+         this.totalPlantss = Math.ceil(data.totalplants/this.pageSize);
+        console.log( this.totalPlantss);
       },
       (error) => {
         console.error('Error fetching plants', error);
       }
     );
-    }
+    
   }
+
+
+pages(newPage:number){
+this.p1 = newPage;
+this.loadPlants();
+}
+
+
+getTotalPages(){
+  return this.totalPlantss;
+}
+
+
+
   
-  get() {
-      this.plantservice.Allplant().subscribe((res) => {
-      this.totalPlants = res.length;
-      this.plants3 = res;
-      this.totalPlantss = this.totalPlants;  
-      this.loadPlants();
-    });
-  }
+
+
+   
+   
+
+
+ 
+  
+  // get() {
+  //     this.plantservice.Allplant().subscribe((res) => {
+  //     this.totalPlants = res.length;
+  //     this.plants3 = res;
+  //     console.log(this.plants3);
+      
+  //     this.totalPlantss = this.totalPlants;  
+  //     this.loadPlants();
+  //   });
+  // }
+
+
+
+
+
+
+
+
+       
+  setDefaultFilter(){ 
+    this.avroute.paramMap.subscribe(params=>{
+      let code=params.get('code')
+      console.log(code);
+    
+
+      if(code!=null)
+      {
+        if(code=='Outdoor' || code=='Indoor')
+      {
+        this.categoryFilter = code;
+      }
+        this.filterPlants();
+      }
+      
+    })
+   }
+
+
   
   filterPlants() {
+
+    
+
     this. closeNav() ;
     this.filter = true;
-    this.loading = true;
+    // this.loading = true;
 
-    const filteredPlants = this.plants3.filter((plant) => {
-      const FragranceFilter = !this.FragranceFilter || plant.Fragrance === this.FragranceFilter;
-      const categoryMatch = !this.categoryFilter || plant.Category === this.categoryFilter;
-      const ToxicityFilter = !this.ToxicityFilter || plant.Toxicity === this.ToxicityFilter;
-      const MaintenanceFilter = !this.MaintenanceFilter || plant.Maintenance === this.MaintenanceFilter;
-      const ExposureFilter = !this.ExposureFilter || plant.Exposure === this.ExposureFilter;
-      const WaterReqFilter = !this.WaterReqFilter || plant.WaterReq === this.WaterReqFilter;
-      const priceMatch = this.priceFilter === 0 || plant.Price <= this.priceFilter;
-      return ( categoryMatch &&  priceMatch && ToxicityFilter && MaintenanceFilter && 
-              WaterReqFilter && ExposureFilter && FragranceFilter
-        );
+      const filters = {
+        Category: this.categoryFilter,
+        Fragrance: this.FragranceFilter,
+        Maintenance : this.MaintenanceFilter
+      };
+console.log(filters);
+
+      this.plantservice.filterPlants(filters,this.p3,this.pageSize3).subscribe((data) => {
+        this.plants = data.plant; 
+        this.totalFilteredPages = Math.ceil(data.total/this.pageSize3);
       });
-
-      const startIndex = (this.p3 - 1) * this.pageSize3;
-      const endIndex = startIndex + this.pageSize3;
-      this.plants = filteredPlants.slice(startIndex, endIndex);
-      this.loading = false;
-    this.totalFilteredPages = Math.ceil(filteredPlants.length / this.pageSize3) //26
   }
   
   changePage2(newPage: number) {
-    this.p3 = newPage;      // Update the current page
+    this.p3 = newPage;     
     this.filterPlants();
   }
 
-  totalPages2(): number {
+  totalPages2(): number { 
     return this.totalFilteredPages ;
   }
   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   // fetchPlants(): void {
   //   this.loading = true;
   //   this.plantservice.getPlants1(this.page).subscribe((data) => {
@@ -169,16 +256,12 @@ export class PlantComponent  implements OnInit {
   }
  
   search() {
+    this.clearAllFilters();
     this.plantservice.searchPlants2(this.searchQuery).subscribe(
     (res: any) => {
-        if (Array.isArray(res)) {
-          this.totalPlants2 = res.length;
+          this.totalPlants2 = res;
           console.log(this.totalPlants2);
-          
-        } 
       });
-    console.log(this.searchQuery);
-    
     this.searchdata = true;
     if (this.searchQuery.trim() !== '') {
    
@@ -205,6 +288,7 @@ export class PlantComponent  implements OnInit {
 
 
 totalPages(): number {
+
   return Math.ceil(this.totalPlants2 / this.pagesize2);
 }
 
@@ -252,52 +336,4 @@ changePage(newPage: number) {
     }
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-  nextPage() {
-  
-    if (this.p < this.getTotalPages()) {
-      this.p++;
-      this.loadPlants();
-    }
-    else{
-      console.log('error');
-    }
-  }
-
-  prevPage() {
-    if (this.p > 1) {
-      this.p--;
-      this.loadPlants();
-    }
-  }
-
-  goToPage(page: number) {
-    if (page >= 1 && page <= this.getTotalPages() && page !== this.p) {
-      this.p = page;
-      this.loadPlants();
-    }
-  }
-
-  getTotalPages(): number {
-    return Math.ceil(this.totalPlants / this.pageSize);
-  }
-
-  getPageNumbers(): number {
-    const totalPages = this.getTotalPages();
-    return totalPages;
-  }
-
 }
-

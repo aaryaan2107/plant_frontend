@@ -136,32 +136,27 @@
       <input type="checkbox" id="check">
       <div class="login form">
         <header>Login</header>
-        <form action="#">
-          <input type="text" placeholder="Enter your email">
-          <input type="password" placeholder="Enter your password">
+        <form (ngSubmit)="login()">
+          <input type="text" placeholder="Enter your username" id="username" [(ngModel)]="username" name="username">
+          <input type="password" placeholder="Enter your password" id="password" [(ngModel)]="password" name="password">
           <a href="#">Forgot password?</a>
-          <input type="button" class="button" value="Login">
+          <input type="submit" class="button btn btn-success" value="Login">
         </form>
-        <div class="signup">
+        <!-- <div class="signup">
           <span class="signup">Don't have an account?
            <label for="check">Signup</label>
           </span>
+        </div> -->
+		<div class="signup">
+			<div>
+				<p style="cursor:pointer; padding-left: 10px;" routerLink="/signup">You don't have account | Sign Up</p>
+			</div>
+          <div *ngIf="errorMessage" class="errorMessage2">
+            {{errorMessage}}
+          </div>
         </div>
       </div>
-      <div class="registration form">
-        <header>Signup</header>
-        <form action="#">
-          <input type="text" placeholder="Enter your email">
-          <input type="password" placeholder="Create a password">
-          <input type="password" placeholder="Confirm your password">
-          <input type="button" class="button" value="Signup">
-        </form>
-        <div class="signup">
-          <span class="signup">Already have an account?
-           <label for="check">Login</label>
-          </span>
-        </div>
-      </div>
+ 
     </div>
   </body>
   </html>

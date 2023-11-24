@@ -7,6 +7,7 @@
 <div *ngFor="let u of plant">
   <br>
   <h1 class="text-center">{{u.Common_Name}}</h1>   
+  <h1 class="text-center">Caring Instruction</h1>
   <br> <br> 
   <div class="row mb-5">
     <div class="col-sm-5 text-center ">
@@ -70,12 +71,11 @@
       <div  class="scale shadow mb-2 " style="border-radius: 40px; padding: 10px; "><img src="../../assets/icon/sunlight.png" height="48px" width="48px" class="mr-4"><span>Sunlight_Freq : </span>{{u.Sunlight_Freq}}</div>
       <div  class="scale shadow mb-2 " style="border-radius: 40px; padding: 10px; "><img src="../../assets/icon/water_req.png" height="48px" width="48px" class="mr-4"><span>Water Req : </span>{{u.WaterReq}}</div>
       <div  class="scale shadow mb-2 " style="border-radius: 40px; padding: 10px; "><img src="../../assets/icon/water_fre.png" height="48px" width="48px" class="mr-4"><span>Water Freq : </span>{{u.WaterFreq}}</div>
-      <div  class="scale shadow mb-2 " style="border-radius: 40px; padding: 10px; "><img src="../../assets/icon/humidity.png" height="48px" width="48px" class="mr-4"><span>Humidity : </span>{{u.Humidity}}</div>
-      <div  class="scale shadow mb-2 " style="border-radius: 40px; padding: 10px; "><img height="48px" width=" 48px" src="../../assets/icon/native_area.png" class="mr-4" alt=""><span>Native Area : </span>{{u.Native_Area}}</div>
-      <div  class="scale shadow mb-2 " style="border-radius: 40px; padding: 10px; "><img height="48px" width=" 48px" src="../../assets/icon/overview.png" class="mr-4" alt=""><span>Overview : </span>{{u.Overview}}</div>
-      <div  class="scale shadow mb-2 " style="border-radius: 40px; padding: 10px; "><img height="48px" width=" 48px" src="../../assets/icon/mature_size.png" class="mr-4" alt=""><span>Mature Size : </span>{{u.Mature_Size}}</div>   
-      <div class="btn btn-success col-5 p-2" routerLink="/plants/plantinfo2/{{u.ID}}"><i class="fa  fa-arrow-left"></i> prev</div>
-      <div class="btn btn-success col-5 p-2" style="float: right;" routerLink="/plants/plantinfo4/{{u.ID}}">Next<i class="fa  fa-arrow-right"></i></div>
+      <div  class="scale shadow mb-2 " style="border-radius: 40px; padding: 10px; "><img src="../../assets/icon/temperature.png" height="48px" width="48px" class="mr-4"><span>Temperature : </span>{{u.Temprature}}</div>
+      <div  class="scale shadow mb-2 " style="border-radius: 40px; padding: 10px; "><img height="48px" width=" 48px" src="../../assets/icon/humidity.png" class="mr-4" alt=""><span>Humidity : </span>{{u.Humidity}}</div>
+      <div  class="scale shadow mb-2 " style="border-radius: 40px; padding: 10px; "><img height="48px" width=" 48px" src="../../assets/icon/fertilizer.png" class="mr-4" alt=""><span>Fertilizer : </span>{{u.Fertilizer}}</div>
+      <div class="btn btn-success col-5 p-2" routerLink="/plants/plantinfo1/{{u.ID}}"><i class="fa  fa-arrow-left"></i> Back</div>
+      <!-- <div class="btn btn-success col-5 p-2" style="float: right;" routerLink="/plants/plantinfo4/{{u.ID}}">Next<i class="fa  fa-arrow-right"></i></div> -->
     
       <!-- <qrcode qrdata="http://192.168.68.51:4200/plants/plantinfo1/{{u.ID}}" [width]="250" [errorCorrectionLevel]="'M'"></qrcode> -->
     </div>

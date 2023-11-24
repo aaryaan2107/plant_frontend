@@ -12,7 +12,6 @@ export class WishlistComponent {
   userID:String='';
   username!:String | null;
   data: any[] = [];
-  plant1!: any[];
 
   id!: string | null;
   addcart: String = '';
@@ -25,11 +24,7 @@ export class WishlistComponent {
     this.route.paramMap.subscribe(params => {
       this.id = params.get('id');
     
-    this.plantservice.Allplant().subscribe(
-      plant => {
-        this.plant1 = plant;;
-      }
-    )
+  
 
     this.plantservice.getwishlist().subscribe(
       data => {

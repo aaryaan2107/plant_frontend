@@ -74,111 +74,12 @@
     </div>
   </div>
 mobile 
-  <div class="md_main" scroll="no">
-    <div class="md_ma">
-      <div class="we">
-        <br>
-        <b>WelCome</b>
-      </div>
-      <div class="a">
-        <div class="w-90">
-          <div class="main_text">
-            <b>Sign Up</b>
-          </div>
-          <form action="" (ngSubmit)="signup(formdata)"> 
-          <div>
-            <div>
-              <b>
-                <label for="username" class="label1 ml-2">Username :-</label>
-              </b>
-            </div>
-            <div>
-              <input type="text" class="w-90 email1" id="username" name="username" [(ngModel)]="formdata.username">
-            </div>
-          </div>
-          <div>
-            <div>
-              <b>
-                <label for="email" class="label1 ml-3">Email :-</label>
-              </b>
-            </div>
-            <div>
-              <input type="email" class="w-90 email1" id="email" name="email" [(ngModel)]="formdata.email">
-            </div>
-          </div>
-           <div>
-            <div>
-              <b>
-                <label for="phone" class="label1 ml-3">phone Number :-</label>
-              </b>
-            </div>
-            <div>
-              <input type="Number" class="w-90 email1" id="phone" name="phone" [(ngModel)]="formdata.phone" value="">
-            </div>
-          </div>
-         
-          <div>
-            <div>
-              <b>
-                <label for="address" class="label1 ml-3">Address:-</label>
-              </b>
-            </div>
-            <div>
-              <input type="text" class="w-90 email1" id="address" name="address" [(ngModel)]="formdata.address">
-            </div>
-          </div>
-          <div>
-            <div>
-              <b>
-                <label for="password" class="label1 ml-2">Password :-</label>
-              </b>
-            </div>
-            <div>
-              <input type="password" class="w-90 Password1" id="password" name="password" [(ngModel)]="formdata.password">
-            </div>
-          </div>
-          <div>
-            <div>
-              <b>
-                <label for="password" class="label1 ml-2">Confirm Password :-</label>
-              </b>
-            </div>
-            <div>
-              <input type="password" class="w-90 Password1"  id="cpassword" name="cpassword" [(ngModel)]="formdata.cpassword">
-            </div>
-          </div>
-          <div class="">
-            <div *ngIf="errormessage" class="errorMessage">{{errormessage}}</div>
-            <div *ngIf="success" class="success">{{success}}</div>
-          </div>
-          <div>
-            <div class="f_md m-2">
-              <b>Forget Password</b>
-            </div>
-          </div>       
-          
-          <div>
-            <div>
-              <b>
-                <input type="submit" class="btn btn-success btn_md m-2" >
-              </b>
-            </div>
-          </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div> -->
   
-  <!DOCTYPE html>
-  <!-- Coding By CodingNepal - codingnepalweb.com -->
+-->
   <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Login & Registration Form</title>
-    <!---Custom CSS File--->
+    
+
 
   </head>
   <body>
@@ -186,34 +87,25 @@ mobile
       <input type="checkbox" id="check">
       <div class="login form">
         <header>Sign Up</header>
-        <form action="#">
-          <input type="text" placeholder="Enter your username">
-          <input type="email" placeholder="Enter your email">
-          <input type="number" placeholder="Enter your phone number">
-          <input type="text" placeholder="Enter your address">
-          <input type="password" placeholder="Enter your password">
-          <input type="password" placeholder="Enter your confirm password">
+        <form action="" (ngSubmit)="signup(formdata)">
+          <input type="text" placeholder="Enter your username" id="username" name="username" [(ngModel)]="formdata.username">
+          <input type="email" placeholder="Enter your email" id="email" name="email" [(ngModel)]="formdata.email">
+          <input type="number" placeholder="Enter your phone number" id="phone" name="phone" [(ngModel)]="formdata.phone">
+          <input type="text" placeholder="Enter your address" id="address" name="address" [(ngModel)]="formdata.address">
+          <input type="password" placeholder="Enter your password"  id="password" name="password" [(ngModel)]="formdata.password">
+          <input type="password" placeholder="Enter your confirm password"  id="cpassword" name="cpassword" [(ngModel)]="formdata.cpassword">
           <a href="#">Forgot password?</a>
-          <input type="button" class="button" value="Login">
+          <input type="submit" class="button" value="Login">
+          <div class="ml-5 m-2">
+            <div *ngIf="errormessage" class="errorMessage">{{errormessage}}</div>
+            <div *ngIf="success" class="success">{{success}}</div>
+            </div>
         </form>
         <div class="signup">
        
         </div>
       </div>
-      <div class="registration form">
-        <header>Signup</header>
-        <form action="#">
-          <input type="text" placeholder="Enter your email">
-          <input type="password" placeholder="Create a password">
-          <input type="password" placeholder="Confirm your password">
-          <input type="button" class="button" value="Signup">
-        </form>
-        <div class="signup">
-          <span class="signup">Already have an account?
-           <label for="check">Login</label>
-          </span>
-        </div>
-      </div>
+      
     </div>
   </body>
   </html>

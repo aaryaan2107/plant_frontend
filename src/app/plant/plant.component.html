@@ -115,11 +115,11 @@
                         </div>
                     </div>
                 </div>
-                <a class="carousel-control-prev" href="#plantSlider" role="button" data-slide="prev">
-                    <span class="fa fa-chevron-left" style="color: black; font-size: 40px; margin-left: -200px;"></span>
+                <a class="carousel-control-prev" href="#plantSlider" role="button" data-slide="prev" style="z-index: 0">
+                    <span class="fa fa-chevron-left" style="color: black; font-size: 40px; margin-left: -200px; "></span>
                 </a>
-                <a class="carousel-control-next" href="#plantSlider" role="button" data-slide="next">
-                    <span class="fa fa-chevron-right" style="color: black; font-size: 40px; margin-left:120px ;"></span>
+                <a class="carousel-control-next" href="#plantSlider" role="button" data-slide="next" style="z-index: 0">
+                    <span class="fa fa-chevron-right" style="color: black; font-size: 40px; margin-left:120px; " ></span>
                 </a>
             </div>
 
@@ -136,7 +136,7 @@
                                 <i class="fa fa-heart mb-2" [ngClass]="w.class"></i>
                             </a>
                         </div>
-                        <a (click)="wishlist({productId:plant.ID,userId:userID})">
+                        <a (click)="wishlist({productId:plant.ID,userId:userID,Photo_1:plant.Photo_1,Common_Name:plant.Common_Name,Price:plant.Price,ID:plant.ID})">
                             <i class="fa fa-heart mb-2 fix"></i>
                         </a>
                         <a routerLink="plantinfo1/{{plant.ID}}" style="text-decoration: none;">
@@ -158,19 +158,17 @@
             </div>
         </div>
 
+      
         <div class="mt-5">
             <!-- <pagination-controls (pageChange)="p = $event" style="display: flex; justify-content: center;"></pagination-controls> -->
 
-            <div *ngIf="!searchdata && !filter" class="pagination container p-5 d-flex"
-                style="justify-content: center; align-items: center;">
-                <span>Page {{ p }} of {{ getPageNumbers() }}</span>
-                <button (click)="prevPage()" [disabled]="p === 1">Previous</button>
-                <!-- <button *ngFor="let page of getPageNumbers()" (click)="goToPage(page)" [class.active]="p === page">
-          {{ page }} </button> -->
-                <button (click)="nextPage()" [disabled]="p === getTotalPages()">Next</button>
+            <div *ngIf="!searchdata && !filter" class="pagination container p-5 d-flex" style="justify-content: center; align-items: center;">
+                <span>Page {{ p1 }} of {{ getTotalPages() }}</span>
+                <button (click)="pages(p1 -1)" [disabled]="p1 === 1">Previous</button>
+                <button (click)="pages(p1 + 1)" [disabled]="p1 === getTotalPages()">Next</button>
             </div>
 
-            <div *ngIf="searchdata && totalPlants > 1 && !filter">
+            <div *ngIf="searchdata && !filter">
                 <div class="pagination container p-5 d-flex" style="justify-content: center; align-items: center;">
                     <span>Page {{ p2 }} of {{ totalPages() }}</span>
                     <button [disabled]="p2===1" (click)="changePage(p2 - 1) ">Previous</button>
@@ -178,7 +176,7 @@
                 </div>
             </div>
 
-            <div *ngIf="plants3.length> pageSize && filter">
+            <div *ngIf="filter">
                 <div class="pagination container p-5 d-flex" style="justify-content: center; align-items: center;">
                     <span>Page {{ p3 }} of {{ totalPages2() }}</span>
                     <button [disabled]="p3===1" (click)="changePage2(p3 - 1)">Previous</button>

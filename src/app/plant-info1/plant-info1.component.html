@@ -74,24 +74,25 @@
       <div class="scale shadow  mb-2  " style="border-radius: 40px; padding: 10px; "><img height="48px" width=" 48px" src="../../assets/icon/special.png" class="mr-4" alt=""><span>Special_Properties : </span>{{u.Special_Properties}}</div>
       <div class="scale shadow  mb-2  " style="border-radius: 40px; padding: 10px; "><img height="48px" width=" 48px" src="../../assets/icon/price.png" class="mr-4" alt=""><span>Price : </span>{{u.Price}}</div>
       <div class="row m-3 p-2" style="gap:20px" >
-      <div class="col-sm-3 btn p-2 btn-success b" routerLink="/plants/plantinfo2/{{u.ID}}">More Info<i class="m-2	fa fa-info-circle"></i></div>
-      <div class="col-sm-3 btn p-2 btn-success b"(click)="addtocart()">add to cart <i class="m-2 fa fa-cart-plus"></i></div>
-  
-        <div class="col-sm-3 quantity" style="align-items: center; justify-content: center;">
-            <div class="input-group">
-                <span class="input-group-btn">
-              <button type="button" class="btn btn-success btn-number"  (click)="quantity('min')">
-                  <span class="fa fa-minus"></span>
-                </button>
-                </span>
-                <input type="text" name="quant[1]" class="form-control input-number" value="{{productquantity}}"  min="1" max="20" disabled>
-                <span class="input-group-btn">
-              <button type="button" class="btn btn-success btn-number" (click)="quantity('plus')" >
-                  <span class="fa fa-plus"></span>
-                </button>
-                </span>
-            </div>
-    </div>
+      <div class="col-sm-3 btn p-2 btn-success b" routerLink="/plants/plantinfo3/{{u.ID}}">CARING INSTRUCTION<i class="m-2	fa fa-info-circle"></i></div>
+      <div class="col-sm-3 btn p-2 btn-success b" routerLink="/plants/plantinfo2/{{u.ID}}">PLANTING INSTRUCTION<i class="m-2	fa fa-info-circle"></i></div>
+      
+      <div class="col-sm-3 quantity" style="align-items: center; justify-content: center;">
+      </div>
+      <div class="input-group col-sm-3 quantity" style="align-items: center; justify-content: center;">
+        <span class="input-group-btn">
+          <button type="button" class="btn btn-success btn-number"  (click)="quantity('min')">
+            <span class="fa fa-minus"></span>
+          </button>
+        </span>
+        <input type="text" name="quant[1]" class="form-control input-number" value="{{productquantity}}"  min="1" max="20" disabled>
+        <span class="input-group-btn">
+          <button type="button" class="btn btn-success btn-number" (click)="quantity('plus')" >
+            <span class="fa fa-plus"></span>
+          </button>
+        </span>
+      </div>
+      <div class="col-sm-3 btn p-1 btn-success "(click)="addtocart()">Add to Cart <i class="m-2 fa fa-cart-plus"></i></div>
       </div>
       <div class="alert alert-primary" role="alert" *ngIf="addcart">
        <div>{{addcart}}<span class="text-danger" style="cursor: pointer;" routerLink="/cart">View Cart</span></div>

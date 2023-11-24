@@ -8,11 +8,12 @@ import { Router } from '@angular/router';
 })
 export class PlantserviceService {
 
-  private url = 'https://plant-backend6.onrender.com';
+  private url = 'http://localhost:3000';
   private isAuth = false;
   private isLoggedIn = false;
   cartdata: EventEmitter<number> = new EventEmitter<number>();
 
+  
 
   constructor(private http: HttpClient, private router: Router) {
     const token = localStorage.getItem('token');
@@ -127,12 +128,12 @@ getPlants(page: number,pageSize: number ): Observable<any> {
   //cart to mongodb
 
   sendCartDataToServer(cartData: any[]): Observable<any> {
+    const url = 'https://localhost:4200';
     const headers = {
       'Authorization': "Bearer " + localStorage.getItem('token')
     }
-    return this.http.post(`${this.url}/Apis/cartnew`, { cartData }, { headers: headers });
+    return this.http.post(url, { cartData }, { headers: headers });
   }
-
 
 
   //store
@@ -203,6 +204,10 @@ getPlants(page: number,pageSize: number ): Observable<any> {
     return this.http.get(`${this.url}/Apis/search2?search=${query}`);
   }
 
+  
+filterPlants(filters: any,page: number,pageSize: number ): Observable<any> {
+  return this.http.post(`${this.url}/Apis/filterPlants?page=${page}&pageSize=${pageSize}`, filters);
+}
 
 
 
@@ -287,8 +292,6 @@ removertrend(tid:any):Observable<any>{
   return this.http.delete(`${this.url}/admin/removertrend/${tid}`);
 }
 trending(): Observable<any[]> {
-  console.log('kshdhsd');
-  
   return this.http.get<any[]>(`${this.url}/admin/trend`);
 }
 
