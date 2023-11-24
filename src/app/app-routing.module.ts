@@ -32,6 +32,7 @@ import { OrderlistComponent } from './orderlist/orderlist.component';
 const routes: Routes = [
   {path:'',component:IndexComponent},
   {path:'plants',component:PlantComponent},
+  {path:'plants/:code',component:PlantComponent},
   {path:'contact-us',component:ContactUsComponent},
   {path:'index',component:IndexComponent},
   {path:'plants/plantinfo1/:id',component:PlantInfo1Component},
