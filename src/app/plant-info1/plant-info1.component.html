@@ -1,4 +1,5 @@
-<div *ngIf="loading" class="loader">
+<div *ngIf="loading">
+  <app-loader></app-loader>
 </div>
 <body  *ngIf="!loading">
   
@@ -61,7 +62,7 @@
             </div>
         </div>
 
-        <qrcode class="qrcode2" qrdata="http://192.168.68.51:4200/plants/plantinfo1/{{u.ID}}" [width]="250" [errorCorrectionLevel]="'M'" ></qrcode>
+        <qrcode class="qrcode2" qrdata="https://growmoreplant.netlify.app/plants/plantinfo1/{{u.ID}}" [width]="250" [errorCorrectionLevel]="'M'" ></qrcode>
 
         <!-- <div class="col-sm-3 btn btn-success" routerLink="/plants/plantinfo2/{{u.ID}}">More Info</div> -->
     </div>
@@ -97,7 +98,7 @@
       <div class="alert alert-primary" role="alert" *ngIf="addcart">
        <div>{{addcart}}<span class="text-danger" style="cursor: pointer;" routerLink="/cart">View Cart</span></div>
       </div>
-       <!-- <qrcode class="qrcode "  qrdata="http://192.168.68.51:4200/plants/plantinfo1/{{u.ID}}" [width]="250" [errorCorrectionLevel]="'M'" ></qrcode>  -->
+       <qrcode class="qrcode "  qrdata="https://growmoreplant.netlify.app/plants/plantinfo1/{{u.ID}}" [width]="250" [errorCorrectionLevel]="'M'" ></qrcode> 
     </div>
 
   </div>

@@ -22,8 +22,7 @@ constructor(private plantservice: PlantserviceService, private route: ActivatedR
 
     this.plantservice.getPayment(this.id).subscribe(
       (res) => {
-        console.log(res);
-        
+
         this.payment = res.data;
         this.order_id = res.order_id;
         this.cf_payment_id = res.cf_payment_id;
@@ -31,4 +30,12 @@ constructor(private plantservice: PlantserviceService, private route: ActivatedR
     )
   }
 
+  repayment(){    
+    this.plantservice.getRePayment(this.id).subscribe(
+      (res) => {        
+      window.location.href = res.link_url;
+      }
+    )
+  }
+  
 }

@@ -32,6 +32,8 @@ import { AdminComponent } from './admin/admin.component';
 import { AddplantComponent } from './addplant/addplant.component';
 import { PaymentComponent } from './payment/payment.component';
 import { OrderlistComponent } from './orderlist/orderlist.component';
+import { LoaderComponent } from './loader/loader.component';
+
 
 
 @NgModule({
@@ -61,6 +63,7 @@ import { OrderlistComponent } from './orderlist/orderlist.component';
     AddplantComponent,
     PaymentComponent,
     OrderlistComponent,
+    LoaderComponent
 
 
   ],

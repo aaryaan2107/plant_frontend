@@ -5,10 +5,17 @@
         <div class="card-header bg-primary text-white">
             <h3>Order Details</h3>
         </div>
-        <div class="card-body">
+        <div class="card-body" *ngIf="order_id">
             <p class="mb-2"><b>Order ID:</b> {{ order_id }}</p>
             <p class="mb-2"><b>Transaction ID:</b> {{ cf_payment_id }}</p>
         </div>
+        <div *ngIf="!order_id">
+            <h2 style="color: red;display: flex;justify-content: center;padding: 1%;">payment faild!</h2>
+            <div style="display: flex;justify-content: center;padding: 1%;">
+                <button class="btn btn-danger" style="padding: 1%;" (click)="repayment()">Re-Payment</button>
+            </div>
+        </div>
+        
     </div>
 
     <div *ngIf="payment.card" class="card mt-3">

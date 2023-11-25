@@ -1,96 +1,92 @@
-<div *ngIf="loading" class="loader">
+<div *ngIf="loading" >
+<app-loader></app-loader>
 </div>
 
 <body *ngIf="!loading">
     <app-header></app-header>
-    <section class="plant_section layout_padding" style="background-color: rgba(236, 236, 236,0.7);">
+    <section class="plant_section layout_padding" style="background-color: rgba(236, 236, 236,0.2);">
         <div class="container">
-            <span style="font-size:30px;cursor:pointer; float: left; " (click)="openNav()"><img
-                    src=".././../assets/filter3.png" width="32" height="32"></span>
+            <span style="font-size:30px;cursor:pointer; float: left; " (click)="openNav()"><img src=".././../assets/filter3.png" width="32" height="32"></span>
             <!-- <span  (click)="openNav()"><i class="fa fa-filter"></i></span>   -->
             <div class="search-hero">
                 <div class="row " style="display: flex; justify-content: center; align-items:center;">
                     <input [(ngModel)]="searchQuery" class=" col-sm-10 form-control" placeholder="Enter plant name" />
-                    <button (click)="search()" class="col-sm-1.5 btn  " style="margin-left: -50px; z-index: 1; "><i
-                            class="fa fa-search fa-lg text-secondary"></i></button>
+                    <button (click)="search()" class="col-sm-1.5 btn  " style="margin-left: -50px; z-index: 1; "><i class="fa fa-search fa-lg text-secondary" ></i></button>
                     <div style="float:right">
                         <div id="mySidenav2" class="sidenav">
-                            <div
-                                style="display: flex; flex-direction: row; gap:10px; flex-wrap: wrap; justify-content: center;">
+                            <div style="display: flex; flex-direction: row; gap:10px; flex-wrap: wrap; justify-content: center;">
                                 <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
                                 <div>
                                     <!-- <label for="category">Category:</label> -->
                                     <select id="category" [(ngModel)]="categoryFilter" class="custom-select">
-                                        <option value="">Select Category</option>
-                                        <option value="Both">Both</option>
-                                        <option value="Indoor">Indoor</option>
-                                        <option value="Outdoor">Outdoor</option>
-                                    </select>
+                                  <option value="">Select Category</option>
+                                  <option value="Both">Both</option>
+                                  <option value="Indoor">Indoor</option>
+                                  <option value="Outdoor">Outdoor</option>
+                                </select>
                                 </div>
                                 <div>
                                     <!-- <label for="Fragrance">Fragrance:</label> -->
                                     <select id="Fragrance" [(ngModel)]="FragranceFilter" class="custom-select">
-                                        <option value="">Select Fragrance</option>
-                                        <option value="Yes">Yes</option>
-                                        <option value="No">No</option>
-                                    </select>
+                                  <option value="">Select Fragrance</option>
+                                  <option value="Yes">Yes</option>
+                                  <option value="No">No</option>
+                                </select>
                                 </div>
                                 <div>
                                     <!-- <label for="Toxicity">Toxicity:</label> -->
                                     <select id="Toxicity" [(ngModel)]="ToxicityFilter" class="custom-select">
 
-                                        <option value="">Select Toxicity</option>
-                                        <option value="Toxic">Toxic</option>
-                                        <option value="Non-Toxic">Non-Toxic</option>
-                                    </select>
+                                      <option value="">Select Toxicity</option>
+                                  <option value="Toxic">Toxic</option>
+                                  <option value="Non-Toxic">Non-Toxic</option>
+                                </select>
                                 </div>
                                 <div>
                                     <!-- <label for="Maintenance">Maintenance:</label> -->
                                     <select id="Maintenance" [(ngModel)]="MaintenanceFilter" class="custom-select">
-                                        <option value="">Select Maintenance</option>
-                                        <option value="Easy">Easy</option>
-                                        <option value="Mid">Mid</option>
-                                        <option value="Pro">Pro</option>
-                                    </select>
+                                  <option value="">Select Maintenance</option>
+                                  <option value="Easy">Easy</option>
+                                  <option value="Mid">Mid</option>
+                                  <option value="Pro">Pro</option>
+                                </select>
                                 </div>
                                 <div>
                                     <!-- <label for="price">price:</label> -->
                                     <select id="price" [(ngModel)]="priceFilter" class="custom-select">
-                                        <option value="">Select price </option>
-                                        <option value="50">0-50</option>
-                                        <option value="500">50-500</option>
-                                        <option value="1000">500-1000</option>
-
-
-                                    </select>
+                                  <option value="">Select price </option>
+                                  <option value="50">0-50</option>
+                                  <option value="500">50-500</option>
+                                  <option value="1000">500-1000</option>
+                              
+                              
+                                </select>
                                 </div>
                                 <div>
                                     <!-- <label for="Exposure">Exposure:</label> -->
                                     <select id="Exposure" [(ngModel)]="ExposureFilter" class="custom-select">
-                                        <option value="">Select Exposure</option>
-                                        <option value="Bright">Bright</option>
-                                        <option value="Partial">Partial</option>
-                                        <option value="Shade">Shade</option>
-                                    </select>
+                                  <option value="">Select Exposure</option>
+                                  <option value="Bright">Bright</option>
+                                  <option value="Partial">Partial</option>
+                                  <option value="Shade">Shade</option>
+                                </select>
                                 </div>
                                 <div>
                                     <!-- <label for="WaterReq">WaterReq:</label> -->
                                     <select id="WaterReq" [(ngModel)]="WaterReqFilter" class="custom-select">
-                                        <option value="">Select WaterReq</option>
-                                        <option value="High">High</option>
-                                        <option value="Medium">Medium</option>
-                                        <option value="Low">Low</option>
-                                    </select>
+                                  <option value="">Select WaterReq</option>
+                                  <option value="High">High</option>
+                                  <option value="Medium">Medium</option>
+                                  <option value="Low">Low</option>
+                                </select>
                                 </div>
                                 <div>
                                 </div>
                                 <div style="display: flex; justify-content: space-around;">
-                                    <button (click)="filterPlants()" class="btn btn-success"
-                                        style="border-radius:10px; margin-right: 8px;"><i
-                                            class="fa fa-filter "></i>filter</button>
-                                    <button (click)="clearAllFilters()" class="btn btn-secondary"
-                                        style="border-radius:10px;"><i class="fa fa-close"></i>clear
-                                        all</button>
+                                    <button (click)="filterPlants()" class="btn btn-success" style="border-radius:10px; margin-right: 8px;"><i
+                    class="fa fa-filter "></i>filter</button>
+                                    <button (click)="clearAllFilters()" class="btn btn-secondary" style="border-radius:10px;"><i class="fa fa-close"></i>clear
+                  all</button>
                                 </div>
                             </div>
                         </div>
@@ -98,67 +94,75 @@
                 </div>
             </div>
 
-            <h2 style="text-align: center;">Trending Plants</h2>
-            <div id="plantSlider" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item" *ngFor="let plantsChunk of chunkArray(trending, 4); let i=index" [class.active]="i===0">
-                        <div class="row">
-                            <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let plant of plantsChunk">
-                                <a routerLink="../plants/plantinfo1/{{plant.ID}}" style="text-decoration: none;">
-                                    <div style="width: 250px; height: 250px;">
-                                        <img [src]="plant.Photo_1" [alt]="plant.Common_Name" width="80%" height="80%"
-                                            style="border-radius: 150px;">
-                                        <p>{{plant.Botanical_Name}}</p>
-                                    </div>
-                                </a>
+
+            <div *ngIf="trendingplant">
+                <h2 style="text-align: center;">Trending Plants</h2>
+                <div id="plantSlider" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item" *ngFor="let plantsChunk of chunkArray(trending, 4); let i=index" [class.active]="i===0">
+                            <div class="row">
+                                <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let plant of plantsChunk">
+                                    <a routerLink="../plants/plantinfo1/{{plant.ID}}" style="text-decoration: none;">
+                                        <div style="width: 250px; height: 250px;">
+                                            <img [src]="plant.Photo_1" [alt]="plant.Common_Name" width="80%" height="80%" style="border-radius: 150px;">
+                                            <p>{{plant.Botanical_Name}}</p>
+                                        </div>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <a class="carousel-control-prev" href="#plantSlider" role="button" data-slide="prev">
+                        <span class="	fa fa-chevron-left" style="color: black; font-size: 40px; margin-left: -200px;" aria-hidden="true"></span>
+
+                    </a>
+                    <a class="carousel-control-next" href="#plantSlider" role="button" data-slide="next">
+                        <span class="	fa fa-chevron-right" style="color: black; font-size: 40px; margin-left:120px ; z-index:-1;"></span>
+
+                    </a>
                 </div>
-                <a class="carousel-control-prev" href="#plantSlider" role="button" data-slide="prev" style="z-index: 0">
-                    <span class="fa fa-chevron-left" style="color: black; font-size: 40px; margin-left: -200px; "></span>
-                </a>
-                <a class="carousel-control-next" href="#plantSlider" role="button" data-slide="next" style="z-index: 0">
-                    <span class="fa fa-chevron-right" style="color: black; font-size: 40px; margin-left:120px; " ></span>
-                </a>
             </div>
 
 
             <div class="heading_container heading_center">
-                <h2>Our <span>Plants</span> </h2>
+                <h2>{{a || 'Our'}} <span>Plants</span> </h2>
             </div>
-
-            <div class="row">
-                <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let plant of plants">
-                    <div class="box hover txt" style="box-shadow: 3px 3px 20px rgb(0, 0, 0,0.3);">
-                        <div *ngFor="let w of data">
-                            <a (click)="deletewishlist(w._id)" *ngIf="w.productId == plant.ID">
-                                <i class="fa fa-heart mb-2" [ngClass]="w.class"></i>
+            <div class="go  " *ngIf="!loading2">
+                <div class="row">
+                    <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let plant of plants">
+                        <div class="box hover txt" style="box-shadow: 3px 3px 20px rgb(0, 0, 0,0.3);">
+                            <div *ngFor="let w of data">
+                                <a (click)="deletewishlist(w._id)" *ngIf="w.productId == plant.ID">
+                                    <i class="fa fa-heart mb-2" [ngClass]="w.class"></i>
+                                </a>
+                            </div>
+                            <a (click)="wishlist({productId:plant.ID,userId:userID})">
+                                <i class="fa fa-heart mb-2 fix"></i>
+                            </a>
+                            <a routerLink="plantinfo1/{{plant.ID}}" style="text-decoration: none;">
+                                <div class="img-box">
+                                    <img [src]="plant.Photo_1" [alt]="plant.Common_Name">
+                                </div>
+                                <div class="detail-box">
+                                    <a href="#" style="text-decoration: none;">
+                          {{plant.Botanical_Name}}
+                        </a>
+                                    <h5>
+                                        &#8377;{{plant.Price}}
+                                    </h5>
+                                </div>
                             </a>
                         </div>
-                        <a (click)="wishlist({productId:plant.ID,userId:userID,Photo_1:plant.Photo_1,Common_Name:plant.Common_Name,Price:plant.Price,ID:plant.ID})">
-                            <i class="fa fa-heart mb-2 fix"></i>
-                        </a>
-                        <a routerLink="plantinfo1/{{plant.ID}}" style="text-decoration: none;">
-                            <div class="img-box">
-                                <img [src]="plant.Photo_1" [alt]="plant.Common_Name">
-                            </div>
-                            <div class="detail-box">
-                                <a href="#" style="text-decoration: none;">
-                                    {{plant.Botanical_Name}}
-                                </a>
-                                <h5>
-                                    &#8377;{{plant.Price}}
-                                </h5>
-                            </div>
-                        </a>
-                    </div>
 
-                </div><br><br>
+                    </div><br><br>
+                </div>
+            </div>
+            <div *ngIf="loading2" class="loading2main">
+                <!-- <div class="loader2"></div> -->
+                <app-loader></app-loader>
             </div>
         </div>
 
-      
         <div class="mt-5">
             <!-- <pagination-controls (pageChange)="p = $event" style="display: flex; justify-content: center;"></pagination-controls> -->
 
@@ -187,5 +191,7 @@
         </div>
     </section>
 
-    <app-footer></app-footer>
+
 </body>
+<app-footer></app-footer>
+  

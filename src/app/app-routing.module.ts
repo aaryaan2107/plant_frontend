@@ -24,6 +24,7 @@ import { AdminComponent } from './admin/admin.component';
 import { AddplantComponent } from './addplant/addplant.component';
 import { PaymentComponent } from './payment/payment.component';
 import { OrderlistComponent } from './orderlist/orderlist.component';
+import { LoaderComponent } from './loader/loader.component';
 
 
 
@@ -33,6 +34,7 @@ const routes: Routes = [
   {path:'',component:IndexComponent},
   {path:'plants',component:PlantComponent},
   {path:'plants/:code',component:PlantComponent},
+  {path:'loader',component:LoaderComponent},
   {path:'contact-us',component:ContactUsComponent},
   {path:'index',component:IndexComponent},
   {path:'plants/plantinfo1/:id',component:PlantInfo1Component},

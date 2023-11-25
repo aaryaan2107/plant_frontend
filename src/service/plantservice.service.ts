@@ -295,6 +295,9 @@ trending(): Observable<any[]> {
   return this.http.get<any[]>(`${this.url}/admin/trend`);
 }
 
+getRePayment(id:string | null): Observable<any> {  
+  return this.http.get(`${this.url}/Apis/getrepayment/${id}`);
+}
 
 
 }

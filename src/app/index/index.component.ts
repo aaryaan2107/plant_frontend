@@ -7,6 +7,36 @@ import { Component } from '@angular/core';
 })
 export class IndexComponent {
 
+  Allfilter=
+  [
+    {
+      "title": "Indoor Plant",
+      "src": "../../assets/filter/indoor_plant.png",
+      "link":"/plants/Indoor"
+    },
+    {
+      "title": "Outdoor Plant",
+      "src": "../../assets/filter/outdoor_plant.png",
+      "link":"/plants/Outdoor"
+    },
+    {
+      "title": "Non-toxic Plant",
+      "src": "../../assets/filter/non-toxic_plant.png",
+      "link":"/plants/Non-Toxic"
+    },
+    {
+      "title": "Low-Maintanance Plant",
+      "src": "../../assets/filter/season_plant.png",
+      "link":"/plants/Maintenance"
+    },
+    {
+      "title": "Fragrance Plant",
+      "src": "../../assets/filter/foliage_plant.png",
+      "link":"/plants/Fragrance"
+    },
+  ];
+  
+
   isRightNavbarVisible: boolean = false;
 
   toggleRightNavbar()

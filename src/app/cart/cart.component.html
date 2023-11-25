@@ -1,4 +1,7 @@
 <app-header></app-header>
+<div *ngIf="loading">
+  <app-loader></app-loader>
+</div>
 <div *ngIf="!loggin">
   <div *ngIf="cartData.length === 0">
     <div class=" mt-5 mb-5">

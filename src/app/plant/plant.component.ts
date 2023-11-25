@@ -19,8 +19,10 @@ export class PlantComponent  implements OnInit {
   filteredPlants: any[] = [];  
   trending:any[]=[];
   loading:boolean=false;
+  loading2:boolean=false;
   searchdata:boolean = false;
   filter:boolean = false;
+  trendingplant:boolean = true;
   user:any;
   data:any;
   userID!:string|null;
@@ -50,6 +52,7 @@ export class PlantComponent  implements OnInit {
   pageSize3: number = 8;
   totalFilteredPages!:number;
   a!:any;
+  // b:String='Our';
   
   
   
@@ -57,23 +60,19 @@ export class PlantComponent  implements OnInit {
   constructor(private plantservice: PlantserviceService,private el: ElementRef, private renderer: Renderer2,   private avroute:ActivatedRoute) { }
   
   ngOnInit() {
-    this.getwishlist();
     this.avroute.paramMap.subscribe(params=>{
       let code=params.get('code');
       this.a = code;
     });
    if(this.a){
+    this.trendd();
     this.setDefaultFilter();
     // this.filterPlants();
    }
    else{
     this.loadPlants();
     // this.get();
-
-    this.plantservice.trending().subscribe((res)=>{
-      this.trending = res;
-    })
-    
+  this.trendd();
     this.user = localStorage.getItem('token');
     var decoded:any = jwt_decode(this.user);
     this.userID=decoded.userId;
@@ -85,37 +84,17 @@ export class PlantComponent  implements OnInit {
   }
 
 
-   
-
-
-  loadPlants() {
-    // this.loading=true;
-   
-    this.plantservice.getPlants(this.p1, this.pageSize).subscribe(
-      (data) => {
-        this.loading = false;
-         this.plants = data.plants; 
-         this.totalPlantss = Math.ceil(data.totalplants/this.pageSize);
-        console.log( this.totalPlantss);
-      },
-      (error) => {
-        console.error('Error fetching plants', error);
-      }
-    );
-    
-  }
-
-
-pages(newPage:number){
-this.p1 = newPage;
-this.loadPlants();
-}
-
-
-getTotalPages(){
-  return this.totalPlantss;
-}
-
+   trendd(){ 
+    this.plantservice.trending().subscribe((res)=>{
+      this.trending = res;
+   if(res.length<1){
+      this.trendingplant = false;
+      console.log('h');
+      
+   }
+      
+    })
+   }
 
 
   
@@ -154,10 +133,21 @@ getTotalPages(){
 
       if(code!=null)
       {
-        if(code=='Outdoor' || code=='Indoor')
-      {
+        if(code=='Outdoor' || code=='Indoor'){
         this.categoryFilter = code;
       }
+
+      if(code=='Fragrance'){
+        this.FragranceFilter = 'Yes';
+      }
+
+      if(code=='Non-Toxic'){
+        this.ToxicityFilter = code;
+      }
+      if(code=='Maintenance'){
+        this.MaintenanceFilter = 'Easy';
+      }
+
         this.filterPlants();
       }
       
@@ -167,17 +157,15 @@ getTotalPages(){
 
   
   filterPlants() {
-
-    
-
     this. closeNav() ;
     this.filter = true;
-    // this.loading = true;
+
 
       const filters = {
         Category: this.categoryFilter,
         Fragrance: this.FragranceFilter,
-        Maintenance : this.MaintenanceFilter
+        Maintenance : this.MaintenanceFilter,
+        Toxicity : this.ToxicityFilter
       };
 console.log(filters);
 
@@ -188,7 +176,7 @@ console.log(filters);
   }
   
   changePage2(newPage: number) {
-    this.p3 = newPage;     
+    this.p3 = newPage;   
     this.filterPlants();
   }
 
@@ -336,4 +324,91 @@ changePage(newPage: number) {
     }
   }
 
+
+
+
+
+  loadPlants() {
+    this.loading2=true;
+   
+    this.plantservice.getPlants(this.p1, this.pageSize).subscribe(
+      (data) => {
+        this.loading2 = false;
+         this.plants = data.plants; 
+         console.log(data.plants);
+         
+         this.totalPlantss = Math.ceil(data.totalplants/this.pageSize);
+        console.log( this.totalPlantss);
+      },
+      (error) => {
+        console.error('Error fetching plants', error);
+      }
+    );
+  }
+
+/*
+
+  changePage2(newPage: number) {
+    this.p3 = newPage;     
+    this.filterPlants();
+  }
+
+  totalPages2(): number { 
+    return this.totalFilteredPages ;
+  }
+  */ 
+
+pages(newPage:number){
+this.p1 = newPage;
+this.loadPlants();
 }
+
+
+getTotalPages(){
+  return this.totalPlantss;
+}
+
+// getPageNumbers(){
+
+// }
+
+
+
+//   // nextPage() {
+  
+//   //   if (this.p < this.getTotalPages()) {
+//   //     this.p++;
+//   //     this.loadPlants();
+//   //   }
+//   //   else{
+//   //     console.log('error');
+//   //   }
+//   // }
+
+//   // prevPage() {
+//   //   if (this.p > 1) {
+//   //     this.p--;
+//   //     this.loadPlants();
+//   //   }
+//   // }
+
+//   // goToPage(page: number) {
+//   //   if (page >= 1 && page <= this.getTotalPages() && page !== this.p) {
+//   //      = page;
+      
+//   //   }
+//   // }
+
+//   // getTotalPages(): number {
+//   //   return Math.ceil(this.totalPlants / this.pageSize);
+//   // }
+
+//   // getPageNumbers(): number {
+//   //   const totalPages = this.getTotalPages();
+//   //   return totalPages;
+//   // }
+
+}
+
+
+  

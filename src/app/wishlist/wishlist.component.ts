@@ -18,6 +18,7 @@ export class WishlistComponent {
   plant!: any[];
   productquantity:number=1;
   message:String = '';
+  loading:boolean=false;
   constructor(private plantservice: PlantserviceService, private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -25,13 +26,22 @@ export class WishlistComponent {
       this.id = params.get('id');
     
   
+this.getwishlist();
+    });
+  }
 
+
+
+  getwishlist()
+  {
+       this.loading=true
     this.plantservice.getwishlist().subscribe(
       data => {
+        this.loading=false
         this.data = data;
+        
       }
     )
-    });
   }
   addtocart(pid:any,Price:number) {
 
@@ -77,4 +87,6 @@ export class WishlistComponent {
         }
       );
     }
+
+
   }

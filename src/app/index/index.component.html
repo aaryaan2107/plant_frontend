@@ -1,33 +1,15 @@
 <app-header></app-header>
 <section class="plant_section layout_padding" style="background-color: rgba(236, 236, 236,0.7);">
-  <div class="main" >
-  <div class="filter">
-    <div>
-      <img src="../../assets/filter/indoor_plant.png" style="border-radius: 50%; " >
-      <!-- <h5 class="text">Indoor Plant</h5> -->
+  <div class="main">
+    <div class="f1" *ngFor="let filter of Allfilter">
+        <div class="filter">
+            <div [routerLink]="filter.link">
+                <img [src]="filter.src" style="border-radius: 50%;">
+                <h5 class="text">{{filter.title}}</h5>
+            </div>
+        </div>
     </div>
-    <div>
-      <img src="../../assets/filter/outdoor_plant.png" style="border-radius: 50%; " >
-      <!-- <h5 class="text">Outdoor Plant</h5> -->
-    </div>
-    <div>
-      <img src="../../assets/filter/toxic_plant.png" style="border-radius: 50%; " >
-      <!-- <h5 class="text">Fragrance Plant</h5> -->
-    </div>
-    <div>
-      <img src="../../assets/filter/non-toxic_plant.png" style="border-radius: 50%; " >
-      <!-- <h5 class="text">Non-Toxic Plant</h5> -->
-    </div>
-    <div>
-      <img src="../../assets/filter/season_plant.png" style="border-radius: 50%; " >
-      <!-- <h5 class="text">Low-M Plant</h5> -->
-    </div>
-    <div>
-      <img src="../../assets/filter/season_plant.png" style="border-radius: 50%; " >
-      <!-- <h5 class="text">Low-M Plant</h5> -->
-    </div>
-  </div>
-  </div>
+</div>
   <div class="container">
 
     <div class="heading_container heading_center">
