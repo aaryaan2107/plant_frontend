@@ -46,7 +46,6 @@
                     <p><strong>{{ product.Common_Name }}</strong></p>
                     <p>{{ product.Botanical_Name }}</p>
                     <p>PRICE: {{ product.Price }} Rs</p>
-                    <p>Quantity: {{item.quantity}}</p>
                     <button type="button" class="btn btn-danger btn-sm me-1 mb-2" data-toggle="modal"
                       data-target="#exampleModalCenter" >
                       <i class="fa fa-trash"></i><span> Remove </span>
@@ -207,14 +206,14 @@
               <div class="card mb-4">
 
                 <div *ngFor="let c of item">
-                  <div *ngFor="let u of plant">
-                    <div class="card-body" *ngIf="c.productId == u.ID">
+                  <div>
+                    <div class="card-body">
 
                       <div class="row">
                         <div class="col-lg-3 col-md-12 mb-4 mb-lg-0 ">
 
                           <div class="bg-image hover-overlay hover-zoom ripple rounded" data-mdb-ripple-color="light">
-                            <img [src]="u.Photo_1" class="w-100" alt="Blue Jeans Jacket" />
+                            <img [src]="c.Photo_1" class="w-100" alt="Blue Jeans Jacket" />
                             <a href="#!">
                               <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
                             </a>
@@ -225,8 +224,8 @@
                         <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
 
 
-                          <p><strong>{{ u.Common_Name }}</strong></p>
-                          <p>{{ u.Botanical_Name }}</p>
+                          <p><strong>{{ c.Common_Name }}</strong></p>
+                          <p>{{ c.Botanical_Name }}</p>
                           <p>Price: {{ c.Price }} Rs</p>
                           <p>Quantity: {{c.quantity}}</p>
 

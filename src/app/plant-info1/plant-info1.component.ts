@@ -61,8 +61,8 @@ export class PlantInfo1Component {
           plants => {
             const plant = plants.find(plant => plant.ID && plant.ID.includes(this.id));
             const plantPrice = plant.Price;
-  
-            this.plantservice.addToCart(userId, productId, this.productquantity,plantPrice).subscribe(
+            
+            this.plantservice.addToCart(userId, productId, this.productquantity,plantPrice,plant.Common_Name,plant.Botanical_Name,plant.Photo_1).subscribe(
             (response) => {
               this.addcart = 'Add to cart Successfully';
               setTimeout(() => {

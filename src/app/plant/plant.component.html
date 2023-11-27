@@ -136,7 +136,7 @@
                                     <i class="fa fa-heart mb-2" [ngClass]="w.class"></i>
                                 </a>
                             </div>
-                            <a (click)="wishlist({productId:plant.ID,userId:userID})">
+                            <a (click)="wishlist({productId:plant.ID,userId:userID,Common_Name:plant.Common_Name,Botanical_Name:plant.Botanical_Name,Photo_1:plant.Photo_1,Price:plant.Price})">
                                 <i class="fa fa-heart mb-2 fix"></i>
                             </a>
                             <a routerLink="plantinfo1/{{plant.ID}}" style="text-decoration: none;">

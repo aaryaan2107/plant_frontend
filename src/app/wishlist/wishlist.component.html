@@ -29,14 +29,13 @@
                             </div>
                             <div class="col-md-3 ">
                                 <p >{{w.Common_Name}}</p>
-
                             </div>
 
                             <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
                                 <h6 class="mb-0" style="font-size: 1.0em;"> {{w.Price}} </h6>
                             </div>
                             <div class="col-sm-1 col-lg-1 col-xl-2 text-end">
-                                <a class="text-danger" style="cursor: pointer;" (click)="addtocart(w.ID,w.Price)">Add To Cart</a>
+                                <a class="text-danger" style="cursor: pointer;" (click)="addtocart(w.ID,w.Price,w.Common_Name,w.Botanical_Name,w.Photo_1)">Add To Cart</a>
                               
                             </div>
                             <div class="col-md-1 col-lg-1 col-xl-1 text-end">

@@ -1,9 +1,9 @@
 <app-header></app-header>
-<div class="page-content mt-3" style="transform: scale(1.2); margin-top: 80px;" id="page-content">
+<div class="page-content" style="transform: scale(1.2); margin-top: 80px; " id="page-content">
     <div class="padding">
-        <div class="row  d-flex justify-content-center" >
-<div class="col-xl-7 col-md-12"  >
-                <div class="card user-card-full mt-3" style="box-shadow: 2px 2px 8px black;"     >
+        <div class="row  d-flex justify-content-center">
+            <div class="col-xl-7 col-md-12">
+                <div class="card user-card-full mt-3" style="box-shadow: 2px 2px 8px black;">
                     <div class="row m-l-0 m-r-0">
                         <div class="col-sm-4 bg-c-lite-green user-profile">
                             <div class="card-block text-center text-white">
@@ -11,9 +11,10 @@
                                     <img src="https://img.icons8.com/bubbles/100/000000/user.png" class="img-radius" alt="User-Profile-Image">
                                 </div>
 
-                                <h6 class="f-w-600"><h5>Hello,</h5> {{data.username}}</h6>
-                            
-                            <i class="fa fa-thumbs-o-up m-t-10 f-16"></i> 
+                                <h6 class="f-w-600">
+                                    <h5>Hello,</h5> {{data.username}}</h6>
+
+                                <i class="fa fa-thumbs-o-up m-t-10 f-16"></i>
                             </div>
                         </div>
                         <div class="col-sm-8">
@@ -30,10 +31,10 @@
                                     </div>
                                 </div>
                                 <div class="mt-3">
-                                  <p class="m-b-10 f-w-600">Address</p>
-                                  <h6 class="text-muted f-w-400">{{data.address}}</h6>
-                              </div>
-                                <input type="checkbox" class="btn " id="cb1" (click)="onLogout()"/><label for="cb1">Logout</label>
+                                    <p class="m-b-10 f-w-600">Address</p>
+                                    <h6 class="text-muted f-w-400">{{data.address}}</h6>
+                                </div>
+                                <input type="checkbox" class="btn " id="cb1" (click)="onLogout()" /><label for="cb1">Logout</label>
                             </div>
                             <div class="row m-2" style="gap:5%">
                                 <button type="button" class="col-sm-3 button mb-3" routerLink="/wishlist">WishList</button>
@@ -42,14 +43,13 @@
                             </div>
                             <div *ngIf="data.role=='admin'">
                                 <button type="button" class="col-sm-3 button mb-3" routerLink="/admin">Admin</button>
-                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-                </div>
-                </div>
-            </div>
+        </div>
+    </div>
+</div>
 
 <app-footer></app-footer>
-

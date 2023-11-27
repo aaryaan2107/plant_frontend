@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 export class PlantserviceService {
 
   private url = 'https://plant-backend6.onrender.com';
+  // private url = 'http://192.168.68.52:3000';
   private isAuth = false;
   private isLoggedIn = false;
   cartdata: EventEmitter<number> = new EventEmitter<number>();
@@ -138,8 +139,8 @@ getPlants(page: number,pageSize: number ): Observable<any> {
 
   //store
 
-  addToCart(userId: string, productId: string, quantity: number, Price: number) {
-    const body = { userId, productId, quantity, Price };
+  addToCart(userId: string, productId: string, quantity: number, Price: number,Common_Name:string,Botanical_Name:string,Photo_1:string) {
+    const body = { userId, productId, quantity, Price, Common_Name, Botanical_Name, Photo_1 };
     return this.http.post(`${this.url}/Apis/cart`, body);
   }
 
@@ -170,7 +171,8 @@ getPlants(page: number,pageSize: number ): Observable<any> {
   }
 
   wishlist(data:any):Observable<any> {
-    // console.log(data);
+    console.log(data);
+    
     return this.http.post(`${this.url}/Apis/wishlist`, data);
   }
 
@@ -294,6 +296,7 @@ removertrend(tid:any):Observable<any>{
 trending(): Observable<any[]> {
   return this.http.get<any[]>(`${this.url}/admin/trend`);
 }
+
 
 getRePayment(id:string | null): Observable<any> {  
   return this.http.get(`${this.url}/Apis/getrepayment/${id}`);

@@ -43,7 +43,7 @@ this.getwishlist();
       }
     )
   }
-  addtocart(pid:any,Price:number) {
+  addtocart(pid:any,Price:number,Common_Name:string,Botanical_Name:string,Photo_1:string) {
 
 
 
@@ -65,7 +65,7 @@ this.getwishlist();
 
 
     
-    this.plantservice.addToCart(userId,productId,this.productquantity,Price).subscribe(
+    this.plantservice.addToCart(userId,productId,this.productquantity,Price,Common_Name,Botanical_Name,Photo_1).subscribe(
       (res) => {
             this.message = '     View Cart    ';
          
