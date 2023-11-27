@@ -30,7 +30,7 @@
           <div>
             <strong>Total amount</strong>
             <strong>
-              <p class="mb-0">(including VAT)</p>
+              <p class="mb-0">(including TAX)</p>
             </strong>
           </div>
           <span><strong>{{total}}</strong></span>
@@ -38,12 +38,12 @@
       </ul>
       <div *ngIf="selection">
         <button type="button" value="Go To Checkout" class="btn btn-primary btn-lg btn-block" (click)="currentorderold({orderID:orderId,userId:user,Price:total,quantity:allq,address:userInput})">
-          Go To Checkout New
+          Go To Checkout 
         </button>
       </div>
       <div *ngIf="!selection">
           <button type="button" value="Go To Checkout" class="btn btn-primary btn-lg btn-block" (click)="currentorderold({orderID:orderId,userId:user,Price:total,quantity:allq,address:addressold})">
-            Go To Checkout Old
+            Go To Checkout 
           </button>
       </div>
     </div>
