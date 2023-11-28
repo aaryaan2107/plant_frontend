@@ -184,9 +184,15 @@ nav {
   display: none; /* Initially hide the horizontal navbar */
   // background: url('../../assets/hero-bg.jpg'),linear-gradient(to right, rgba(32, 106, 93, 0.6), rgba(32, 106, 93, 0.7), rgba(32, 106, 93, 0.6));
   background-blend-mode:darken;
+  // background-;
+  background-color: rgb(0, 236, 126);
   background-size: cover;
-  background-repeat: no-repeat;
-  height:100%;
+  // position: sticky;
+  
+  position: fixed;
+  z-index: 99;  
+  background-repeat: no-repeat;  
+  // height:100%;
   width: 100%;
   overflow: hidden;
 

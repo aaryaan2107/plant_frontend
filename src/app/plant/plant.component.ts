@@ -25,7 +25,7 @@ export class PlantComponent  implements OnInit {
   trendingplant:boolean = true;
   user:any;
   data:any;
-  userID!:string|null;
+  userID!:string;
   searchQuery: string = '';
   message: string = '';
   defaultImageUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZwnvLCKw84lm1Gli7GUrhVNzB0GNpeJevWst8ED__Gw&s";
@@ -46,12 +46,15 @@ export class PlantComponent  implements OnInit {
   p1:number=1;
   p2:number=1;
   p3: number = 1;
+  productquantity:number=1;
   pageSize: number = 8;
   pageSiz1: number = 8;
   pagesize2:number=8;
   pageSize3: number = 8;
   totalFilteredPages!:number;
   a!:any;
+  addcart: String = '';
+  oneplants!:any;
   // b:String='Our';
   
   
@@ -73,11 +76,11 @@ export class PlantComponent  implements OnInit {
     this.loadPlants();
     // this.get();
   this.trendd();
-    this.user = localStorage.getItem('token');
-    var decoded:any = jwt_decode(this.user);
-    this.userID=decoded.userId;
+   
    }
-    
+   this.user = localStorage.getItem('token');
+   var decoded:any = jwt_decode(this.user);
+   this.userID=decoded.userId;
       
    
     
@@ -187,7 +190,32 @@ console.log(filters);
 
 
 
+  addtocart(id:any){
+    if(this.plants)
+    {
+      if(!localStorage.getItem('token')) {  
+        this.plantservice.localcartdata(this.plants.filter(plant => plant.ID.includes(id)),this.productquantity);
+        this.addcart = 'Add to cart Successfully';
+        setTimeout(() => {
+          this.addcart = '';
+        }, 5000);
+      }
+      else{
+        this.oneplants = this.plants.filter(plant => plant.ID.includes(id));
+        this.plantservice.addToCart(this.userID, id, this.productquantity,this.oneplants[0].Price,this.oneplants[0].Common_Name,this.oneplants[0].Botanical_Name,this.oneplants[0].Photo_1).subscribe(
+          (res) =>{
+            this.addcart = 'Add to cart Successfully';
+            setTimeout(() => {
+            this.addcart = '';
+            }, 5000);
+        });
+      }
+      
+      
+    }
 
+  }
+  
 
 
 

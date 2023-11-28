@@ -36,6 +36,16 @@ export class CartComponent implements OnInit {
       }
       else {
         this.loggin = true;
+          this.plantservice.Allplant().subscribe(
+            plant => {
+              this.plant = plant;
+              this.loading = false;
+              this.calculateTotal();
+              this.calculateqtyTotal();
+
+            },
+            (error) => {  console.log(error);  }
+          )
         this.cartdata();
         }
        
@@ -47,7 +57,6 @@ cartdata()
     this.item = data;
     this.calculateTotal();
     this.calculateqtyTotal();
-    this.loading = false;
   
   });
 }

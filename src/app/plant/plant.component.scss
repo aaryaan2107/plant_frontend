@@ -17,6 +17,7 @@
     max-width: 400px;
     padding-bottom: 50px;
     margin:auto;
+    margin-top: 50px;
   }
   
   .form-control {
@@ -72,6 +73,15 @@
   }
 }
 
+.cat
+{
+  // font-size:20px;
+  cursor:pointer; 
+  float: right;
+  margin-right:30% ;
+  font-size: 36px;
+  margin-top: -10px;
+}
 
 
   @media(max-width:600px) {
@@ -88,6 +98,15 @@
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+    .search-hero
+    {
+      margin-top: 5px;
+    }
+    .cat
+    {
+      margin-right:0 ;
+      float: right;
     }
 }
 
@@ -197,7 +216,7 @@ nav {
   height: 100%;
   width: 0;
   position: fixed;
-  z-index: 1;
+  z-index: 99;
   top: 0;
   right: 0;
   background-color: rgba(194, 226, 143, 1); 
@@ -298,3 +317,43 @@ padding-left: 7%;
   border-radius: 4px;
 }
 
+
+.detail-box {
+  position: relative;
+}
+
+.s {
+  position: absolute;
+  right: 0;
+}
+
+.spans {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(114, 245, 250);
+  border-radius: 7px;
+  width: 100%;
+  padding: 5px 0px;
+  transition: all ease 0.2s;
+  cursor: pointer;
+}
+
+.spans:hover {
+  scale: 0.98;
+}
+
+.heading_center {
+  position: relative;
+}
+
+.alert {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  background-color: #000;
+  color: white;
+  font-weight: 300px;
+  z-index: 1;
+}
