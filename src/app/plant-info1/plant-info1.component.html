@@ -1,11 +1,11 @@
+<app-header></app-header>
 <div *ngIf="loading">
   <app-loader></app-loader>
 </div>
 <body  *ngIf="!loading">
   
-<app-header></app-header>
 
-<div *ngFor="let u of plant">
+<div style="margin-top: 80px;" *ngFor="let u of plant">
   <br>
   <h1 class="text-center">{{u.Common_Name}}</h1>   
   <br> <br> 
@@ -62,7 +62,7 @@
             </div>
         </div>
 
-        <qrcode class="qrcode2" qrdata="http://192.168.68.51:4200/plants/plantinfo1/{{u.ID}}" [width]="250" [errorCorrectionLevel]="'M'" ></qrcode>
+        <qrcode class="qrcode2" qrdata="http://192.168.68.51:4200/kplants/plantinfo1/{{u.ID}}" [width]="250" [errorCorrectionLevel]="'M'" ></qrcode>
 
         <!-- <div class="col-sm-3 btn btn-success" routerLink="/plants/plantinfo2/{{u.ID}}">More Info</div> -->
     </div>

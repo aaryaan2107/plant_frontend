@@ -65,7 +65,7 @@
             </div>
         </div>
 
-        <qrcode class="qrcode2" qrdata="https://growmoreplant.netlify.app/plants/plantinfo1/{{u.ID}}" [width]="250" [errorCorrectionLevel]="'M'" ></qrcode>
+        <qrcode class="qrcode2" qrdata="http://192.168.68.51:4200/plants/plantinfo1/{{u.ID}}" [width]="250" [errorCorrectionLevel]="'M'" ></qrcode>
 
         <!-- <div class="col-sm-3 btn btn-success" routerLink="/plants/plantinfo2/{{u.ID}}">More Info</div> -->
     </div>
@@ -79,7 +79,7 @@
   <div  class="scale shadow mb-2 " style="border-radius: 40px; padding: 10px; "><img height="48px" width=" 48px" src="../../assets/icon/ph.png" class="mr-4" alt=""><span>Soil PH : </span>{{u.Soil_PH}}</div>
   <div class="btn btn-success col-5 p-2" routerLink="/plants/plantinfo1/{{u.ID}}"><i class="fa  fa-arrow-left"></i> Back</div>
   <!-- <div class="btn btn-success col-5 p-2" style="float:right;" routerLink="/plants/plantinfo3/{{u.ID}}">Next<i class="fa  fa-arrow-right"></i></div> -->
-  <qrcode qrdata="https://growmoreplant.netlify.app/plants/plantinfo1/{{u.ID}}" [width]="250" [errorCorrectionLevel]="'M'"></qrcode>
+  <!-- <qrcode qrdata="http://192.168.68.51:4200/plants/plantinfo1/{{u.ID}}" [width]="250" [errorCorrectionLevel]="'M'"></qrcode> -->
 </div>
 
 

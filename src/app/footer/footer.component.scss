@@ -8,6 +8,7 @@
     color: white;
     // border: 1px solid ;
     line-height: 40px;
+    
 }
 .fa-facebook-f{
 background-color: #316FF6;
@@ -34,10 +35,73 @@ background-color: #316FF6;
 }
 
 .socialicon:hover{
-    //  box-shadow: 0px 0px 20px rgb(255, 255, 255); 
-    border: 2px solid white;
+     box-shadow: 0px 0px 20px rgb(255, 255, 255); 
+    // border: 2px solid white;
      border-radius: 50%;
     transition: transform 0.2s ease-in-out;
     transform: scale(1);    
 
 }
+
+/* footer.component.css */
+
+/* footer.component.css */
+
+footer {
+    background-color: rgb(19, 153, 64);
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .footer-content {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap to the next line on smaller screens */
+    justify-content: space-around;
+  }
+  
+  .categories,
+  .helpful-links,
+  .connect,
+  /* Add more styles as needed */
+  .copyright {
+    flex: 1;
+    margin: 0 10px; /* Adjust margins for smaller screens */
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  a {
+    text-decoration: none;
+    color: #000000;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  li 
+  {
+    color: rgb(0, 0, 0);
+  }
+  h4
+  {
+    color: #000000;
+  }
+  /* Responsive Styles */
+  @media screen and (max-width: 768px) {
+    .footer-content {
+      flex-direction: column; /* Stack items vertically on smaller screens */
+    }
+  
+    .categories,
+    .helpful-links,
+    .connect,
+    /* Add more styles as needed */
+    .copyright {
+      flex: 1;
+      margin: 10px 0; /* Adjust margins for smaller screens */
+    }
+  }
+  

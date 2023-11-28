@@ -81,7 +81,7 @@ currentorderold(cartdata:any){
   this.plantservice.currentorder(cartdata).subscribe(
     res => {
       console.log(res);
-      window.open(res.paymentLink,'_blank');
+      window.open( res.paymentLink,'_blank');
       this.cartdata();
     }
   )

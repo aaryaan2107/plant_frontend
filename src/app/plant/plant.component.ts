@@ -63,6 +63,7 @@ export class PlantComponent  implements OnInit {
   constructor(private plantservice: PlantserviceService,private el: ElementRef, private renderer: Renderer2,   private avroute:ActivatedRoute) { }
   
   ngOnInit() {
+    this.getwishlist(); 
     this.avroute.paramMap.subscribe(params=>{
       let code=params.get('code');
       this.a = code;

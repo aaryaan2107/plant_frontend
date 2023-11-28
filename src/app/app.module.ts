@@ -35,7 +35,6 @@ import { OrderlistComponent } from './orderlist/orderlist.component';
 import { LoaderComponent } from './loader/loader.component';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,7 +62,7 @@ import { LoaderComponent } from './loader/loader.component';
     AddplantComponent,
     PaymentComponent,
     OrderlistComponent,
-    LoaderComponent
+    LoaderComponent,
 
 
   ],

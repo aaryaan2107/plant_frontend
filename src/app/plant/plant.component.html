@@ -96,11 +96,41 @@
             </div>
 
 
-            <div *ngIf="trendingplant">
+            <div *ngIf="trendingplant" class="carousel2_2">
                 <h2 style="text-align: center;">Trending Plants</h2>
                 <div id="plantSlider" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
-                        <div class="carousel-item" *ngFor="let plantsChunk of chunkArray(trending, 4); let i=index" [class.active]="i===0">
+                        <div class="carousel-item " *ngFor="let plantsChunk of chunkArray(trending, 4); let i=index" [class.active]="i===0">
+                            <div class="row">
+                                <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let plant of plantsChunk">
+                                    <a routerLink="../plants/plantinfo1/{{plant.ID}}" style="text-decoration: none; display: flex; text-align: center;justify-content: center;color: black;">
+                                        <div style="width: 250px; height: 250px;">
+                                            <img [src]="plant.Photo_1" [alt]="plant.Common_Name" width="80%" height="80%" style="border-radius: 150px;">
+                                            <p>{{plant.Botanical_Name}}</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#plantSlider" role="button" data-slide="prev" style="z-index:0; width: 0">
+                        <span class="	fa fa-chevron-left" style="color: black; font-size: 40px; margin-left: 0px;" aria-hidden="true"></span>
+
+                    </a>
+                    <a class="carousel-control-next" href="#plantSlider" role="button" data-slide="next" style="z-index:0; width: 0; ">
+                        <span class="	fa fa-chevron-right" style="color: black; font-size: 40px; margin-left:0px ; z-index:-1;"></span>
+
+                    </a>
+                </div>
+            </div>
+
+
+            
+            <div *ngIf="trendingplant" class="carousel2_1">
+                <h2 style="text-align: center;">Trending Plants</h2>
+                <div id="plantSlider2" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item carousel2_3" *ngFor="let plantsChunk of chunkArray(trending, 1); let i=index" [class.active]="i===0">
                             <div class="row">
                                 <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let plant of plantsChunk">
                                     <a routerLink="../plants/plantinfo1/{{plant.ID}}" style="text-decoration: none;">
@@ -113,17 +143,16 @@
                             </div>
                         </div>
                     </div>
-                    <a class="carousel-control-prev" href="#plantSlider" role="button" data-slide="prev" style="z-index:0;">
+                    <a class="carousel-control-prev" href="#plantSlider2" role="button" data-slide="prev" style="z-index:0;">
                         <span class="	fa fa-chevron-left" style="color: black; font-size: 40px; margin-left: -200px;" aria-hidden="true"></span>
 
                     </a>
-                    <a class="carousel-control-next" href="#plantSlider" role="button" data-slide="next" style="z-index:0;">
+                    <a class="carousel-control-next" href="#plantSlider2" role="button" data-slide="next" style="z-index:0;">
                         <span class="	fa fa-chevron-right" style="color: black; font-size: 40px; margin-left:120px ; z-index:-1;"></span>
 
                     </a>
                 </div>
             </div>
-
 
             <div class="heading_center">
                 <h2>{{a || 'Our'}} <span>Plants</span> </h2>
@@ -140,10 +169,10 @@
                                     <i class="fa fa-heart mb-2" [ngClass]="w.class"></i>
                                 </a>
                             </div>
-                            <a (click)="wishlist({productId:plant.ID,userId:userID})">
+                            <a (click)="wishlist({productId:plant.ID,userId:userID,Common_Name:plant.Common_Name,Botanical_Name:plant.Botanical_Name,Photo_1:plant.Photo_1,Price:plant.Price})">
                                 <i class="fa fa-heart mb-2 fix"></i>
                             </a>
-                            <a routerLink="plantinfo1/{{plant.ID}}" style="text-decoration: none;">
+                            <a routerLink="/plantinfo1/{{plant.ID}}" style="text-decoration: none;">
                                 <div class="img-box">
                                     <img [src]="plant.Photo_1" [alt]="plant.Common_Name">
                                 </div>

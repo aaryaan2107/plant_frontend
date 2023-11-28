@@ -24,6 +24,7 @@ import { AdminComponent } from './admin/admin.component';
 import { AddplantComponent } from './addplant/addplant.component';
 import { PaymentComponent } from './payment/payment.component';
 import { OrderlistComponent } from './orderlist/orderlist.component';
+import { HeaderComponent } from './header/header.component';
 import { LoaderComponent } from './loader/loader.component';
 
 
@@ -32,17 +33,18 @@ import { LoaderComponent } from './loader/loader.component';
 
 const routes: Routes = [
   {path:'',component:IndexComponent},
+  {path:'header',component:HeaderComponent},
+  {path:'loader',component:LoaderComponent},
   {path:'plants',component:PlantComponent},
   {path:'plants/:code',component:PlantComponent},
-  {path:'loader',component:LoaderComponent},
   {path:'contact-us',component:ContactUsComponent},
   {path:'index',component:IndexComponent},
-  {path:'plants/plantinfo1/:id',component:PlantInfo1Component},
-  {path:'plants/plantinfo2/:id',component:PlantInfo2Component},
-  {path:'plants/plantinfo3/:id',component:PlantInfo3Component},
-  {path:'plants/plantinfo4/:id',component:PlantInfo4Component},
-  {path:'plants/plantinfo5/:id',component:PlantInfo5Component},
-  {path:'plants/plantinfo6/:id',component:PlantInfo6Component,},
+  {path:'plantinfo2/:id',component:PlantInfo2Component},
+  {path:'plantinfo1/:id',component:PlantInfo1Component},
+  {path:'plantinfo3/:id',component:PlantInfo3Component},
+  {path:'plantinfo4/:id',component:PlantInfo4Component},
+  {path:'plantinfo5/:id',component:PlantInfo5Component},
+  {path:'plantinfo6/:id',component:PlantInfo6Component,},
   {path:'about',component:AboutComponent},
   {path:'login',component:LoginComponent},
   {path:'signup',component:SignupComponent},
