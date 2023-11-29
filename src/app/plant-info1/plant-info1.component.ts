@@ -7,7 +7,7 @@ import { IpService } from 'src/service/ip.service';
 @Component({
   selector: 'app-plant-info1',
   templateUrl: './plant-info1.component.html',
-  styleUrls: ['./plant-info1.component.scss']
+  styleUrls: ['./plant-info1.component.scss','./plant-info1_1.component.scss']
 })
 export class PlantInfo1Component {
   productquantity:number=1;
