@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { PlantserviceService } from 'src/service/plantservice.service';
 import { ActivatedRoute } from '@angular/router';
+import { IpService } from 'src/service/ip.service';
 
 @Component({
   selector: 'app-plant-info5',
@@ -11,9 +12,11 @@ export class PlantInfo5Component {
   id!: string | null;
   loading: Boolean = true;
   plant!: any[];
-  constructor(private plantservice: PlantserviceService, private route: ActivatedRoute) { }
+  qrurl:any;
+  constructor(private plantservice: PlantserviceService, private route: ActivatedRoute,private ipservice:IpService) { }
 
   ngOnInit() {
+    this.qrurl =  this.ipservice.qrcode();
     this.route.paramMap.subscribe(params => {
       this.id = params.get('id');
 

@@ -2,27 +2,25 @@ import { EventEmitter, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, Subject, map, tap } from 'rxjs';
 import { Router } from '@angular/router';
+import { IpService } from './ip.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PlantserviceService {
 
-  private url = 'https://plant-backend6.onrender.com';
-  // private url = 'http://192.168.68.53:3000';
-  private isAuth = false;
-  private isLoggedIn = false;
-  cartdata: EventEmitter<number> = new EventEmitter<number>();
 
-  
-
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient, private router: Router,private ipservice:IpService) {
     const token = localStorage.getItem('token');
     if (token) {
       this.isLoggedIn = true;
     }
   }
 
+  private url = this.ipservice.localurl();
+  private isAuth = false;
+  private isLoggedIn = false;
+  cartdata: EventEmitter<number> = new EventEmitter<number>();
 
 
   // Method to filter plants by category

@@ -239,4 +239,35 @@ section {
    max-width: 300px;
  margin: auto;
 }
+.button2
+{
+    display: flex; 
+    flex-direction: column;
+  
+}
+.button2 div
+{
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    
+}
+}
+.button
+{
+    // margin-left: 80px;
+    // max-width: 220px;
+    padding: 5px;
+    border-radius: 10px;
+    
+}
+
+.alert {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    background-color: #000;
+    color: white;
+    font-weight: 300px;
+    z-index: 1;
 }

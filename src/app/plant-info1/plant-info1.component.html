@@ -62,7 +62,7 @@
             </div>
         </div>
 
-        <qrcode class="qrcode2" qrdata="http://192.168.68.51:4200/kplants/plantinfo1/{{u.ID}}" [width]="250" [errorCorrectionLevel]="'M'" ></qrcode>
+        <qrcode class="qrscan1 qrcode2" qrdata="cd/plantinfo1/{{u.ID}}" [width]="250" [errorCorrectionLevel]="'M'" ></qrcode>
 
         <!-- <div class="col-sm-3 btn btn-success" routerLink="/plants/plantinfo2/{{u.ID}}">More Info</div> -->
     </div>
@@ -74,11 +74,11 @@
       <div class="scale shadow  mb-2  " style="border-radius: 40px; padding: 10px; "><img height="48px" width=" 48px" src="../../assets/icon/toxic.png" class="mr-4" alt=""><span>Maintenance : </span>{{u.Maintenance}}</div>
       <div class="scale shadow  mb-2  " style="border-radius: 40px; padding: 10px; "><img height="48px" width=" 48px" src="../../assets/icon/special.png" class="mr-4" alt=""><span>Special_Properties : </span>{{u.Special_Properties}}</div>
       <div class="scale shadow  mb-2  " style="border-radius: 40px; padding: 10px; "><img height="48px" width=" 48px" src="../../assets/icon/price.png" class="mr-4" alt=""><span>Price : </span>{{u.Price}}</div>
-      <div class="row m-3 p-2" style="gap:20px" >
-      <div class="col-sm-3 btn p-2 btn-success b" routerLink="/plants/plantinfo3/{{u.ID}}">CARING INSTRUCTION<i class="m-2	fa fa-info-circle"></i></div>
-      <div class="col-sm-3 btn p-2 btn-success b" routerLink="/plants/plantinfo2/{{u.ID}}">PLANTING INSTRUCTION<i class="m-2	fa fa-info-circle"></i></div>
-      
-      <div class="col-sm-3 quantity" style="align-items: center; justify-content: center;">
+      <div class="row m-3 p-2 button2" style="gap:20px; " >
+      <div class=" button btn-success b" routerLink="/plantinfo3/{{u.ID}}">CARING INSTRUCTION<i class="m-2	fa fa-info-circle"></i></div>
+      <div class=" button btn-success b" routerLink="/plantinfo2/{{u.ID}}">PLANTING INSTRUCTION<i class="m-2	fa fa-info-circle"></i></div>
+      <div class=" button btn-success b" routerLink="/plantinfo4/{{u.ID}}">MORE INFO<i class="m-2	fa fa-info-circle"></i></div>
+      <div class=" quantity" style="align-items: center; justify-content: center;">
       </div>
       <div class="input-group col-sm-3 quantity" style="align-items: center; justify-content: center;">
         <span class="input-group-btn">
@@ -95,14 +95,15 @@
       </div>
       <div class="col-sm-3 btn p-1 btn-success "(click)="addtocart()">Add to Cart <i class="m-2 fa fa-cart-plus"></i></div>
       </div>
-      <div class="alert alert-primary" role="alert" *ngIf="addcart">
-       <div>{{addcart}}<span class="text-danger" style="cursor: pointer;" routerLink="/cart">View Cart</span></div>
-      </div>
-       <!-- <qrcode class="qrcode "  qrdata="http://192.168.68.51:4200/plants/plantinfo1/{{u.ID}}" [width]="250" [errorCorrectionLevel]="'M'" ></qrcode>  -->
+     
+       <qrcode class="qrcode qrscan2 "  qrdata="`{{this.qrurl}}`/plantinfo1/{{u.ID}}" [width]="250" [errorCorrectionLevel]="'M'" ></qrcode> 
     </div>
 
   </div>
 </div>
+<div class="alert alert-primary" role="alert" *ngIf="addcart">
+  <div>{{addcart}}<span class="text-danger" style="cursor: pointer;" routerLink="/cart">View Cart</span></div>
+ </div>
 <app-footer></app-footer>
 </body>
 
