@@ -74,7 +74,7 @@ export class CheckoutComponent implements OnInit{
     this.plantservice.checkupdate(updatedUserData).subscribe(
       (res) => {
        console.log(res);
-       location.reload();
+       this.cartdata();
       },
       (error) => {
         console.error('Error updating profile', error);
