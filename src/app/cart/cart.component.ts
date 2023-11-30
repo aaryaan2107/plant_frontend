@@ -30,6 +30,7 @@ export class CartComponent implements OnInit {
         this.loggin = false;
           this.cartData = this.plantservice.getCartData();
           this.login = false;
+          this.loading = false;
           this.calculateTotall();
           this.calqty();
           

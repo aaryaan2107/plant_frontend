@@ -62,7 +62,7 @@
             </div>
         </div>
 
-        <qrcode class="qrscan1 qrcode2" qrdata="{{this.qrurl}}/plantinfo1/{{u.ID}}" [width]="250" [errorCorrectionLevel]="'M'" ></qrcode>
+        <qrcode class="qrscan1 qrcode2" qrdata="cd/plantinfo1/{{u.ID}}" [width]="250" [errorCorrectionLevel]="'M'" ></qrcode>
 
         <!-- <div class="col-sm-3 btn btn-success" routerLink="/plants/plantinfo2/{{u.ID}}">More Info</div> -->
     </div>
@@ -93,7 +93,7 @@
           </button>
         </span>
       </div>
-      <div class="col-sm-3 btn p-1 btn-success "(click)="addtocart()">Add to Cart <i class="m-2 fa fa-cart-plus"></i></div>
+      <div class="col-sm-3 btn p-1 btn-success "(click)="addtocart(u.ID)">Add to Cart <i class="m-2 fa fa-cart-plus"></i></div>
       </div>
      
        <qrcode class="qrcode qrscan2 "  qrdata="`{{this.qrurl}}`/plantinfo1/{{u.ID}}" [width]="250" [errorCorrectionLevel]="'M'" ></qrcode> 
@@ -104,6 +104,49 @@
 <div class="alert alert-primary" role="alert" *ngIf="addcart">
   <div>{{addcart}}<span class="text-danger" style="cursor: pointer;" routerLink="/cart">View Cart</span></div>
  </div>
-<app-footer></app-footer>
+<!-- =[===========-=======] -->
+
+<section class="plant_section layout_padding" style="background-color: rgba(236, 236, 236,0.2);">
+  <div class="container">
+      <div class="search-hero">
+<div class="go">
+  <div class="row">
+      <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let plant of refplant">
+          <div class="box hover txt" style="box-shadow: 3px 3px 20px rgb(0, 0, 0,0.3);">
+              <div *ngFor="let w of data">
+                  <a (click)="deletewishlist(w._id)" *ngIf="w.productId == plant.ID">
+                      <i class="fa fa-heart mb-1" [ngClass]="w.class"></i>
+                  </a>
+              </div>
+              <a
+                  (click)="wishlist({productId:plant.ID,userId:userID,Photo_1:plant.Photo_1,Common_Name:plant.Common_Name,Botanical_Name:plant.Botanical_Name,Price:plant.Price})">
+                  <i class="fa fa-heart mb-1 fix"></i>
+              </a>
+              <a routerLink="/plants/plantinfo1/{{plant.ID}}" style="text-decoration: none;">
+                  <div class="img-box">
+                      <img [src]="plant.Photo_1" [alt]="plant.Common_Name">
+                  </div>
+                  <div class="detail-box">
+                      <a href="#" style="text-decoration: none;">
+                          {{plant.Botanical_Name}}<span class="s">{{plant.Price}}</span>
+                      </a>
+
+                      <!-- <h5>
+                          &#8377;{{plant.Price}}
+                      </h5> -->
+                  </div>
+              </a>
+              <span class="spans" id="span" (click)="addtocart(plant.ID)"><a>Add to cart</a></span>
+
+          </div>
+
+      </div><br><br>
+  </div>
+</div>
+</div>
+</div>
+</section>
+
 </body>
+<app-footer></app-footer>
 

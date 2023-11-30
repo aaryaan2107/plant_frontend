@@ -299,5 +299,12 @@ getRePayment(id:string | null): Observable<any> {
   return this.http.get(`${this.url}/Apis/getrepayment/${id}`);
 }
 
+getplantFamliy(id:string | null): Observable<any> {  
+  return this.http.get(`${this.url}/Apis/plant/${id}`);
+}
+
+getplantid(id:string | null): Observable<any> {  
+  return this.http.get(`${this.url}/Apis/plantid/${id}`);
+}
 
 }

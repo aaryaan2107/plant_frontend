@@ -95,3 +95,51 @@ transition: all 0.05s ease;
     border-radius: 10px;
     
 }
+
+
+.res1{
+    color: red;
+    position: absolute;
+    z-index: 0;
+    margin-top: 4px;
+  }
+  .fix{
+    position:static;
+    z-index: -1;
+    color: rgb(199, 195, 195);
+  }
+  
+  .detail-box {
+    position: relative;
+  }
+  
+  .txt
+  {
+      color: black;
+      transition: all 500ms ease-in-out;
+  }
+  .txt:hover{
+      color: rgb(150, 24, 24);
+      font-weight: bold;
+  }
+  .hover:hover
+  {
+      background-color: rgb(0, 255, 106,0.1);
+  }
+  .spans {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(114, 245, 250);
+    border-radius: 7px;
+    width: 100%;
+    padding: 5px 0px;
+    transition: all ease 0.2s;
+    cursor: pointer;
+  }
+  
+  .spans:hover {
+    scale: 0.98;
+  }
+  

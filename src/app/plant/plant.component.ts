@@ -192,6 +192,8 @@ console.log(filters);
 
 
   addtocart(id:any){
+    console.log(id);
+    
     if(this.plants)
     {
       if(!localStorage.getItem('token')) {  
@@ -202,7 +204,7 @@ console.log(filters);
         }, 5000);
       }
       else{
-        this.oneplants = this.plants.filter(plant => plant.ID.includes(id));
+        this.oneplants = this.plants.filter(plant => String(plant.ID).includes(id));
         this.plantservice.addToCart(this.userID, id, this.productquantity,this.oneplants[0].Price,this.oneplants[0].Common_Name,this.oneplants[0].Botanical_Name,this.oneplants[0].Photo_1).subscribe(
           (res) =>{
             this.addcart = 'Add to cart Successfully';

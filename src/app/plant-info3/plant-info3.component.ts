@@ -20,9 +20,9 @@ export class PlantInfo3Component {
     this.route.paramMap.subscribe(params => {
       this.id = params.get('id');
 
-      this.plantservice.Allplant().subscribe(
-        plant => {
-          this.plant = plant.filter(plant => plant.ID && plant.ID.includes(this.id));
+      this.plantservice.getplantid(this.id).subscribe(
+        (res) => {
+          this.plant = res.data
           this.loading = false;
           console.log(this.plant);
         },

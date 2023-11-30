@@ -95,18 +95,19 @@
                 </div>
             </div>
 
+            <!-- pc view -->
 
             <div *ngIf="trendingplant" class="carousel2_2">
-                <h2 style="text-align: center;">Trending Plants</h2>
+                <h2 style="text-align: center; margin-bottom: 30px;">Trending Plants</h2>
                 <div id="plantSlider" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item " *ngFor="let plantsChunk of chunkArray(trending, 4); let i=index" [class.active]="i===0">
                             <div class="row">
                                 <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let plant of plantsChunk">
-                                    <a routerLink="../plants/plantinfo1/{{plant.ID}}" style="text-decoration: none; display: flex; text-align: center;justify-content: center;color: black;">
+                                    <a routerLink="/plantinfo1/{{plant.ID}}" style="text-decoration: none; display: flex; text-align: center;justify-content: center;color: black;">
                                         <div style="width: 250px; height: 250px;">
                                             <img [src]="plant.Photo_1" [alt]="plant.Common_Name" width="80%" height="80%" style="border-radius: 150px;">
-                                            <p>{{plant.Botanical_Name}}</p>
+                                            <p style="margin-top: 30px;">{{plant.Botanical_Name}}</p>
                                         </div>
                                     </a>
                                 </div>
@@ -124,19 +125,19 @@
                 </div>
             </div>
 
-
+<!-- mobile view -->
             
             <div *ngIf="trendingplant" class="carousel2_1">
-                <h2 style="text-align: center;">Trending Plants</h2>
+                <h2 style="text-align: center; margin-bottom: 30px;">Trending Plants</h2>
                 <div id="plantSlider2" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item carousel2_3" *ngFor="let plantsChunk of chunkArray(trending, 1); let i=index" [class.active]="i===0">
                             <div class="row">
                                 <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let plant of plantsChunk">
-                                    <a routerLink="../plants/plantinfo1/{{plant.ID}}" style="text-decoration: none;">
+                                    <a routerLink="/plantinfo1/{{plant.ID}}" style="text-decoration: none; display: flex; text-align: center;justify-content: center;color: black;">
                                         <div style="width: 250px; height: 250px;">
                                             <img [src]="plant.Photo_1" [alt]="plant.Common_Name" width="80%" height="80%" style="border-radius: 150px;">
-                                            <p>{{plant.Botanical_Name}}</p>
+                                            <p style="margin-top: 20px;">{{plant.Botanical_Name}}</p>
                                         </div>
                                     </a>
                                 </div>
@@ -155,12 +156,13 @@
             </div>
 
             <div class="heading_center">
-                <h2>{{a || 'Our'}} <span>Plants</span> </h2>
+
+              <h2 style="display: flex;justify-content: center;">{{a || 'Our'}} <span style="margin-left: 0.5%;"> Plants</span> </h2>
                 <div class="alert alert-primary" role="alert" id="alert" *ngIf="addcart">
                     <div>{{addcart}}<span class="text-danger" style="cursor: pointer;" routerLink="/cart">View Cart</span></div>
                 </div>
             </div>
-            <div class="go  " *ngIf="!loading2">
+            <div class="go" *ngIf="!loading2">
                 <div class="row">
                     <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let plant of plants">
                         <div class="box hover txt" style="box-shadow: 3px 3px 20px rgb(0, 0, 0,0.3);">
