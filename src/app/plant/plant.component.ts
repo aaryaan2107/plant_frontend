@@ -191,7 +191,7 @@ console.log(filters);
 
 
 
-  addtocart(id:any){
+  addtocart(id:string){
     console.log(id);
     
     if(this.plants)
