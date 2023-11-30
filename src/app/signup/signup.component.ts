@@ -8,13 +8,13 @@ import { PlantserviceService } from 'src/service/plantservice.service';
 })
 export class SignupComponent {
 
-  formdata: { username: String, password: String, cpassword: String, email: String, phone: String, address: String } = {
+  formdata: { username: String, password: String, cpassword: String, email: String, phone: String, home_address: String } = {
     username: '',
     password: '',
     cpassword: '',
     email: '',
     phone: '',
-    address: '',
+    home_address: '',
   };
   errormessage: string = '';
   success: String = '';

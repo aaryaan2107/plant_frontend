@@ -10,6 +10,7 @@ import { PlantserviceService } from 'src/service/plantservice.service';
 })
 export class UserprofileComponent implements OnInit {
   data: any;
+  editing:Boolean = false;
   constructor(private plantservice: PlantserviceService) { }
 
   ngOnInit() {
@@ -18,10 +19,42 @@ export class UserprofileComponent implements OnInit {
 
   getprofile() {
     this.plantservice.profile().subscribe((res) => {
-      if (res.success) {
         this.data = res.data;
-      }
     })
+  }
+
+  editUser() {
+    this.editing = true;
+  }
+
+  cancelEdit() {
+    this.editing = false;
+  }
+
+  saveChanges() {
+   
+    const updatedUserData = {
+      username: this.data.username, 
+      email: this.data.email,
+      phone: this.data.phone,
+      home_address: this.data.home_address,
+      office_address: this.data.office_address,
+      other_address: this.data.other_address,
+    };
+
+    console.log(updatedUserData);
+    
+
+    this.plantservice.updateProfile(updatedUserData).subscribe(
+      (res) => {
+       console.log(res);
+       
+        this.editing = false;
+      },
+      (error) => {
+        console.error('Error updating profile', error);
+      }
+    );
   }
 
   onLogout() {

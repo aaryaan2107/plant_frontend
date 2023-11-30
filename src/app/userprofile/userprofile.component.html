@@ -1,55 +1,65 @@
+
 <app-header></app-header>
-<div class="page-content" style="transform: scale(1.2); margin-top: 80px; " id="page-content">
-    <div class="padding">
-        <div class="row  d-flex justify-content-center">
-            <div class="col-xl-7 col-md-12">
-                <div class="card user-card-full mt-3" style="box-shadow: 2px 2px 8px black;">
-                    <div class="row m-l-0 m-r-0">
-                        <div class="col-sm-4 bg-c-lite-green user-profile">
-                            <div class="card-block text-center text-white">
-                                <div class="m-b-25">
-                                    <img src="https://img.icons8.com/bubbles/100/000000/user.png" class="img-radius" alt="User-Profile-Image">
-                                </div>
 
-                                <h6 class="f-w-600">
-                                    <h5>Hello,</h5> {{data.username}}</h6>
+<div class="profile-container">
 
-                                <i class="fa fa-thumbs-o-up m-t-10 f-16"></i>
-                            </div>
-                        </div>
-                        <div class="col-sm-8">
-                            <div class="card-block">
-                                <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Information</h6>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <p class="m-b-10 f-w-600">Email</p>
-                                        <h6 class="text-muted f-w-400">{{data.email}}</h6>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <p class="m-b-10 f-w-600">Phone</p>
-                                        <h6 class="text-muted f-w-400">{{data.phone}}</h6>
-                                    </div>
-                                </div>
-                                <div class="mt-3">
-                                    <p class="m-b-10 f-w-600">Address</p>
-                                    <h6 class="text-muted f-w-400">{{data.address}}</h6>
-                                </div>
-                                <input type="checkbox" class="btn " id="cb1" (click)="onLogout()" /><label for="cb1">Logout</label>
-                            </div>
-                            <div class="row m-2" style="gap:5%">
-                                <button type="button" class="col-sm-3 button mb-3" routerLink="/wishlist">WishList</button>
-                                <button type="button" class="col-sm-3 button mb-3" routerLink="/order">Orders</button>
-                                <button type="button" class="col-sm-3 button mb-3" routerLink="/orderlist">Orders List</button>
-                            </div>
-                            <div *ngIf="data.role=='admin'">
-                                <button type="button" class="col-sm-3 button mb-3" routerLink="/admin">Admin</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="left-panel" >
+        <img src="https://img.freepik.com/premium-vector/people-saving-money_24908-51569.jpg" alt="User Image" class="user-image" />
+        <div class="button-container">
+            <button *ngIf="data.role=='admin'" class="button" routerLink="/admin">Admin</button>
+            <button class="button" routerLink="/order">Orders</button>
+            <button class="button" routerLink="/orderlist">Order List</button>
+            <button class="button" routerLink="/wishlist">Wishlist</button>
+             <button class="button btn" (click)="onLogout()">Logout</button>
         </div>
     </div>
+    <div class="right-panel" style="margin-top: 50px;">
+        <button (click)="editUser()" style="background-color: transparent;color: black;"><i class="fa fa-edit"></i></button>
+        <div *ngIf="!editing" class="detail mt-2">
+            <p>UserName : {{data.username}}</p>
+            <p>Email : {{data.email}}</p>
+            <p>Phone No. : {{data.phone}}</p>
+            <p>Home Address : {{data.home_address}}</p>
+            <p>Office Address : {{data.office_address}}</p>
+            <p>Other Address : {{data.other_address}}</p>
+        </div>
+        <div *ngIf="editing">
+            <form (submit)="saveChanges()">
+                <div>
+                    <p>UserName : </p>
+                    <input type="text" id="username" name="username" [(ngModel)]="data.username" required>
+                </div>
+                <div>
+                    <p>Email : </p>
+                    <input type="email" id="email" name="email" [(ngModel)]="data.email" required>
+                </div>
+                <div>
+                    <p>phone No. : </p>
+                    <input type="number" id="number" name="num" [(ngModel)]="data.phone" required>
+                </div>
+                <div>
+                    <p>home_address : </p>
+                    <input type="text" id="home_address" name="home_address" [(ngModel)]="data.home_address" required>
+                </div>
+
+                <div>
+                    <p>office_address : </p>
+                    <input type="text" id="office_address" name="office_address" [(ngModel)]="data.office_address" required>
+                </div>
+                <div>
+                    <p>other_address : </p>
+                    <input type="text" id="other_address" name="other_address" [(ngModel)]="data.other_address" required>
+                </div>
+
+                <div>
+                    <button type="button" (click)="cancelEdit()">Cancel</button>
+                    <button type="submit">Save Changes</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
 </div>
+
 
 <app-footer></app-footer>

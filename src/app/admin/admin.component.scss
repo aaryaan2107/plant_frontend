@@ -1,119 +1,132 @@
 button {
-  font-size: 18px;
+    font-size: 18px;
 }
 
 .l:active {
-  transform: scale(.97);
+    transform: scale(.97);
 }
+
+
 /* side-navigation.component.css */
 
+.alert {
+    position: fixed;
+    right: 0;
+    top: 10%;
+    background-color: #000;
+    color: white;
+    font-weight: 300px;
+    padding: 10px;
+    z-index: 1;
+}
+
 .sidenav {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: #111;
-  overflow-x: hidden;
-  transition: 0.5s;
-  padding-top: 60px;
-  margin-top: 50px;
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    margin-top: 50px;
 }
 
 .sidenav a {
-  padding: 10px 50px;
-  text-decoration: none;
-  font-size: 21px;
-  color: #818181;
-  display: block;
-  transition: 0.3s;
+    padding: 10px 50px;
+    text-decoration: none;
+    font-size: 21px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
 }
 
 .sidenav a:hover {
-  color: #fa5050;
+    color: #fa5050;
 }
 
 .sidenav .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
 }
 
 .main {
-  transition: margin-left 0.5s;
-  padding: 16px;
-  margin: 20px;
-  margin-top: 50px;
+    transition: margin-left 0.5s;
+    padding: 16px;
+    margin: 20px;
+    margin-top: 50px;
 }
 
 .main.active {
-  margin-left: 250px;
+    margin-left: 250px;
 }
 
 .sidenav.active {
-  width: 250px;
+    width: 250px;
 }
 
 .navbar {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  left: 0;
-  background-color: white;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 15px 30px;
-  z-index: 1000;
-  box-shadow: 0 0 2pxgrey;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    left: 0;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 30px;
+    z-index: 1000;
+    box-shadow: 0 0 2pxgrey;
 }
 
 .logo_item {
-  display: flex;
-  align-items: center;
-  column-gap: 10px;
-  font-size: 22px;
-  font-weight: 500;
-  color: blue;
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    font-size: 22px;
+    font-weight: 500;
+    color: blue;
 }
 
 @media (max-width: 768px) {
-  .sidenav.active {
-      width: 100%;
-  }
-  .sidenav a {
-      padding: 10px 100px;
-      text-decoration: none;
-      font-size: 25px;
-  }
-  .main.active {
-      margin-left: 0;
-      width: 100%;
-      /* Adjust width for smaller screens */
-  }
-  .second {
-      margin: 0;
-      padding: 0;
-  }
-  .main {
-      padding: 5px;
-      margin: 5px;
-      margin-top: 50px;
-  }
+    .sidenav.active {
+        width: 100%;
+    }
+    .sidenav a {
+        padding: 10px 100px;
+        text-decoration: none;
+        font-size: 25px;
+    }
+    .main.active {
+        margin-left: 0;
+        width: 100%;
+        /* Adjust width for smaller screens */
+    }
+    .second {
+        margin: 0;
+        padding: 0;
+    }
+    .main {
+        padding: 5px;
+        margin: 5px;
+        margin-top: 50px;
+    }
 }
 
 .first {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .first h4 {
-  display: flex;
-  margin-left: 20px;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    margin-left: 20px;
+    justify-content: center;
+    align-items: center;
 }

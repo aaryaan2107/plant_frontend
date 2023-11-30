@@ -93,6 +93,21 @@ getPlants(page: number,pageSize: number ): Observable<any> {
     }
     return this.http.get(`${this.url}/Apis/profile`, { headers: headers });
   }
+  
+
+    
+  updateProfile(updatedUserData: any) {
+    const headers = {
+      'Authorization': "Bearer " + localStorage.getItem('token')
+    }
+    return this.http.put(`${this.url}/Apis/update`,{updatedUserData}, { headers: headers });
+  }
+  checkupdate(updatedUserData: any) {
+    const headers = {
+      'Authorization': "Bearer " + localStorage.getItem('token')
+    }
+    return this.http.put(`${this.url}/Apis/checkupdate`,{updatedUserData}, { headers: headers });
+  }
 
 
   // localstorage 

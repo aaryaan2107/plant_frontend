@@ -1,0 +1,58 @@
+.address1,
+.address2,
+.address3 {
+    display: flex;
+    gap: 10px;
+}
+
+.main-container {
+    height: auto;
+    width: 50%;
+    background-color: rgb(215, 250, 232);
+    border-radius: 10px;
+    border: 1px solid rgba(128, 128, 128, 0.219);
+    padding: 50px;
+    margin-bottom: 20px;
+    padding-top: 20px;
+}
+
+h3 {
+    font-family: poppins;
+    margin-top: 10px;
+}
+
+.bg-white {
+    border-radius: 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+input {
+    border-radius: 5px;
+    border: 1px solid black;
+    margin-bottom: 5px;
+}
+
+.span-color {
+    color: rgb(66, 122, 34);
+}
+
+.input:hover {
+    border: 1px solid rgb(0, 153, 255);
+}
+
+@media (max-width:786px) {
+    .main-container {
+        width: 100%;
+        padding: 20px;
+    }
+    .container {
+        margin-top: 10px;
+        padding-left: 8px;
+    }
+    .bg-white {
+        padding: 0;
+    }
+}
+
+
+

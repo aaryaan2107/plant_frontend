@@ -1,53 +1,64 @@
 <app-header></app-header>
-<div class="col-md-4">
-  <div class="card mb-4">
-    <div class="card-header py-3">
-      <h5 class="mb-0">Summary</h5>
+
+<div class="container d-flex justify-content-center">
+    <div class="main-container">
+        <h3>Product <span class="span-color">Info</span></h3>
+        <div class="bg-white p-3" style="display:flex; justify-content: space-between;">
+            <p>Products : </p>
+            <p>{{allq}}</p>
+        </div>
+        <h3>Choose <span class="span-color">Address</span></h3>
+        <div class="address bg-white p-3">
+            <div class="address1">
+                <input type="radio" id="home_address" name="address" [(ngModel)]="selection" value="{{data.home_address}}" checked>
+                <label>{{data.home_address}}</label>
+            </div>
+            <div class="address2" *ngIf="data.office_address">
+                <input type="radio" id="office_address" name="address" [(ngModel)]="selection" value="{{data.office_address}}">
+                <label>{{data.office_address}}</label>
+            </div>
+            <div class="address3" *ngIf="data.other_address">
+                <input type="radio" id="other_address" name="address" [(ngModel)]="selection" value="{{data.other_address}}">
+                <label>{{data.other_address}}</label>
+            </div>
+            <p style="font-weight: 700;">Selected Option: <span class="text-danger">{{ selection }}</span></p>
+            <div class="address4" *ngIf="!data.office_address || !data.other_address">
+                <button class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Add new Address</button>
+                <div class="collapse multi-collapse" id="multiCollapseExample1">
+                    <form (submit)="saveChanges()">
+                        <div *ngIf="!data.office_address">
+                            <p>Office Address</p>
+                            <input type="text" id="office" name="office" [(ngModel)]="form.office">
+                        </div>
+                        <div *ngIf="!data.other_address">
+                            <p>Other Address</p>
+                            <input type="text" id="other" name="other" [(ngModel)]="form.other">
+                        </div>
+
+                        <button class="btn btn-primary" type="submit">Submit</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        <h3>Total <span class="span-color">Amount</span></h3>
+        <div class="totalamount">
+            <div class="bg-white p-3" style="display:flex; justify-content: space-between;">
+                <div>
+                    <strong>Total amount</strong>
+                    <strong>
+          <p class="mb-0">(including VAT)</p>
+        </strong>
+                </div>
+                <span><strong>{{total}}</strong></span>
+            </div>
+
+        </div>
+        <div class="checkout mt-4">
+            <button type="button" value="Go To Checkout" class="btn btn-primary btn-lg btn-block" (click)="currentorderold({orderID:orderId,userId:user,Price:total,quantity:allq,address:selection})">
+                Go To Checkout New
+              </button>
+        </div>
     </div>
-     <form><!--(ngSubmit)="currentorder(formdata) -->
-    <div class="card-body">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
-          Products
-          <span>{{allq}}</span>
-        </li>
-        <li class="list-group-item  justify-content-between align-items-center px-0">
-          <div class="d-flex">
-            <div class="m-2">
-              <input type="radio" name="a1" checked (click)="addre('')">old
-            </div>
-            <div class="m-2">
-              <input type="radio" name="a1" (click)="addre('new')">new
-            </div>
-          </div>
-          <div *ngIf="selection">
-              address
-              <span><input class="w-100" type="text" name="address" id="address" id="userInput" [(ngModel)]="userInput" (input)="onInputChange($event)"></span>
-            </div>
-            <!-- [(ngModel)]="formdata.address -->
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
-          <div>
-            <strong>Total amount</strong>
-            <strong>
-              <p class="mb-0">(including TAX)</p>
-            </strong>
-          </div>
-          <span><strong>{{total}}</strong></span>
-        </li>
-      </ul>
-      <div *ngIf="selection">
-        <button type="button" value="Go To Checkout" class="btn btn-primary btn-lg btn-block" (click)="currentorderold({orderID:orderId,userId:user,Price:total,quantity:allq,address:userInput})">
-          Go To Checkout 
-        </button>
-      </div>
-      <div *ngIf="!selection">
-          <button type="button" value="Go To Checkout" class="btn btn-primary btn-lg btn-block" (click)="currentorderold({orderID:orderId,userId:user,Price:total,quantity:allq,address:addressold})">
-            Go To Checkout 
-          </button>
-      </div>
-    </div>
-  </form>
-  </div>
 </div>
 <app-footer></app-footer>

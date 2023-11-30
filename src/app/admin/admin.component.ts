@@ -32,6 +32,8 @@ export class AdminComponent {
   @ViewChild('content1') content1!: ElementRef;
   @ViewChild('content2') content2!: ElementRef;
   trend: any[]=[];
+  trendplant:boolean = false;
+  message:string='';
 
 
   constructor(private plantservice: PlantserviceService,private router:Router) {}
@@ -103,7 +105,7 @@ export class AdminComponent {
 
   
   changeSection(section: string) {
-    this.order=false
+    this.order=false;
     this.selectedSection = section;
   }
 
@@ -171,6 +173,19 @@ export class AdminComponent {
   trending(id:any,id2:any){
     this.plantservice.TrendingPlants(id,id2).subscribe((res)=>{
        console.log(res);
+       if(res){
+        this.trendplant = true;
+        this.message = 'added trending plant';
+        this.alltrendingplants();
+        setTimeout(() => {
+          this.message ='';
+          this.trendplant = false;
+        }, 3000);
+      }
+       else{
+        this.trendplant = false;
+        this.message='';
+       }
      })
    }
  
