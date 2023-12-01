@@ -244,8 +244,11 @@ getcurrentorder(data:any):Observable<any> {
   return this.http.post(`${this.url}/Apis/allgetcurrentorder`,data);
 }
 
-alluser():Observable<any> {
-  return this.http.get(`${this.url}/Apis/alluser`);
+Alluser():Observable<any>{
+  return this.http.get(`${this.url}/Apis/Alluser`);
+}
+admin(id:any,str:String){
+  return this.http.post(`${this.url}/Apis/adminrole`,{id:id,str:str});
 }
 
 pastorder(data:any):Observable<any> {
@@ -321,5 +324,10 @@ getplantFamliy(id:string | null): Observable<any> {
 getplantid(id:string | null): Observable<any> {  
   return this.http.get(`${this.url}/Apis/plantid/${id}`);
 }
+// invoice
+invoice(): Observable<any> {  
+  return this.http.get(`${this.url}/Apis/pdf`);
+}
+
 
 }

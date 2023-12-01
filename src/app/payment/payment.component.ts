@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PlantserviceService } from 'src/service/plantservice.service';
@@ -13,7 +14,7 @@ export class PaymentComponent implements OnInit {
   cf_payment_id: string = ''
   id!: string | null;
   
-constructor(private plantservice: PlantserviceService, private route: ActivatedRoute) { }
+constructor(private plantservice: PlantserviceService, private route: ActivatedRoute, private http: HttpClient) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -38,4 +39,30 @@ constructor(private plantservice: PlantserviceService, private route: ActivatedR
     )
   }
   
+ downloadPdf() {
+  this.http.get('http://localhost:3000/Apis/pdf', { responseType: 'arraybuffer' })
+    .subscribe(data => {
+      this.handlePdfDownload(data);
+    });
+}
+
+handlePdfDownload(pdfData: ArrayBuffer) {
+  const blob = new Blob([pdfData], { type: 'application/pdf' });
+  const url = URL.createObjectURL(blob);
+
+  // Create a link element
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = 'order-summary.pdf';
+
+  // Append the link to the document and trigger the click event
+  document.body.appendChild(link);
+  link.click();
+
+  // Clean up the link element
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
+}
+
+
 }

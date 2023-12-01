@@ -1,13 +1,16 @@
 <app-header></app-header>
 
-<div class="container mt-5">
-    <div class="card">
+<div class="container" >
+    <div class="card" >
         <div class="card-header bg-primary text-white">
             <h3>Order Details</h3>
         </div>
         <div class="card-body" *ngIf="order_id">
             <p class="mb-2"><b>Order ID:</b> {{ order_id }}</p>
             <p class="mb-2"><b>Transaction ID:</b> {{ cf_payment_id }}</p>
+            <button class="btn" (click)="downloadPdf()">
+                invoice
+            </button>
         </div>
         <div *ngIf="!order_id">
             <h2 style="color: red;display: flex;justify-content: center;padding: 1%;">payment faild!</h2>
@@ -18,11 +21,11 @@
         
     </div>
 
-    <div *ngIf="payment.card" class="card mt-3">
+    <div *ngIf="payment.card" class="card mt-3" >
         <div class="card-header bg-success text-white">
             <h3>Card Payment</h3>
         </div>
-        <div class="card-body">
+        <div class="card-body" >
             <!-- Add Bootstrap classes to each paragraph for styling -->
             <p class="mb-1"><b>Channel:</b> {{ payment.card.channel }}</p>
             <p class="mb-1"><b>Card Number:</b> {{ payment.card.card_number }}</p>

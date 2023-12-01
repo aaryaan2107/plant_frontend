@@ -28,27 +28,39 @@ export class AdminComponent {
   success: String = '';
   selectedSection: string = 'home';
   current:any[]=[];
-  alluser:any[]=[];
+  alluser:any;
   @ViewChild('content1') content1!: ElementRef;
   @ViewChild('content2') content2!: ElementRef;
   trend: any[]=[];
   trendplant:boolean = false;
   message:string='';
+  selection:any;
 
 
   constructor(private plantservice: PlantserviceService,private router:Router) {}
 
-  navOpen: boolean = false;
+  navOpen: boolean = true;
 
   ngOnInit(): void {
     this.getprofile();
-    this.plantservice.alluser().subscribe(
+   this.allusers();
+    this.allplants()
+    this.alltrendingplants()
+  }
+  addadmin(id:any,str:String){
+    this.plantservice.admin(id,str).subscribe((res)=>{
+    if(res){
+      this.message = 'added admin successfull..';
+        this.allusers();
+    }
+    })
+  }
+  allusers(){
+    this.plantservice.Alluser().subscribe(
       (user) => {
         this.alluser = user;
       }
     )
-    this.allplants()
-    this.alltrendingplants()
   }
   
   allplants()
