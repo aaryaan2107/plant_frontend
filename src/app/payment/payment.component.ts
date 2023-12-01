@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { IpService } from 'src/service/ip.service';
 import { PlantserviceService } from 'src/service/plantservice.service';
 
 @Component({
@@ -12,14 +13,17 @@ export class PaymentComponent implements OnInit {
   payment: any;
   order_id: string = ''
   cf_payment_id: string = ''
-  id!: string | null;
+  id!: string | null; 
+  url:any
   
-constructor(private plantservice: PlantserviceService, private route: ActivatedRoute, private http: HttpClient) { }
+constructor(private plantservice: PlantserviceService, private route: ActivatedRoute, private http: HttpClient,private ipservice:IpService) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.id = params.get('id');      
     });
+    this.url = this.ipservice.localurl();
+  
 
     this.plantservice.getPayment(this.id).subscribe(
       (res) => {
@@ -40,7 +44,7 @@ constructor(private plantservice: PlantserviceService, private route: ActivatedR
   }
   
  downloadPdf() {
-  this.http.get('http://localhost:3000/Apis/pdf', { responseType: 'arraybuffer' })
+  this.http.get(this.url+'/Apis/pdf', { responseType: 'arraybuffer' })
     .subscribe(data => {
       this.handlePdfDownload(data);
     });
