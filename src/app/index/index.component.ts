@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PlantserviceService } from 'src/service/plantservice.service';
 
 @Component({
   selector: 'app-index',
@@ -6,7 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./index.component.scss']
 })
 export class IndexComponent {
-
+  trendingplant:boolean = true;
+  trending:any[]=[];
   Allfilter=
   [
     {
@@ -38,6 +40,12 @@ export class IndexComponent {
   
 
   isRightNavbarVisible: boolean = false;
+  constructor(private plantservice: PlantserviceService) { }
+
+  ngOnInit()
+  {
+    this.trendd();
+  }
 
   toggleRightNavbar()
    {
@@ -49,4 +57,32 @@ export class IndexComponent {
     document.body.classList.remove('no-scroll');
   }
 }
+
+
+chunkArray(array: any[], chunkSize: number): any[][] {
+  const result = [];
+  for (let i = 0; i < array.length; i += chunkSize) {
+    result.push(array.slice(i, i + chunkSize));
+  }
+  
+
+  return result;
 }
+
+
+
+trendd(){ 
+  this.plantservice.trending().subscribe((res)=>{
+    this.trending = res;
+ if(res.length<1){
+    this.trendingplant = false;
+    console.log('h');
+    
+ }
+    
+  })
+ }
+
+}
+
+

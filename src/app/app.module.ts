@@ -33,7 +33,39 @@ import { AddplantComponent } from './addplant/addplant.component';
 import { PaymentComponent } from './payment/payment.component';
 import { OrderlistComponent } from './orderlist/orderlist.component';
 import { LoaderComponent } from './loader/loader.component';
+import { RouterModule,Routes } from '@angular/router';
+import { AuthGuard } from './auth.guard';
 
+
+const routes: Routes = [
+  {path:'',component:IndexComponent},
+  {path:'header',component:HeaderComponent},
+  {path:'loader',component:LoaderComponent},
+  {path:'plants',component:PlantComponent},
+  {path:'plants/:code',component:PlantComponent},
+  {path:'contact-us',component:ContactUsComponent},
+  {path:'index',component:IndexComponent},
+  {path:'plantinfo2/:id',component:PlantInfo2Component},
+  {path:'plantinfo1/:id',component:PlantInfo1Component},
+  {path:'plantinfo3/:id',component:PlantInfo3Component},
+  {path:'plantinfo4/:id',component:PlantInfo4Component},
+  {path:'plantinfo5/:id',component:PlantInfo5Component},
+  {path:'plantinfo6/:id',component:PlantInfo6Component,},
+  {path:'about',component:AboutComponent},
+  {path:'login',component:LoginComponent},
+  {path:'signup',component:SignupComponent},
+  {path:'user',component:UserprofileComponent,canActivate:[AuthGuard]},
+  {path:'cart',component:CartComponent},
+  {path:'checkout',component:CheckoutComponent,canActivate:[AuthGuard]},
+  {path:'wishlist',component:WishlistComponent,canActivate:[AuthGuard]},
+  {path:'order',component:CurrentorderComponent,canActivate:[AuthGuard]},
+  {path:'admin',component:AdminComponent, canActivate: [AuthGuard], data: { expectedRole: 'admin' } },
+  {path:'admin/addplant',component:AddplantComponent,canActivate: [AuthGuard], data: { expectedRole: 'admin' }},
+  {path :'orderlist',component:OrderlistComponent,canActivate: [AuthGuard]},
+  {path:'orderlist/payment/:id',component:PaymentComponent,canActivate:[AuthGuard]},
+  {path:'**',component:NotfoundComponent},
+ 
+];
 
 @NgModule({
   declarations: [
@@ -71,8 +103,13 @@ import { LoaderComponent } from './loader/loader.component';
     AppRoutingModule,
     HttpClientModule,
     QRCodeModule,
-    BrowserModule, FormsModule, Ng2SearchPipeModule,NgxPaginationModule
+    BrowserModule, 
+    FormsModule,
+     Ng2SearchPipeModule,
+     NgxPaginationModule,
+     RouterModule.forRoot(routes, { useHash: true })
   ],
+  exports: [RouterModule],
   providers: [],
   bootstrap: [AppComponent]
 })

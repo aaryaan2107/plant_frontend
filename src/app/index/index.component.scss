@@ -96,3 +96,36 @@
 li {
   list-style: none;
 }
+
+
+.carousel2_1
+{
+  display: none;
+}
+
+.carousel2_2
+{
+  display: block;
+}
+@media (max-width:768px) {
+  .carousel2_1
+{
+  display: block;
+}
+
+.carousel2_2
+{
+  display: none;
+}
+.carousel2_3
+{
+  padding-left: 3%;
+}
+
+.carousel2_1
+{
+  height: 10%;
+  // width: 15%;
+}
+
+}

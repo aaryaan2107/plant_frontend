@@ -1,6 +1,6 @@
 <app-header></app-header>
 <section class="plant_section layout_padding " style="background-color: rgba(236, 236, 236,0.7);">
-  <div class="main">
+  <!-- <div class="main">
     <div class="f1" *ngFor="let filter of Allfilter">
         <div class="filter">
             <div [routerLink]="filter.link">
@@ -9,7 +9,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
   <div class="container">
 
     <div class="heading_container heading_center">
@@ -55,6 +55,63 @@
   </button>
 </div>
 
+<div *ngIf="trendingplant" class="carousel2_2">
+  <h2 style="text-align: center; margin-top: 30px;">Trending Plants</h2>
+  <div id="plantSlider" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+          <div class="carousel-item " *ngFor="let plantsChunk of chunkArray(trending, 4); let i=index" [class.active]="i===0">
+              <div class="row">
+                  <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let plant of plantsChunk">
+                      <a routerLink="/plantinfo1/{{plant.ID}}" style="text-decoration: none; display: flex; text-align: center;justify-content: center;color: black;">
+                          <div style="width: 250px; height: 250px;">
+                              <img [src]="plant.Photo_1" [alt]="plant.Common_Name" width="80%" height="80%" style="border-radius: 150px;">
+                              <p style="margin-top: 30px;">{{plant.Botanical_Name}}</p>
+                          </div>
+                      </a>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <a class="carousel-control-prev" href="#plantSlider" role="button" data-slide="prev" style="z-index:0; width: 0">
+          <span class="	fa fa-chevron-left" style="color: black; font-size: 40px; margin-left: 0px;" aria-hidden="true"></span>
+
+      </a>
+      <a class="carousel-control-next" href="#plantSlider" role="button" data-slide="next" style="z-index:0; width: 0; ">
+          <span class="	fa fa-chevron-right" style="color: black; font-size: 40px; margin-left:0px ; z-index:-1;"></span>
+
+      </a>
+  </div>
+</div>
+
+<!-- mobile view -->
+
+<div *ngIf="trendingplant" class="carousel2_1">
+  <h2 style="text-align: center; margin-top: 50px;">Trending Plants</h2>
+  <div id="plantSlider2" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+          <div class="carousel-item carousel2_3" *ngFor="let plantsChunk of chunkArray(trending, 1); let i=index" [class.active]="i===0">
+              <div class="row">
+                  <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let plant of plantsChunk">
+                      <a routerLink="/plantinfo1/{{plant.ID}}" style="text-decoration: none; display: flex; text-align: center;justify-content: center;color: black;">
+                          <div style="width: 250px; height: 250px;">
+                              <img [src]="plant.Photo_1" [alt]="plant.Common_Name" width="80%" height="80%" style="border-radius: 150px;">
+                              <p style="margin-top: 20px;">{{plant.Botanical_Name}}</p>
+                          </div>
+                      </a>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <a class="carousel-control-prev" href="#plantSlider2" role="button" data-slide="prev" style="z-index:0;">
+          <span class="	fa fa-chevron-left" style="color: black; font-size: 40px; " aria-hidden="true"></span>
+
+      </a>
+      <a class="carousel-control-next" href="#plantSlider2" role="button" data-slide="next" style="z-index:0;">
+          <span class="	fa fa-chevron-right" style="color: black; font-size: 40px;  z-index:-1;"></span>
+
+      </a>
+  </div>
+</div>
 
 
 

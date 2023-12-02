@@ -98,7 +98,7 @@
             <!-- pc view -->
 
             <div *ngIf="trendingplant" class="carousel2_2">
-                <h2 style="text-align: center; margin-bottom: 30px;">Trending Plants</h2>
+                <h2 style="text-align: center; margin-bottom: 30px;">Trending <span style="color: #81b214;">Plants</span></h2>
                 <div id="plantSlider" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item " *ngFor="let plantsChunk of chunkArray(trending, 4); let i=index" [class.active]="i===0">
@@ -128,7 +128,7 @@
 <!-- mobile view -->
             
             <div *ngIf="trendingplant" class="carousel2_1">
-                <h2 style="text-align: center; margin-bottom: 30px;">Trending Plants</h2>
+                <h2 style="text-align: center; margin-bottom: 30px;">Trending <span style="color: #81b214;">Plants</span></h2>
                 <div id="plantSlider2" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item carousel2_3" *ngFor="let plantsChunk of chunkArray(trending, 1); let i=index" [class.active]="i===0">
@@ -137,7 +137,7 @@
                                     <a routerLink="/plantinfo1/{{plant.ID}}" style="text-decoration: none; display: flex; text-align: center;justify-content: center;color: black;">
                                         <div style="width: 250px; height: 250px;">
                                             <img [src]="plant.Photo_1" [alt]="plant.Common_Name" width="80%" height="80%" style="border-radius: 150px;">
-                                            <h3 style="margin-top: 20px;">{{plant.Botanical_Name}}</h3>
+                                            <p style="margin-top: 20px;">{{plant.Botanical_Name}}</p>
                                         </div>
                                     </a>
                                 </div>
@@ -155,9 +155,10 @@
                 </div>
             </div>
 
-            <div class="heading_center">
 
-              <h2 style="display: flex;justify-content: center;">{{a || 'Our'}} <span style="margin-left: 0.5%;"> Plants</span> </h2>
+            <div class="heading_center" style="margin-top: 50px;">
+
+              <b><h2 style="display: flex;justify-content: center;">{{a || 'Our'}} <span style="margin-left: 0.5%; color: #81b214;"> Plants</span> </h2></b>
                 <div class="alert alert-primary" role="alert" id="alert" *ngIf="addcart">
                     <div>{{addcart}}<span class="text-danger" style="cursor: pointer;" routerLink="/cart">View Cart</span></div>
                 </div>
@@ -201,7 +202,7 @@
             </div>
         </div>
 
-        <div class="mt-5">
+        <div class="mt-5" *ngIf="!loading2">
             <!-- <pagination-controls (pageChange)="p = $event" style="display: flex; justify-content: center;"></pagination-controls> -->
 
             <div *ngIf="!searchdata && !filter" class="pagination container p-5 d-flex" style="justify-content: center; align-items: center;">

@@ -122,7 +122,7 @@
                   (click)="wishlist({productId:plant.ID,userId:userID,Photo_1:plant.Photo_1,Common_Name:plant.Common_Name,Botanical_Name:plant.Botanical_Name,Price:plant.Price})">
                   <i class="fa fa-heart mb-1 fix"></i>
               </a>
-              <a routerLink="/plantinfo1/{{plant.ID}}" style="text-decoration: none;">
+              <a routerLink="/plants/plantinfo1/{{plant.ID}}" style="text-decoration: none;">
                   <div class="img-box">
                       <img [src]="plant.Photo_1" [alt]="plant.Common_Name">
                   </div>
