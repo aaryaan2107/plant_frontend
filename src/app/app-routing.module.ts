@@ -26,6 +26,7 @@ import { PaymentComponent } from './payment/payment.component';
 import { OrderlistComponent } from './orderlist/orderlist.component';
 import { HeaderComponent } from './header/header.component';
 import { LoaderComponent } from './loader/loader.component';
+import { OrderinfoComponent } from './orderinfo/orderinfo.component';
 
 
 
@@ -56,6 +57,7 @@ const routes: Routes = [
   {path:'admin',component:AdminComponent, canActivate: [AuthGuard], data: { expectedRole: 'admin' } },
   {path:'admin/addplant',component:AddplantComponent,canActivate: [AuthGuard], data: { expectedRole: 'admin' }},
   {path :'orderlist',component:OrderlistComponent,canActivate: [AuthGuard]},
+  {path :'orderinfo/:id',component:OrderinfoComponent,canActivate: [AuthGuard]},
   {path:'orderlist/payment/:id',component:PaymentComponent,canActivate:[AuthGuard]},
   {path:'**',component:NotfoundComponent},
  

@@ -12,12 +12,7 @@
     background-color: rgb(0, 255, 106,0.1);
 }
 
-.search-hero 
-{
-    max-width: 400px;
-    padding-bottom: 50px;
-    margin:auto;
-  }
+
   
   .form-control {
     padding: 20px;
@@ -29,16 +24,6 @@
   }
 
   
-.load-more{
-  background-color:#000;
-  color:#fff !important;
-  margin-left: 610px;
-  margin-bottom: 100px;
-  padding:5px 10px;
-  border-radius:4px;
-  font-size:20px;
-  display:inline-block;
-}
 
 
 
@@ -226,7 +211,7 @@ transition: all 0.3s ease-in-out;
 }
 
 /* Media query to show the horizontal navbar on larger screens */
-@media (min-width: 768px) {
+@media (min-width: 959px) {
   .sidenav {
     display: none; /* Hide the sidebar on larger screens */
   }
@@ -249,4 +234,9 @@ label.logo{
   padding: 0 100px;
   font-weight: bold;
   float: left;
+}
+
+
+@media (min-width:600px) and (max-width:1200px) {
+  
 }

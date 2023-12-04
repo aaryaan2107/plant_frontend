@@ -328,6 +328,11 @@ getplantid(id:string | null): Observable<any> {
 invoice(): Observable<any> {  
   return this.http.get(`${this.url}/Apis/pdf`);
 }
-
+orderinfo(id:string | null): Observable<any> {  
+  const headers = {
+    'Authorization':"Bearer " + localStorage.getItem('token')
+  }
+  return this.http.get(`${this.url}/Apis/orderinfo/${id}`,{headers:headers});
+}
 
 }

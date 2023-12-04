@@ -1,0 +1,96 @@
+<body>
+    <app-header></app-header>
+    <div class="main-content">
+        <div class="card card-1 ">
+            <div class="card-header bg-white ">
+                <div class="media flex-sm-row flex-column-reverse justify-content-between ">
+                    <div class="col my-auto ">
+                        <h4 class="mb-0 ">Thanks for your Order.</h4>
+                    </div>
+
+                </div>
+            </div>
+            <div class="card-body ">
+                <div class="">
+                    <div class="row justify-content-between ">
+                        <div class="col-auto ">
+                            <h4 class="color-1 mb-0 change-color ">Order No.</h4>
+                        </div>
+                        <div class="col-auto ">
+                            <h4>{{id}}</h4>
+                        </div>
+                    </div>
+                    <div class="row justify-content-between ">
+                        <div class="col-auto ">
+                            <h4 class="color-1 mb-0 change-color ">Order Date</h4>
+                        </div>
+                        <div class="col-auto ">
+                            <h4>{{date}}</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="row ">
+
+                </div>
+
+                <div class="row mt-5 ">
+                    <div class="col ">
+                        <div class="row justify-content-between ">
+                            <div class="col-auto ">
+                                <p class="mb-1 text-dark "><b>Order Details</b></p>
+                            </div>
+                            <div class="flex-sm-col text-right col ">
+                                <p class="mb-1 "><b>Total</b></p>
+                            </div>
+                            <div class="flex-sm-col col-auto ">
+                                <p class="mb-1 ">&#8377;{{Price}}</p>
+                            </div>
+                        </div>
+                        <div class="row justify-content-between ">
+
+                        </div>
+                        <div class="row justify-content-between ">
+                            <!-- <div class="flex-sm-col text-right col "><p class="mb-1 "><b>GST 18%</b></p></div>
+                        <div class="flex-sm-col col-auto "><p class="mb-1 ">843</p></div> -->
+                        </div>
+                        <div class="row justify-content-between ">
+                            <!-- <div class="flex-sm-col text-right col "><p class="mb-1 "><b>Delivery Charges</b></p></div>
+                        <div class="flex-sm-col col-auto "><p class="mb-1 ">Free</p></div> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="row invoice ">
+                    <div class="col ">
+                        <p class="mb-1 "> Number of Item : {{nitem}}</p>
+                        <p class="mb-1 ">Order Status : {{statusbar}}</p>
+                        <p class="mb-1 ">Delivery Address : {{address}} </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class=" card card2 " style="overflow-y: scroll; height: 500px;">
+            <div class="card-body" *ngFor="let o of item">
+                <div class="media ">
+                    <div class="sq align-self-center "> <img
+                            class="img-fluid my-auto align-self-center mr-2 mr-md-4 pl-0 p-0 m-0 "
+                            [src]="o.Photo_1" width="135 " height="135 " /> </div>
+                    <div class="media-body my-auto text-right ">
+                        <div class="row my-auto flex-column flex-md-row ">
+                            <div class="col my-auto "> <small class="mb-0 ">{{o.Common_Name}} </small> </div>
+                            <!-- <div class="col-auto my-auto "> <small> </small></div> -->
+                            <div class="col my-auto "> <small>Price : {{o.Price}}</small></div>
+                            <div class="col my-auto "> <small>Qty : {{o.quantity}}</small></div>
+                            <div class="col my-auto ">
+                                <h6 class="mb-0 ">&#8377; {{o.Price*o.quantity}}</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            </div>
+        </div>
+    </div>
+
+    <app-footer></app-footer>
+</body>

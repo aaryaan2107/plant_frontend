@@ -35,6 +35,7 @@ import { OrderlistComponent } from './orderlist/orderlist.component';
 import { LoaderComponent } from './loader/loader.component';
 import { RouterModule,Routes } from '@angular/router';
 import { AuthGuard } from './auth.guard';
+import { OrderinfoComponent } from './orderinfo/orderinfo.component';
 
 
 const routes: Routes = [
@@ -62,6 +63,7 @@ const routes: Routes = [
   {path:'admin',component:AdminComponent, canActivate: [AuthGuard], data: { expectedRole: 'admin' } },
   {path:'admin/addplant',component:AddplantComponent,canActivate: [AuthGuard], data: { expectedRole: 'admin' }},
   {path :'orderlist',component:OrderlistComponent,canActivate: [AuthGuard]},
+  {path :'orderinfo/:id',component:OrderinfoComponent,canActivate: [AuthGuard]},
   {path:'orderlist/payment/:id',component:PaymentComponent,canActivate:[AuthGuard]},
   {path:'**',component:NotfoundComponent},
  
@@ -95,6 +97,7 @@ const routes: Routes = [
     PaymentComponent,
     OrderlistComponent,
     LoaderComponent,
+    OrderinfoComponent,
 
 
   ],
