@@ -1,3 +1,13 @@
+.alert {
+    position: fixed;
+    top: 15%;
+    left: 79%;
+    background: linear-gradient(to right,  #42A341, #89d662);
+    // border: 0.7px solid green;
+    color: rgb(255, 255, 255);
+    font-weight: 300px;
+    z-index: 9999999;
+}
 
 @mixin aspect-ratio($width, $height) {
     position: relative;

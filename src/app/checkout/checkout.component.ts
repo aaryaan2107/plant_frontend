@@ -30,20 +30,10 @@ export class CheckoutComponent implements OnInit{
   }
   
   ngOnInit(){
-    this.plantservice.profile().subscribe((res)=>{
-      this.data = res.data;  
-      this.selection = this.data.home_address;   
-    })   
+    this.useradd();
     
     this.cartdata();
-    // console.log(this.calculateTotal());
-  
-    this.plantservice.profile().subscribe((res) => {
-      if (res.success) {
-        this.user = res.data._id;
-        this.addressold = res.data.address;
-      }
-    })
+
   
     this.plantservice.getorderid().subscribe(
       res => {
@@ -60,10 +50,8 @@ export class CheckoutComponent implements OnInit{
     this.userInput = event.target.value;
   }
   
-  
   saveChanges() {
   
-    
     const updatedUserData = {
       office_address: this.form.office,
       other_address: this.form.other
@@ -75,6 +63,7 @@ export class CheckoutComponent implements OnInit{
       (res) => {
        console.log(res);
        this.cartdata();
+       this.useradd();
       },
       (error) => {
         console.error('Error updating profile', error);
@@ -115,12 +104,20 @@ export class CheckoutComponent implements OnInit{
     this.plantservice.currentorder(cartdata).subscribe(
       res => {
         console.log(res);
-        window.location.href = res.paymentLink;
+        window.open(res.paymentLink,'_blank')
         this.cartdata();
       }
     )
   
   }
   
+ useradd(){
+  this.plantservice.profile().subscribe((res)=>{
+    this.data = res.data;  
+    this.selection = this.data.home_address;   
+    this.user = this.data._id;
+
+  }) 
+}
   
   }

@@ -12,11 +12,15 @@ export class HeaderComponent  implements OnInit{
   data:any;
   total!: number;
   item: any;
+  uname: any;
 
   constructor(private plantservice: PlantserviceService) { }
 
  ngOnInit() 
  {
+  this.plantservice.userdata().subscribe((res)=>{  
+    this.uname=res.name    
+        });
 
   if(!localStorage.getItem('token')){
     this.loggin = false;

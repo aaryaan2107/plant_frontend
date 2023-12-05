@@ -11,9 +11,21 @@
             <!-- <span  (click)="openNav()"><i class="fa fa-filter"></i></span>   -->
             <div class="search-hero">
                 <div class="row " style="display: flex; justify-content: center; align-items:center;">
-                    <input [(ngModel)]="searchQuery" class=" col-sm-10 form-control" placeholder="Enter plant name" />
+                    <input [(ngModel)]="searchQuery" (input)="realTimeSearch()" class=" col-sm-10 form-control" placeholder="Enter plant name" />
                     <button (click)="search()" class="col-sm-1.5 btn  " style="margin-left: -50px; z-index: 1; "><i class="fa fa-search fa-lg text-secondary" ></i></button>
+
+                    <!-- <select *ngIf="searchdata">
+                            <option *ngFor="let plant of this.serachplant">{{ plant.Common_Name }}</option>
+                        </select> -->
+
+                    <div class="dropdown" *ngIf="searchdata">
+                        <div class="bg-white" *ngFor="let plant of serachplant" style="width: 100%; background-color: red;">
+                            <button style="width: 21vw;" class="dropdown-item" type="button" routerLink="/plantinfo1/{{plant.ID}}">{{ plant.Common_Name }}</button>
+                        </div>
+                    </div>
+
                     <div style="float:right">
+                    
                         <div id="mySidenav2" class="sidenav">
                             <div style="display: flex;  flex-direction: row; gap:10px; flex-wrap: wrap; justify-content: center;">
                                 <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
@@ -96,7 +108,7 @@
             </div>
 
             <!-- pc view -->
-
+            <div class="mt-5" #target></div>
             <div *ngIf="trendingplant" class="carousel2_2">
                 <h2 style="text-align: center; margin-bottom: 30px;">Trending <span style="color: #81b214;">Plants</span></h2>
                 <div id="plantSlider" class="carousel slide" data-ride="carousel">
@@ -181,7 +193,7 @@
                                 </div>
                                 <div class="detail-box">
                                     <a href="#" style="text-decoration: none;">
-                          {{plant.Botanical_Name}}<span class="s">{{plant.Price}}</span>
+                          {{plant.Common_Name}}
                             </a>
 
                                     <!-- <h5>
@@ -189,8 +201,10 @@
                                     </h5> -->
                                 </div>
                             </a>
-                            <span class="spans" id="span" (click)="addtocart(plant.ID)"><a>Add to cart</a></span>
-
+                            <div class="class d-flex">
+                                <span class="spans" id="span" (click)="addtocart(plant.ID)"><a>Add to cart</a></span>
+                                <span class="price"><a>&#x20B9;{{plant.Price}}</a></span>
+                            </div>
                         </div>
 
                     </div><br><br>
@@ -201,29 +215,28 @@
                 <app-loader></app-loader>
             </div>
         </div>
-
         <div class="mt-5" *ngIf="!loading2">
             <!-- <pagination-controls (pageChange)="p = $event" style="display: flex; justify-content: center;"></pagination-controls> -->
 
             <div *ngIf="!searchdata && !filter" class="pagination container p-5 d-flex" style="justify-content: center; align-items: center;">
                 <span>Page {{ p1 }} of {{ getTotalPages() }}</span>
-                <button (click)="pages(p1 -1)" [disabled]="p1 === 1">Previous</button>
-                <button (click)="pages(p1 + 1)" [disabled]="p1 === getTotalPages()">Next</button>
+                <button (click)="pages(p1 - 1,target)" [disabled]="p1 === 1">Previous</button>
+                <button (click)="pages(p1 + 1,target)" [disabled]="p1 === getTotalPages()">Next</button>
             </div>
 
             <div *ngIf="searchdata && !filter">
                 <div class="pagination container p-5 d-flex" style="justify-content: center; align-items: center;">
                     <span>Page {{ p2 }} of {{ totalPages() }}</span>
-                    <button [disabled]="p2===1" (click)="changePage(p2 - 1) ">Previous</button>
-                    <button [disabled]="p2===totalPages() " (click)="changePage(p2 + 1) ">Next</button>
+                    <button [disabled]="p2 === 1" (click)="changePage(p2 - 1,target)">Previous</button>
+                    <button [disabled]="p2 === totalPages()" (click)="changePage(p2 + 1,target)">Next</button>
                 </div>
             </div>
 
             <div *ngIf="filter">
                 <div class="pagination container p-5 d-flex" style="justify-content: center; align-items: center;">
                     <span>Page {{ p3 }} of {{ totalPages2() }}</span>
-                    <button [disabled]="p3===1" (click)="changePage2(p3 - 1)">Previous</button>
-                    <button [disabled]="p3===totalPages2()" (click)="changePage2(p3 + 1)">Next</button>
+                    <button [disabled]="p3===1" (click)="changePage2(p3 - 1,target)">Previous</button>
+                    <button [disabled]="p3===totalPages2()" (click)="changePage2(p3 + 1,target)">Next</button>
                 </div>
             </div>
 

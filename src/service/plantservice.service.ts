@@ -218,6 +218,10 @@ getPlants(page: number,pageSize: number ): Observable<any> {
     return this.http.get(`${this.url}/Apis/search2?search=${query}`);
   }
 
+  searchPlants3(query:String )
+  {
+    return this.http.get(`${this.url}/Apis/search3?search=${query}`);
+  }
   
 filterPlants(filters: any,page: number,pageSize: number ): Observable<any> {
   return this.http.post(`${this.url}/Apis/filterPlants?page=${page}&pageSize=${pageSize}`, filters);
@@ -334,5 +338,13 @@ orderinfo(id:string | null): Observable<any> {
   }
   return this.http.get(`${this.url}/Apis/orderinfo/${id}`,{headers:headers});
 }
+
+userdata(): Observable<any> {
+  const headers = {
+    'Authorization':"Bearer " + localStorage.getItem('token')
+  }
+  return this.http.get(`${this.url}/Apis/username`, {headers:headers});
+}
+
 
 }

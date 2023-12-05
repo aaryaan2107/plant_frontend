@@ -40,7 +40,7 @@ export class PlantComponent  implements OnInit {
   totalPlants!: number ;
   totalPlantss!: number;
   totalPlants2!: number;
-  priceFilter: number = 0;
+  priceFilter: any = 0;
   page: number = 1;
   p : number = 1;
   p1:number=1;
@@ -55,6 +55,7 @@ export class PlantComponent  implements OnInit {
   a!:any;
   addcart: String = '';
   oneplants!:any;
+  serachplant:any;
   // b:String='Our';
   
   
@@ -87,6 +88,11 @@ export class PlantComponent  implements OnInit {
     
   }
 
+  scrollToElement(target:any): void {
+    
+   target.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+  }
+
 
    trendd(){ 
     this.plantservice.trending().subscribe((res)=>{
@@ -94,39 +100,10 @@ export class PlantComponent  implements OnInit {
    if(res.length<1){
       this.trendingplant = false;
       console.log('h');
-      
    }
       
     })
    }
-
-
-  
-
-
-   
-   
-
-
- 
-  
-  // get() {
-  //     this.plantservice.Allplant().subscribe((res) => {
-  //     this.totalPlants = res.length;
-  //     this.plants3 = res;
-  //     console.log(this.plants3);
-      
-  //     this.totalPlantss = this.totalPlants;  
-  //     this.loadPlants();
-  //   });
-  // }
-
-
-
-
-
-
-
 
        
   setDefaultFilter(){ 
@@ -179,9 +156,10 @@ console.log(filters);
       });
   }
   
-  changePage2(newPage: number) {
+  changePage2(newPage: number,target:any) {
     this.p3 = newPage;   
     this.filterPlants();
+    this.scrollToElement(target);
   }
 
   totalPages2(): number { 
@@ -280,6 +258,8 @@ console.log(filters);
     (res: any) => {
           this.totalPlants2 = res;
           console.log(this.totalPlants2);
+  
+          
       });
     this.searchdata = true;
     if (this.searchQuery.trim() !== '') {
@@ -293,6 +273,33 @@ console.log(filters);
      console.log('error');
     }
   }
+
+
+
+  
+                 
+  realTimeSearch() {
+  
+    if (this.searchQuery.trim() !== '') {
+      this.clearAllFilters();
+      this.plantservice.searchPlants(this.searchQuery, this.p2, this.pagesize2).subscribe((data: any) => {
+        this.serachplant = data;
+      });
+
+      this.plantservice.searchPlants3(this.searchQuery).subscribe(
+        (res: any) => {
+         this.serachplant = res;
+      
+              
+          });
+ 
+      this.searchdata = true;
+    } else {
+      this.searchdata = false;
+      console.log('error');
+    }
+  }
+
 
   chunkArray(array: any[], chunkSize: number): any[][] {
     const result = [];
@@ -311,10 +318,11 @@ totalPages(): number {
   return Math.ceil(this.totalPlants2 / this.pagesize2);
 }
 
-changePage(newPage: number) {
+changePage(newPage: number,target:any) {
   if (newPage >= 1 && newPage <= this.totalPages()) {
     this.p2 = newPage;
     this.search();
+    this.scrollToElement(target);
   }
 }
   deletewishlist(userId: string) {
@@ -331,7 +339,7 @@ changePage(newPage: number) {
   clearAllFilters() {
     this.closeNav();
     this.categoryFilter= '';
-   this.priceFilter = 0;
+   this.priceFilter  = '';
    this.ToxicityFilter   = '';
    this.MaintenanceFilter = '';
    this.ExposureFilter   = '';
@@ -389,9 +397,10 @@ changePage(newPage: number) {
   }
   */ 
 
-pages(newPage:number){
+pages(newPage:number,taget:any){
 this.p1 = newPage;
 this.loadPlants();
+this.scrollToElement(taget);
 }
 
 
@@ -399,47 +408,8 @@ getTotalPages(){
   return this.totalPlantss;
 }
 
-// getPageNumbers(){
-
-// }
 
 
-
-//   // nextPage() {
-  
-//   //   if (this.p < this.getTotalPages()) {
-//   //     this.p++;
-//   //     this.loadPlants();
-//   //   }
-//   //   else{
-//   //     console.log('error');
-//   //   }
-//   // }
-
-//   // prevPage() {
-//   //   if (this.p > 1) {
-//   //     this.p--;
-//   //     this.loadPlants();
-//   //   }
-//   // }
-
-//   // goToPage(page: number) {
-//   //   if (page >= 1 && page <= this.getTotalPages() && page !== this.p) {
-//   //      = page;
-      
-//   //   }
-//   // }
-
-//   // getTotalPages(): number {
-//   //   return Math.ceil(this.totalPlants / this.pageSize);
-//   // }
-
-//   // getPageNumbers(): number {
-//   //   const totalPages = this.getTotalPages();
-//   //   return totalPages;
-//   // }
 
 }
 
-
-  

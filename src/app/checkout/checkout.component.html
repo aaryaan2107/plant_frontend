@@ -28,11 +28,11 @@
                     <form (submit)="saveChanges()">
                         <div *ngIf="!data.office_address">
                             <p>Office Address</p>
-                            <input type="text" id="office" name="office" [(ngModel)]="form.office">
+                            <textarea type="text" id="office" name="office" [(ngModel)]="form.office" rows="3" cols="50" class="textarea"></textarea>
                         </div>
                         <div *ngIf="!data.other_address">
                             <p>Other Address</p>
-                            <input type="text" id="other" name="other" [(ngModel)]="form.other">
+                            <textarea type="text" id="other" name="other" [(ngModel)]="form.other" rows="3" cols="50" class="textarea" ></textarea>
                         </div>
 
                         <button class="btn btn-primary" type="submit">Submit</button>
