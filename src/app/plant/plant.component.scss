@@ -29,18 +29,6 @@
     font-family: FontAwesome;
   }
 
-  
-.load-more{
-  background-color:#000;
-  color:#fff !important;
-  margin-left: 610px;
-  margin-bottom: 100px;
-  padding:5px 10px;
-  border-radius:4px;
-  font-size:20px;
-  display:inline-block;
-}
-
 
 .go {
   height: 720px;
@@ -64,14 +52,7 @@
   animation: rotation 1s linear infinite;
 }
 
-@keyframes rotation {
-  0% {
-      transform: rotate(0deg);
-  }
-  100% {
-      transform: rotate(360deg);
-  }
-}
+
 
 .cat
 {
@@ -112,22 +93,7 @@
 
 /* toast.component.css */
 
-.toast {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: #333;
-  color: #fff;
-  padding: 15px;
-  border-radius: 5px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out;
-}
 
-.toast-show {
-  opacity: 1;
-}
 .res1{
   color: red;
   position: absolute;
@@ -143,16 +109,6 @@
   
 }
 
-::placeholder {
- color: #a09999;
- font-size: 18px;
-}
-
-
-li a {
-  text-decoration: none;
-  color: #2d2f31;
-}
 
 nav {
   width: 300px;
@@ -160,17 +116,6 @@ nav {
   margin: 40px auto;
 }
 
-.dropdown-btn {
-  padding: 15px;
-  background: #2d2f31;
-  color: white;
-  font-size: 1.2em;
-  font-variant: small-caps;
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
 @media (max-width:768px)
 {
   .dropdown-item
