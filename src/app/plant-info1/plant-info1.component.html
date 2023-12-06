@@ -62,7 +62,7 @@
             </div>
         </div>
 
-        <qrcode class="qrscan1 qrcode2" qrdata="cd/plantinfo1/{{u.ID}}" [width]="250" [errorCorrectionLevel]="'M'" ></qrcode>
+        <qrcode class="qrscan1 qrcode2" qrdata="{{this.qrurl}}/#/plantinfo1/{{u.ID}}" [width]="250" [errorCorrectionLevel]="'M'" ></qrcode>
 
         <!-- <div class="col-sm-3 btn btn-success" routerLink="/plants/plantinfo2/{{u.ID}}">More Info</div> -->
     </div>
@@ -96,7 +96,7 @@
       <div class="col-sm-3 btn p-1 btn-success "(click)="addtocart(u.ID)">Add to Cart <i class="m-2 fa fa-cart-plus"></i></div>
       </div>
      
-       <qrcode class="qrcode qrscan2 "  qrdata="`{{this.qrurl}}`/plantinfo1/{{u.ID}}" [width]="250" [errorCorrectionLevel]="'M'" ></qrcode> 
+       <qrcode class="qrcode qrscan2 "  qrdata="{{this.qrurl}}/#/plantinfo1/{{u.ID}}" [width]="250" [errorCorrectionLevel]="'M'" ></qrcode> 
     </div>
 
   </div>
