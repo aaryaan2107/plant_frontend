@@ -1,15 +1,15 @@
 <app-header></app-header>
 <section class="plant_section layout_padding " style="background-color: rgba(236, 236, 236,0.7);">
-  <!-- <div class="main">
+  <div class="main">
     <div class="f1" *ngFor="let filter of Allfilter">
-        <div class="filter">
-            <div [routerLink]="filter.link">
-                <img [src]="filter.src" style="border-radius: 50%;">
-                <h5 class="text">{{filter.title}}</h5>
-            </div>
+      <div class="filter">
+        <div [routerLink]="filter.link" class="">
+          <img [src]="filter.src" class="filter-img" style="border-radius: 50%;">
+          <h5 class="text cen" ngClass="{{filter.class}}">{{filter.title}}</h5>
         </div>
+      </div>
     </div>
-</div> -->
+  </div>
   <div class="container">
 
     <div class="heading_container heading_center">

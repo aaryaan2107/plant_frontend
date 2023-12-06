@@ -36,7 +36,14 @@ export class IndexComponent {
       "src": "../../assets/filter/foliage_plant.png",
       "link":"/plants/Fragrance"
     },
+    {
+      "title": "Not-Fragrance Plant",
+      "src": "../../assets/filter/foliage_plant.png",
+      "link":"/plants/Fragrance",
+      "class":'rescen'
+    },
   ];
+
   
 
   isRightNavbarVisible: boolean = false;

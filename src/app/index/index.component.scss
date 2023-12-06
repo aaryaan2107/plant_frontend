@@ -40,7 +40,18 @@
   animation: slideUp 2s forwards;
   // font-size: 4.0em;
 }
+.layout_padding{
+  padding-top: 10%;
+}
 
+.cen{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.rescen{
+  margin-left: 10%;
+}
 @keyframes slideUp {
   to {
       opacity: 1;
@@ -49,14 +60,21 @@
 }
 
 @media screen and (max-width: 768px) {
+  .rescen{
+    display: block;
+  }
   .main {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      margin-left: 100px;
+      gap: 35px;
+      grid-template-columns: repeat(2, 1fr);
+      margin-left: 4%;
   }
   .filter {
       flex-basis: calc(50% - 20px);
       margin: 10px 0;
+  }
+  .filter-img{
+    width: 90%;
   }
 }
 
@@ -96,7 +114,6 @@
 li {
   list-style: none;
 }
-
 
 .carousel2_1
 {

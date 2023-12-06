@@ -15,25 +15,26 @@ export class PaymentComponent implements OnInit {
   cf_payment_id: string = ''
   id!: string | null; 
   url:any
-  
+  a :boolean = true; 
 constructor(private plantservice: PlantserviceService, private route: ActivatedRoute, private http: HttpClient,private ipservice:IpService) { }
 
-  ngOnInit() {
-    this.route.paramMap.subscribe(params => {
-      this.id = params.get('id');      
-    });
-    this.url = this.ipservice.localurl();
-  
+ngOnInit() {
+  this.route.paramMap.subscribe(params => {
+    this.id = params.get('id');      
+  });
+  this.url=this.ipservice.localurl();
+  setTimeout(() => {
+    this.a = false;
+  }, 3000);
+  this.plantservice.getPayment(this.id).subscribe(
+    (res) => {
 
-    this.plantservice.getPayment(this.id).subscribe(
-      (res) => {
-
-        this.payment = res.data;
-        this.order_id = res.order_id;
-        this.cf_payment_id = res.cf_payment_id;
-      }
-    )
-  }
+      this.payment = res.data;
+      this.order_id = res.order_id;
+      this.cf_payment_id = res.cf_payment_id;
+    }
+  )
+}
 
   repayment(){    
     this.plantservice.getRePayment(this.id).subscribe(
@@ -44,6 +45,8 @@ constructor(private plantservice: PlantserviceService, private route: ActivatedR
   }
   
  downloadPdf() {
+  console.log(this.url);
+  
   this.http.get(this.url+'/Apis/pdf', { responseType: 'arraybuffer' })
     .subscribe(data => {
       this.handlePdfDownload(data);

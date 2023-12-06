@@ -1,78 +1,90 @@
-<app-header></app-header>
+<body>
+    <app-header></app-header>
+    <br>
+    <div *ngIf="a">
+        <app-loader></app-loader>
+    </div>
 
-<div class="container" >
-    <div class="card" >
-        <div class="card-header bg-primary text-white">
-            <h3>Order Details</h3>
-        </div>
-        <div class="card-body" *ngIf="order_id">
-            <p class="mb-2"><b>Order ID:</b> {{ order_id }}</p>
-            <p class="mb-2"><b>Transaction ID:</b> {{ cf_payment_id }}</p>
-            <button class="btn" (click)="downloadPdf()">
+    <div class="container mt-5" *ngIf="!a">
+        <div class="card">
+
+            <button class="btn btn-info" (click)="downloadPdf()">
                 invoice
             </button>
+
+            <div class="card-header bg-primary text-white">
+                <h3>Order Details</h3>
+            </div>
+            <div class="card-body" *ngIf="order_id">
+                <p class="mb-2"><b>Order ID:</b> {{ order_id }}</p>
+                <p class="mb-2"><b>Transaction ID:</b> {{ cf_payment_id }}</p>
+            </div>
+            <div *ngIf="!order_id">
+                <h2 style="color: red;display: flex;justify-content: center;padding: 1%;">payment faild!</h2>
+                <div style="display: flex;justify-content: center;padding: 1%;">
+                    <button class="btn btn-danger" style="padding: 1%;" (click)="repayment()">Re-Payment</button>
+                </div>
+            </div>
+
         </div>
-        <div *ngIf="!order_id">
-            <h2 style="color: red;display: flex;justify-content: center;padding: 1%;">payment faild!</h2>
-            <div style="display: flex;justify-content: center;padding: 1%;">
-                <button class="btn btn-danger" style="padding: 1%;" (click)="repayment()">Re-Payment</button>
+
+        <div *ngIf="payment.card" class="card mt-3">
+            <div class="card-header bg-success text-white">
+                <h3>Card Payment</h3>
+            </div>
+            <div class="card-body">
+                <!-- Add Bootstrap classes to each paragraph for styling -->
+                <p class="mb-1"><b>Channel:</b> {{ payment.card.channel }}</p>
+                <p class="mb-1"><b>Card Number:</b> {{ payment.card.card_number }}</p>
+                <p class="mb-1"><b>Card Network:</b> {{ payment.card.card_network }}</p>
+                <p class="mb-1"><b>Card Type:</b> {{ payment.card.card_type }}</p>
+                <p class="mb-1"><b>Card Country:</b> {{ payment.card.card_country }}</p>
+                <p class="mb-1"><b>Card Bank Name:</b> {{ payment.card.card_bank_name }}</p>
+                <p *ngIf="payment.card.card_network_reference_id" class="mb-1"><b>Card Network Reference ID:</b> {{
+                    payment.card.card_network_reference_id }}</p>
+                <p class="mb-1"><b>Card Sub Type:</b> {{ payment.card.card_sub_type }}</p>
             </div>
         </div>
-        
-    </div>
 
-    <div *ngIf="payment.card" class="card mt-3" >
-        <div class="card-header bg-success text-white">
-            <h3>Card Payment</h3>
+        <div *ngIf="payment.upi" class="card mt-3">
+            <div class="card-header bg-info text-white">
+                <h3>UPI Payment</h3>
+            </div>
+            <div class="card-body">
+                <p class="mb-1"><b>Channel:</b> {{ payment.upi.channel }}</p>
+                <p class="mb-1"><b>UPI ID:</b> {{ payment.upi.upi_id }}</p>
+            </div>
         </div>
-        <div class="card-body" >
-            <!-- Add Bootstrap classes to each paragraph for styling -->
-            <p class="mb-1"><b>Channel:</b> {{ payment.card.channel }}</p>
-            <p class="mb-1"><b>Card Number:</b> {{ payment.card.card_number }}</p>
-            <p class="mb-1"><b>Card Network:</b> {{ payment.card.card_network }}</p>
-            <p class="mb-1"><b>Card Type:</b> {{ payment.card.card_type }}</p>
-            <p class="mb-1"><b>Card Country:</b> {{ payment.card.card_country }}</p>
-            <p class="mb-1"><b>Card Bank Name:</b> {{ payment.card.card_bank_name }}</p>
-            <p *ngIf="payment.card.card_network_reference_id" class="mb-1"><b>Card Network Reference ID:</b> {{ payment.card.card_network_reference_id }}</p>
-            <p class="mb-1"><b>Card Sub Type:</b> {{ payment.card.card_sub_type }}</p>
-        </div>
-    </div>
 
-    <div *ngIf="payment.upi" class="card mt-3">
-        <div class="card-header bg-info text-white">
-            <h3>UPI Payment</h3>
+        <div *ngIf="payment.app" class="card mt-3">
+            <div class="card-header bg-warning text-white">
+                <h3>App Payment</h3>
+            </div>
+            <div class="card-body">
+                <p class="mb-1"><b>Channel:</b> {{ payment.app.channel }}</p>
+                <p *ngIf="payment.app.phone" class="mb-1"><b>Phone:</b> {{ payment.app.phone }}</p>
+                <p class="mb-1"><b>Provider:</b> {{ payment.app.provider }}</p>
+            </div>
         </div>
-        <div class="card-body">
-            <p class="mb-1"><b>Channel:</b> {{ payment.upi.channel }}</p>
-            <p class="mb-1"><b>UPI ID:</b> {{ payment.upi.upi_id }}</p>
-        </div>
-    </div>
 
-    <div *ngIf="payment.app" class="card mt-3">
-        <div class="card-header bg-warning text-white">
-            <h3>App Payment</h3>
-        </div>
-        <div class="card-body">
-            <p class="mb-1"><b>Channel:</b> {{ payment.app.channel }}</p>
-            <p *ngIf="payment.app.phone" class="mb-1"><b>Phone:</b> {{ payment.app.phone }}</p>
-            <p class="mb-1"><b>Provider:</b> {{ payment.app.provider }}</p>
+        <div *ngIf="payment.netbanking" class="card mt-3">
+            <div class="card-header bg-danger text-white">
+                <h3>Netbanking Payment</h3>
+            </div>
+            <div class="card-body">
+                <p class="mb-1"><b>Channel:</b> {{ payment.netbanking.channel }}</p>
+                <p class="mb-1"><b>Netbanking Bank Code:</b> {{ payment.netbanking.netbanking_bank_code }}</p>
+                <p class="mb-1"><b>Netbanking Bank Name:</b> {{ payment.netbanking.netbanking_bank_name }}</p>
+                <p *ngIf="payment.netbanking.netbanking_ifsc" class="mb-1"><b>Netbanking IFSC:</b> {{
+                    payment.netbanking.netbanking_ifsc }}</p>
+                <p *ngIf="payment.netbanking.netbanking_account_number" class="mb-1"><b>Netbanking Account Number:</b>
+                    {{ payment.netbanking.netbanking_account_number }}</p>
+            </div>
         </div>
     </div>
 
-    <div *ngIf="payment.netbanking" class="card mt-3">
-        <div class="card-header bg-danger text-white">
-            <h3>Netbanking Payment</h3>
-        </div>
-        <div class="card-body">
-            <p class="mb-1"><b>Channel:</b> {{ payment.netbanking.channel }}</p>
-            <p class="mb-1"><b>Netbanking Bank Code:</b> {{ payment.netbanking.netbanking_bank_code }}</p>
-            <p class="mb-1"><b>Netbanking Bank Name:</b> {{ payment.netbanking.netbanking_bank_name }}</p>
-            <p *ngIf="payment.netbanking.netbanking_ifsc" class="mb-1"><b>Netbanking IFSC:</b> {{ payment.netbanking.netbanking_ifsc }}</p>
-            <p *ngIf="payment.netbanking.netbanking_account_number" class="mb-1"><b>Netbanking Account Number:</b> {{ payment.netbanking.netbanking_account_number }}</p>
-        </div>
+    <div class="container mt-3">
+        <input class="btn btn-primary" type="button" value="Home" routerLink="/index">
     </div>
-</div>
+</body>
 
-<div class="container mt-3">
-    <input class="btn btn-primary" type="button" value="Home" routerLink="/index">
-</div>

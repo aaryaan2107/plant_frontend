@@ -330,6 +330,7 @@ getplantid(id:string | null): Observable<any> {
 }
 // invoice
 invoice(): Observable<any> {  
+
   return this.http.get(`${this.url}/Apis/pdf`);
 }
 orderinfo(id:string | null): Observable<any> {  

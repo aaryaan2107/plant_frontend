@@ -64,8 +64,7 @@
                                   <option value="Pro">Pro</option>
                                 </select>
                                 </div>
-                                <div>
-                                    <!-- <label for="price">price:</label> -->
+                                <!-- <div>
                                     <select id="price" [(ngModel)]="priceFilter" class="custom-select">
                                   <option value="">Select price </option>
                                   <option value="50">0-50</option>
@@ -74,7 +73,7 @@
                               
                               
                                 </select>
-                                </div>
+                                </div> -->
                                 <div>
                                     <!-- <label for="Exposure">Exposure:</label> -->
                                     <select id="Exposure" [(ngModel)]="ExposureFilter" class="custom-select">
@@ -98,7 +97,7 @@
                                 <div style="display: flex; justify-content: space-around;">
                                     <button (click)="filterPlants()" class="btn btn-success" style="border-radius:10px; margin-right: 8px;"><i
                     class="fa fa-filter "></i>filter</button>
-                                    <button (click)="clearAllFilters()" class="btn btn-secondary" style="border-radius:10px;"><i class="fa fa-close"></i>clear
+                                    <button (click)="clearAllFilters()" class="btn btn-success" style="border-radius:10px;"><i class="fa fa-close"></i>clear
                   all</button>
                                 </div>
                             </div>
@@ -172,7 +171,7 @@
 
               <b><h2 style="display: flex;justify-content: center;">{{a || 'Our'}} <span style="margin-left: 0.5%; color: #81b214;"> Plants</span> </h2></b>
                 <div class="alert alert-primary" role="alert" id="alert" *ngIf="addcart">
-                    <div>{{addcart}}<span class="text-danger" style="cursor: pointer;" routerLink="/cart">View Cart</span></div>
+                    <div>{{addcart}}<span class="text-danger" style="cursor: pointer; " routerLink="/cart">   View Cart</span></div>
                 </div>
             </div>
             <div class="go" *ngIf="!loading2">

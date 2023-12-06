@@ -37,4 +37,17 @@ export class OrderinfoComponent implements OnInit {
         this.nitem = this.item.length
     });
   }
+  invoice()
+  {
+    this.plantservice.invoice().subscribe(
+      (res) => {
+        console.log(res);
+        
+      },
+      (error)=>{
+        console.log(error);
+        
+      }
+    )
+  }
 }

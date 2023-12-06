@@ -307,6 +307,8 @@ padding-left: 7%;
   color: rgb(255, 255, 255);
   font-weight: 300px;
   z-index: 9999999;
+
+  // width: 50%;
 }
 
 
@@ -338,6 +340,12 @@ padding-left: 7%;
 {
   height: 10%;
   // width: 15%;
+}
+
+.alert
+{
+  left:10%;
+  width: 100%;
 }
 }
 
