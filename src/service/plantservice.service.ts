@@ -346,6 +346,23 @@ userdata(): Observable<any> {
   }
   return this.http.get(`${this.url}/Apis/username`, {headers:headers});
 }
-
+plantinfo1(id:string | null): Observable<any> {  
+  return this.http.get(`${this.url}/Apis/plantinfo1/${id}`);
+}
+plantinfo2(id:string | null): Observable<any> {  
+  return this.http.get(`${this.url}/Apis/plantinfo2/${id}`);
+}
+plantinfo3(id:string | null): Observable<any> {  
+  return this.http.get(`${this.url}/Apis/plantinfo3/${id}`);
+}
+plantinfo4(id:string | null): Observable<any> {  
+  return this.http.get(`${this.url}/Apis/plantinfo4/${id}`);
+}
+plantinfo5(id:string | null): Observable<any> {  
+  return this.http.get(`${this.url}/Apis/plantinfo5/${id}`);
+}
+plantinfo6(id:string | null): Observable<any> {  
+  return this.http.get(`${this.url}/Apis/plantinfo6/${id}`);
+}
 
 }
