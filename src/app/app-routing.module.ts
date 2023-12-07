@@ -20,13 +20,16 @@ import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { CurrentorderComponent } from './currentorder/currentorder.component';
-import { AdminComponent } from './admin/admin.component';
-import { AddplantComponent } from './addplant/addplant.component';
+import { AdminComponent } from './admin-panel/admin/admin.component';
 import { PaymentComponent } from './payment/payment.component';
 import { OrderlistComponent } from './orderlist/orderlist.component';
 import { HeaderComponent } from './header/header.component';
 import { LoaderComponent } from './loader/loader.component';
 import { OrderinfoComponent } from './orderinfo/orderinfo.component';
+import {AdminPanelModule  } from './admin-panel/admin-panel.module';
+import { AddAdminComponent } from './admin-panel/add-admin/add-admin.component';
+import { AddPlantComponent } from './admin-panel/add-plant/add-plant.component';
+import { PlantDetailComponent } from './admin-panel/plant-detail/plant-detail.component';
 
 
 
@@ -55,7 +58,9 @@ const routes: Routes = [
   {path:'wishlist',component:WishlistComponent,canActivate:[AuthGuard]},
   {path:'order',component:CurrentorderComponent,canActivate:[AuthGuard]},
   {path:'admin',component:AdminComponent, canActivate: [AuthGuard], data: { expectedRole: 'admin' } },
-  {path:'admin/addplant',component:AddplantComponent,canActivate: [AuthGuard], data: { expectedRole: 'admin' }},
+  {path:'admin/add-admin',component:AddAdminComponent, canActivate: [AuthGuard], data: { expectedRole: 'admin' }},
+  {path:'admin/add-plant',component:AddPlantComponent, canActivate: [AuthGuard], data: { expectedRole: 'admin' }},
+  {path:'admin/plant-details',component:PlantDetailComponent, canActivate: [AuthGuard], data: { expectedRole: 'admin' }},
   {path :'orderlist',component:OrderlistComponent,canActivate: [AuthGuard]},
   {path :'orderinfo/:id',component:OrderinfoComponent,canActivate: [AuthGuard]},
   {path:'orderlist/payment/:id',component:PaymentComponent,canActivate:[AuthGuard]},

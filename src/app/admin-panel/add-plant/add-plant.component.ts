@@ -3,13 +3,14 @@ import { Router } from '@angular/router';
 import { PlantserviceService } from 'src/service/plantservice.service';
 
 @Component({
-  selector: 'app-addplant',
-  templateUrl: './addplant.component.html',
-  styleUrls: ['./addplant.component.scss']
+  selector: 'app-add-plant',
+  templateUrl: './add-plant.component.html',
+  styleUrls: ['./add-plant.component.scss']
 })
-export class AddplantComponent {
+export class AddPlantComponent {
 
 
+  
   plantid!:number;
   plantdata:{Price:Number,Direction:String,Humidity:String,WaterFreq:String,WaterReq:String,Sunlight_Freq:String,Soil:String,Exposure:String,Family:String,Botanical_Name:String,Blooming_Period:String, Sowing_Period:String,Container:String,Common_Name:String,Photo_1:String,Photo_2:String,Photo_3:String, Category:String,Growing_Time:String,Maintenance:String,Special_Properties:String,Location:String}={
     Price:0,

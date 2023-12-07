@@ -1,0 +1,56 @@
+<hr>
+<div class="container">
+    <div class="p-5 ">
+        <h3 style="display:flex; gap:20px "><span>Trend list of plants</span></h3>
+    </div>
+    <div *ngFor="let a of trend">
+        <table class="table table-striped ">
+            <thead>
+                <tr>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+
+                    <td class="col-5">{{a.Common_Name}}</td>
+                    <td class="col-3">{{a.Botanical_Name}}</td>
+                    <td class="col-1">{{a.Price}}</td>
+                    <td><button class="btn btn-danger" (click)="removetrend(a.ID)">Remove</button></td>
+
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+<hr>
+
+
+<div class="container">
+    <div class=" p-5 ">
+        <h3 style="display:flex; gap:20px "><span>list of plants</span></h3>
+        <div class="alert alert-primary" role="alert" id="alert" *ngIf="trendplant">
+            <div>{{message}}<span class="text-danger" style="cursor: pointer;">View plant</span></div>
+        </div>
+    </div>
+    <div *ngFor="let a of plant">
+        <table class="table table-striped ">
+            <thead>
+                <tr>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+
+                    <td class="col-5">{{a.Common_Name}}</td>
+                    <td class="col-3">{{a.Botanical_Name}}</td>
+                    <td class="col-1">{{a.Price}}</td>
+                    <td><button class="btn btn-info" (click)="trending(a.ID,a._id)">Trending</button></td>
+                    <td><button class="btn btn-danger">EDIT</button></td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
