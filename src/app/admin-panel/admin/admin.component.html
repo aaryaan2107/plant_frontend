@@ -1,6 +1,80 @@
-<div class="container p-5 m-5" style="display: flex; flex-direction: column; gap:40px;">
+<!-- <div class="container p-5 m-5" style="display: flex; flex-direction: column; gap:40px;">
 
     <button class="btn btn-primary w-25" routerLink="/admin/add-admin">Add admin</button>
     <button class="btn btn-primary w-25" routerLink="/admin/add-plant">Add plant</button>
     <button class="btn btn-primary w-25" routerLink="/admin/plant-details">plant-details</button>
-</div>
+</div> -->
+
+
+<!-- <ul class="shadow-button-set">
+    <li><button routerLink="/admin/add-admin">Add Admin</button></li>
+    <li><button>Continue</button></li>
+    <li><button>Online</button></li>
+    <li><button>Settings</button></li>
+    <li><button>Quit</button></li>
+  </ul> -->
+
+  <nav>
+    <div class="wrapper">
+      <div class="logo"><img src="../../assets/plantmainlogo.png" width="50px" height="50px">Grow More Plants</div>
+      <input type="radio" name="slider" id="menu-btn">
+      <input type="radio" name="slider" id="close-btn">
+      <ul class="nav-links">
+        <label for="close-btn" class="btn close-btn"><i class="fa fa-times"></i></label>
+        <li><a routerLink="/admin/add-admin">Add Admin</a></li>
+        <li><a routerLink="/admin/add-plant">Add Plant</a></li>
+        <!-- <li>
+          <a href="#" class="desktop-item">Dropdown Menu</a>
+          <input type="checkbox" id="showDrop">
+          <label for="showDrop" class="mobile-item">Dropdown Menu</label>
+          <ul class="drop-menu">
+            <li><a href="#">Drop menu 1</a></li>
+            <li><a href="#">Drop menu 2</a></li>
+            <li><a href="#">Drop menu 3</a></li>
+            <li><a href="#">Drop menu 4</a></li>
+          </ul>
+        </li> -->
+        <!-- <li>
+          <a href="#" class="desktop-item">Mega Menu</a>
+          <input type="checkbox" id="showMega">
+          <label for="showMega" class="mobile-item">Mega Menu</label>
+          <div class="mega-box">
+            <div class="content">
+              <div class="row">
+                <img src="https://fadzrinmadu.github.io/hosted-assets/responsive-mega-menu-and-dropdown-menu-using-only-html-and-css/img.jpg" alt="">
+              </div>
+              <div class="row">
+                <header>Design Services</header>
+                <ul class="mega-links">
+                  <li><a href="#">Graphics</a></li>
+                  <li><a href="#">Vectors</a></li>
+                  <li><a href="#">Business cards</a></li>
+                  <li><a href="#">Custom logo</a></li>
+                </ul>
+              </div>
+              <div class="row">
+                <header>Email Services</header>
+                <ul class="mega-links">
+                  <li><a href="#">Personal Email</a></li>
+                  <li><a href="#">Business Email</a></li>
+                  <li><a href="#">Mobile Email</a></li>
+                  <li><a href="#">Web Marketing</a></li>
+                </ul>
+              </div>
+              <div class="row">
+                <header>Security services</header>
+                <ul class="mega-links">
+                  <li><a href="#">Site Seal</a></li>
+                  <li><a href="#">VPS Hosting</a></li>
+                  <li><a href="#">Privacy Seal</a></li>
+                  <li><a href="#">Website design</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li> -->
+        <li><a routerLink="/admin/plant-details">Plants Details</a></li>
+      </ul>
+      <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
+    </div>
+  </nav>
