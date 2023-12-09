@@ -28,7 +28,7 @@ ngOnInit() {
   }, 3000);
   this.plantservice.getPayment(this.id).subscribe(
     (res) => {
-
+      console.log(res);
       this.payment = res.data;
       this.order_id = res.order_id;
       this.cf_payment_id = res.cf_payment_id;

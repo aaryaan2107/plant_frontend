@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PlantserviceService } from 'src/service/plantservice.service';
 
 @Component({
@@ -13,11 +13,25 @@ export class PlantDetailComponent {
   trend: any[]=[];
   trendplant:boolean = false;
   message:string='';
+  listplants:boolean = false;
+  trendingplant:boolean = false;
 
-  constructor(private plantservice: PlantserviceService,private router:Router) {}
+  constructor(private plantservice: PlantserviceService,private router:Router,private activeroute:ActivatedRoute) {}
 
   
   ngOnInit(): void {
+
+    this.activeroute.paramMap.subscribe((p)=>{
+      let act = p.get('act');
+    if(act=="list-of-plants"){
+      this.listplants = true;
+    this.trendingplant =false;}
+    if(act=="list-of-trendingplant"){
+    this.trendingplant = true;
+  this.listplants =false;}
+      
+    })
+
     this.allplants()
     this.alltrendingplants()
   }

@@ -1,71 +1,92 @@
-<div class="container">
-    <h3>Add Admin</h3><br>
-    <form (ngSubmit)="signup(formdata) ">
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" class="form-control" name="username" id="username" [(ngModel)]="formdata.username" placeholder="Enter username">
-        </div>
+<!DOCTYPE html>
+<html lang="en">
 
-        <div class="form-group">
-            <label for="username">Email</label>
-            <input type="email" class="form-control " name="email " id="email " [(ngModel)]="formdata.email" placeholder="Enter email ">
-        </div>
+<head>
+</head>
 
-        <div class="form-group">
-            <label for="username">Phone Number</label>
-            <input type="number" class="form-control " name="phone " id="phone " [(ngModel)]="formdata.phone" placeholder="Enter phone number ">
-        </div>
-
-        <div class="form-group">
-            <label for="username">Address</label>
-            <input type="text" class="form-control " name="address " id="address " [(ngModel)]="formdata.address" placeholder="Enter address ">
-        </div>
-
-        <div class="form-group">
-            <label for="username">Password</label>
-            <input type="password" class=" form-control " name="password " id="password " [(ngModel)]="formdata.password" placeholder="Enter password ">
-        </div>
-
-
-        <div class="form-group ">
-            <label for="username">Confirm Password</label>
-            <input type="password" class="form-control " name="cpassword " id="cpassword " [(ngModel)]="formdata.cpassword" placeholder="Enter confirm password ">
-        </div>
-
-        <div class="ml-5 m-2 ">
-            <div *ngIf="errormessage " class="errorMessage ">{{errormessage}}</div>
-            <div *ngIf="success " class="success ">{{success}}</div>
-        </div>
-
-
-        <button type="submit " class="btn btn-primary ">Submit</button>
-    </form>
-</div>
-<hr>
-
-<div class="container">
-    <h2>List of user</h2>
-    <table class="table">
-        <thead class="thead-light">
-            <tr>
-                <th class="col-1">No.</th>
-                <th class="col-2 w-50">Username</th>
-                <th class="col-2">E-mail</th>
-                <th class="col-2">Role</th>
-            </tr>
-        </thead>
-    </table>
-    <div class="" *ngFor="let all of alluser; let i = index">
-        <table class="table">
-            <tbody>
-                <tr>
-                    <td class="col-1">{{i+1}}</td>
-                    <td class="col-2 w-50">{{all.username}}</td>
-                    <td class="col-2">{{all.email}}</td>
-                    <td class="col-2" *ngIf="all.role==='admin'"><button class="btn btn-primary" (click)="addadmin(all._id,all.role)">{{all.role}}</button></td>
-                    <td class="col-2" *ngIf="all.role==='user'"><button class="btn btn-danger" (click)="addadmin(all._id,all.role)">{{all.role}}</button></td>
-                </tr>
-            </tbody>
-        </table>
+<body>
+    <div class="msg" *ngIf="errormessage || success">
+        <div class="icon" *ngIf="success "><i class="fa fa-check"></i></div>
+        <div class="icon" *ngIf="errormessage "><i class="fa fa-exclamation-triangle"></i></div>
+        <div *ngIf="errormessage " class="errorMessage">{{errormessage}}</div>
+        <div *ngIf="success " class="success ">{{success}}</div>
+        <!-- <div class="text">Add to card successfully <span>View Cart</span></div> -->
     </div>
-</div>
+
+    <app-admin></app-admin>
+    <section class="container" *ngIf="addadminform">
+
+        <h3>Add Admin</h3><br>
+        <form (ngSubmit)="signup(formdata) ">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" name="username" id="username" [(ngModel)]="formdata.username" placeholder="Enter username">
+            </div>
+
+            <div class="form-group">
+                <label for="username">Email</label>
+                <input type="email" class="form-control " name="email " id="email " [(ngModel)]="formdata.email" placeholder="Enter email ">
+            </div>
+
+            <div class="form-group">
+                <label for="username">Phone Number</label>
+                <input type="number" class="form-control " name="phone " id="phone " [(ngModel)]="formdata.phone" placeholder="Enter phone number ">
+            </div>
+
+            <div class="form-group">
+                <label for="username">Address</label>
+                <input type="text" class="form-control " name="address " id="address " [(ngModel)]="formdata.address" placeholder="Enter address ">
+            </div>
+
+            <div class="form-group">
+                <label for="username">Password</label>
+                <input type="password" class=" form-control " name="password " id="password " [(ngModel)]="formdata.password" placeholder="Enter password ">
+            </div>
+
+
+            <div class="form-group ">
+                <label for="username">Confirm Password</label>
+                <input type="password" class="form-control " name="cpassword " id="cpassword " [(ngModel)]="formdata.cpassword" placeholder="Enter confirm password ">
+            </div>
+
+            <div class="ml-5 m-2 ">
+                <div *ngIf="errormessage " class="errorMessage ">{{errormessage}}</div>
+                <div *ngIf="success " class="success ">{{success}}</div>
+            </div>
+
+
+            <button type="submit " class="btn btn-primary ">Submit</button>
+        </form>
+    </section>
+
+    <section class="container" *ngIf="listofuser">
+        <h2>List of user</h2>
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th class="col-1">No.</th>
+                    <th class="col-2 w-50">Username</th>
+                    <th class="col-2">E-mail</th>
+                    <th class="col-2">Role</th>
+                </tr>
+            </thead>
+        </table>
+        <div class="" *ngFor="let all of alluser; let i = index">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td class="col-1">{{i+1}}</td>
+                        <td class="col-2 w-50">{{all.username}}</td>
+                        <td class="col-2">{{all.email}}</td>
+                        <td class="col-2" *ngIf="all.role==='admin'"><button class="btn btn-primary" (click)="addadmin(all._id,all.role)">{{all.role}}</button></td>
+                        <td class="col-2" *ngIf="all.role==='user'"><button class="btn btn-danger" (click)="addadmin(all._id,all.role)">{{all.role}}</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+
+</body>
+
+</html>

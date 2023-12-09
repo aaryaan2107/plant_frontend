@@ -1,0 +1,39 @@
+section {
+    margin-top: 80px;
+    position: relative;
+}
+
+.msg {
+    padding: 17px 50px;
+    background-color: white;
+    position: fixed;
+    top: 14%;
+    right: 0;
+    width: 320px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    border-left: 6px solid #4070f4;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
+    border-radius: 20px;
+    display: flex;
+    gap: 20px;
+    z-index: 99999;
+}
+
+span {
+    color: #4070f4;
+    font-weight: 700;
+}
+
+.icon {
+    text-align: right;
+    float: right;
+    font-size: 20px;
+}
+
+.errorMessage {
+    color: red;
+}
+
+.success {
+    color: green;
+}

@@ -37,27 +37,19 @@ export class CartComponent implements OnInit {
       }
       else {
         this.loggin = true;
-          this.plantservice.Allplant().subscribe(
-            plant => {
-              this.plant = plant;
-              this.loading = false;
-              this.calculateTotal();
-              this.calculateqtyTotal();
-
-            },
-            (error) => {  console.log(error);  }
-          )
         this.cartdata();
         }
-       
   }
 
 cartdata()
 {
   this.plantservice.cartitem().subscribe((data) => {
     this.item = data;
+    console.log(this.item);
+    
     this.calculateTotal();
     this.calculateqtyTotal();
+    this.loading = false;
   
   });
 }

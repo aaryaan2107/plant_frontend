@@ -282,7 +282,10 @@ addplant(userdata: any): Observable<any> {
 
 
 getPayment(id:string | null): Observable<any> {
-  return this.http.get(`${this.url}/Apis/getpayment/${id}`);
+  const headers = {
+    'Authorization':"Bearer " + localStorage.getItem('token')
+  }
+  return this.http.get(`${this.url}/Apis/getpayment/${id}`,{headers:headers});
 }
 
 getlinkid(): Observable<any> {

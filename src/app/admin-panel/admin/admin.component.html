@@ -16,65 +16,41 @@
 
   <nav>
     <div class="wrapper">
-      <div class="logo"><img src="../../assets/plantmainlogo.png" width="50px" height="50px">Grow More Plants</div>
+      <div class="logo"><img src="../../assets/plantmainlogo.png" width="50px" height="50px"></div>
       <input type="radio" name="slider" id="menu-btn">
       <input type="radio" name="slider" id="close-btn">
       <ul class="nav-links">
-        <label for="close-btn" class="btn close-btn"><i class="fa fa-times"></i></label>
-        <li><a routerLink="/admin/add-admin">Add Admin</a></li>
-        <li><a routerLink="/admin/add-plant">Add Plant</a></li>
-        <!-- <li>
-          <a href="#" class="desktop-item">Dropdown Menu</a>
+        <label for="close-btn" class="btn close-btn"><i class="bi bi-x close"></i></label>
+           <li>
+          <div class="desktop-item dd">Stock<i class="bi bi-chevron-down" ></i></div>
           <input type="checkbox" id="showDrop">
-          <label for="showDrop" class="mobile-item">Dropdown Menu</label>
+          <label for="showDrop" class="mobile-item">Stock<i class="bi bi-chevron-down"> </i></label>
           <ul class="drop-menu">
-            <li><a href="#">Drop menu 1</a></li>
-            <li><a href="#">Drop menu 2</a></li>
-            <li><a href="#">Drop menu 3</a></li>
-            <li><a href="#">Drop menu 4</a></li>
+            <li><a href="#">Add New Stock</a></li>
+            <li><a href="#">Total Stock</a></li>
           </ul>
-        </li> -->
-        <!-- <li>
-          <a href="#" class="desktop-item">Mega Menu</a>
-          <input type="checkbox" id="showMega">
-          <label for="showMega" class="mobile-item">Mega Menu</label>
-          <div class="mega-box">
-            <div class="content">
-              <div class="row">
-                <img src="https://fadzrinmadu.github.io/hosted-assets/responsive-mega-menu-and-dropdown-menu-using-only-html-and-css/img.jpg" alt="">
-              </div>
-              <div class="row">
-                <header>Design Services</header>
-                <ul class="mega-links">
-                  <li><a href="#">Graphics</a></li>
-                  <li><a href="#">Vectors</a></li>
-                  <li><a href="#">Business cards</a></li>
-                  <li><a href="#">Custom logo</a></li>
-                </ul>
-              </div>
-              <div class="row">
-                <header>Email Services</header>
-                <ul class="mega-links">
-                  <li><a href="#">Personal Email</a></li>
-                  <li><a href="#">Business Email</a></li>
-                  <li><a href="#">Mobile Email</a></li>
-                  <li><a href="#">Web Marketing</a></li>
-                </ul>
-              </div>
-              <div class="row">
-                <header>Security services</header>
-                <ul class="mega-links">
-                  <li><a href="#">Site Seal</a></li>
-                  <li><a href="#">VPS Hosting</a></li>
-                  <li><a href="#">Privacy Seal</a></li>
-                  <li><a href="#">Website design</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </li> -->
-        <li><a routerLink="/admin/plant-details">Plants Details</a></li>
+        </li>
+        <li>
+          <div class="desktop-item dd">Admin<i class="bi bi-chevron-down" ></i></div>
+          <input type="checkbox" id="showDrop2">
+          <label for="showDrop2" class="mobile-item">Admin<i class="bi bi-chevron-down" ></i></label>
+          <ul class="drop-menu">
+            <li><a  routerLink="/admin/add-admin/add-new-admin">Add Admin</a></li>
+            <li><a routerLink="/admin/add-admin/list-of-user">List of Users</a></li>
+          </ul>
+        </li>
+        <li>
+          <div class="desktop-item dd">Plants Details<i class="bi bi-chevron-down" ></i></div>
+          <input type="checkbox" id="showDrop3">
+          <label for="showDrop3" class="mobile-item">Plants Details<i class="bi bi-chevron-down" ></i></label>
+          <ul class="drop-menu">
+            <li><a routerLink="/admin/add-plant">Add Plant</a></li>
+            <li><a routerLink="/admin/plant-details/list-of-plants">List of Plants </a></li>
+            <li><a routerLink="/admin/plant-details/list-of-trendingplant">Trending Plants</a></li>
+          </ul>
+        </li>
+
       </ul>
-      <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
+      <label for="menu-btn" class="btn menu-btn"><i class="bi bi-list open"></i></label>
     </div>
   </nav>

@@ -38,6 +38,8 @@ export class AddPlantComponent {
   }
   selectedSection: string = '';
   navOpen: boolean = false;
+  errormessage: string = '';
+  success: String = '';
 
   constructor(private plantservice: PlantserviceService,private router:Router) {}
   ngOnInit() {
@@ -47,10 +49,22 @@ export class AddPlantComponent {
      
       this.plantservice.addplant(userdata).subscribe(
         (res) => {
-          console.log(res);
+          if(res){
+           this.success =res.message;
+            this.errormessage = '';
+            setTimeout(() => {
+              this.success = '';
+            }, 3000);
+          }
         },
-        (error) => {
-          console.log(error);
+        (error) => {       
+          if(error){ 
+          this.errormessage = error.error.error;
+            this.success = '';
+            setTimeout(() => {
+              this.errormessage = '';
+            }, 3000);
+          }
         })
   }
 

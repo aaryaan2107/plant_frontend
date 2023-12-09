@@ -101,9 +101,10 @@
 
   </div>
 </div>
-<div class="alert alert-primary" role="alert" *ngIf="addcart">
-  <div>{{addcart}}<span class="text-danger" style="cursor: pointer;" routerLink="/cart">View Cart</span></div>
- </div>
+<div class="msg" *ngIf="addcart">
+  <div class="icon"><i class="fa fa-check"></i></div>
+  <div class="success">{{addcart}}<span routerLink="/cart" style="margin-left:5px ; cursor: pointer; color: red; font-weight: 700;">View Cart</span></div>
+</div>
 <!-- =[===========-=======] -->
 
 <section class="plant_section layout_padding" style="background-color: rgba(236, 236, 236,0.2);">

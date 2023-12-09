@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PlantserviceService } from 'src/service/plantservice.service';
 
 @Component({
@@ -9,12 +9,12 @@ import { PlantserviceService } from 'src/service/plantservice.service';
 })
 export class AddAdminComponent {
 
-  adminData: any;
-  order:boolean = false;
-  datas:any;
-  data:any;
-  plant!:any[];
-  p: number = 1;
+  // adminData: any;
+  // order:boolean = false;
+  // datas:any;
+  // data:any;
+  // plant!:any[];
+  // p: number = 1;
   formdata: { username: String, password: String, cpassword: String, email: String, phone: String, address: String } = {
     username: '',
     password: '',
@@ -23,22 +23,39 @@ export class AddAdminComponent {
     phone: '',
     address: '',
   };
-  a:string='';
+  addadminform:boolean=false;
+  listofuser:boolean=false;
+  // a:string='';
   errormessage: string = '';
   success: String = '';
-  selectedSection: string = 'home';
-  current:any[]=[];
+  // selectedSection: string = 'home';
+  // current:any[]=[];
   alluser:any;
-  trend: any[]=[];
-  trendplant:boolean = false;
+  // trend: any[]=[];
+  // trendplant:boolean = false;
   message:string='';
-  selection:any;
+  // selection:any;
 
 
-  constructor(private plantservice: PlantserviceService,private router:Router) {}
+  constructor(private plantservice: PlantserviceService,private router:Router, private activeroute:ActivatedRoute) {}
 
   ngOnInit(): void {
 
+this.activeroute.paramMap.subscribe((p)=>{
+  let act = p.get('act');
+if(act=="add-new-admin"){
+  this.addadminform = true;
+this.listofuser = false;}
+if(act=="list-of-user"){
+this.listofuser = true;
+this.addadminform=false;}
+  
+})
+
+
+    // this.avroute.paramMap.subscribe(params=>{
+    //   let code=params.get('code')
+    //   console.log(code);
    this.allusers();
   }
 
@@ -60,6 +77,9 @@ export class AddAdminComponent {
           }
           else if (error.status === 400 && error.error.error === 'Username or Password is Empty') {
             this.errormessage = 'Username or Password is Empty';
+            setTimeout(() => {
+              this.errormessage ='';
+            },3000);
           }
           else {
             this.errormessage = 'signup Failed';
@@ -90,4 +110,6 @@ export class AddAdminComponent {
       }
     )
   }
+
+
 }
