@@ -99,7 +99,7 @@
           <div class="user-details">
             <div class="input-box">
               <span class="details">Username</span>
-              <input type="text" class="form-control" name="username" id="username" [(ngModel)]="formdata.username" placeholder="Enter username" required>
+              <input type="text" class="form-control" name="username" id="username" [(ngModel)]="formdata.username" placeholder="Enter username" >
             </div>
             <div class="input-box">
               <span class="details">Email</span>
@@ -109,9 +109,14 @@
               <span class="details">Phone No.</span>
               <input type="number" class="form-control " name="phone " id="phone " [(ngModel)]="formdata.phone" placeholder="Enter phone number ">
             </div>
-            <div class="input-box">
+            <!-- <div class="input-box">
               <span class="details">Address</span>
               <input type="text" class="form-control " name="address " id="address " [(ngModel)]="formdata.address" placeholder="Enter address ">
+            </div> -->
+            <div class="input-box">
+                <span class="details">Address</span>
+                    <textarea name="address" id="address" class="form-control" cols="5" rows="2" [(ngModel)]="formdata.address" placeholder="Enter address "></textarea>
+               
             </div>
             <div class="input-box">
               <span class="details">Password</span>

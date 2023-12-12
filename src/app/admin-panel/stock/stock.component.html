@@ -3,31 +3,36 @@
     <div class="container">
       <div class="title">New Stock</div>
       <div class="content">
-        <form action="#">
+        <form  (ngSubmit)="stock(formdata)">
           <div class="user-details">
             <div class="input-box">
               <span class="details">Plant Name</span>
-              <input type="text" placeholder="Enter Plant Name" name="plant_name" id="plant_name" required>
+              <input type="text" [(ngModel)]="formdata.plantName" (input)="realTimeSearch()" placeholder="Enter Plant Name" name="plant_name" id="plant_name" required>
+                  <div class="dropdown" *ngIf="searchdata">
+                  <div class="bg-white" *ngFor="let plant of serachplant" style="width: 100%; background-color: red;">
+                      <button style="width: 21vw;" class="dropdown-item" type="button" (click)="setInputValue(plant.Common_Name)">{{ plant.Common_Name }}</button>
+                  </div>
+              </div> 
             </div>
             <div class="input-box">
               <span class="details">Vender Name</span>
-              <input type="text" placeholder="Enter Vender Name" name="vender_name" id="vender_name" required>
+              <input type="text" placeholder="Enter Vender Name" name="vender_name" id="vender_name" [(ngModel)]="formdata.vendername"   required>
             </div>
             <div class="input-box">
               <span class="details">Invoice No.</span>
-              <input type="number" placeholder="Enter Invoice Number" name="invoice_no." id="invoice_no." required>
+              <input type="number" placeholder="Enter Invoice Number" name="invoice_no." id="invoice_no." [(ngModel)]="formdata.invoiceNumber" required>
             </div>
             <div class="input-box">
               <span class="details">Invoice Date</span>
-              <input type="number" placeholder="Enter Invoice Date" name="invoice_dt" id="invoice_dt" required>
+              <input type="date" placeholder="Enter Invoice Date" name="invoice_dt" id="invoice_dt" [(ngModel)]="formdata.invoiceDate" required>
             </div>
             <div class="input-box">
               <span class="details">Quantity</span>
-              <input type="number" placeholder="Enter Quantity" name="qty" id="qty" required>
+              <input type="number" placeholder="Enter Quantity" name="qty" id="qty" [(ngModel)]="formdata.quantity" required>
             </div>
             <div class="input-box">
               <span class="details">Price</span>
-              <input type="number" placeholder="Enter Price" name="price" id="price" required>
+              <input type="number" placeholder="Enter Price" name="price" id="price" [(ngModel)]="formdata.price" required>
             </div>
           </div>
 

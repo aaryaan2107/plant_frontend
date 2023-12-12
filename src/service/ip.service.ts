@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 export class IpService {
 
   private url = 'https://plant-backend6.onrender.com';
-  private urllocal = 'http://192.168.68.52:3000';
+  private urllocal = 'http://localhost:3000';
   private qrurl = 'https://growmoreplant.netlify.app';
     
   constructor(private router: Router) { }
