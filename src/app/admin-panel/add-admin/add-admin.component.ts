@@ -5,7 +5,7 @@ import { PlantserviceService } from 'src/service/plantservice.service';
 @Component({
   selector: 'app-add-admin',
   templateUrl: './add-admin.component.html',
-  styleUrls: ['./add-admin.component.scss']
+  styleUrls: ['./add-admin.component.scss','./add-admin2.component.scss']
 })
 export class AddAdminComponent {
 
