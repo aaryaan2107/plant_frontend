@@ -4,16 +4,17 @@
 <head>
 </head>
 
+<app-admin></app-admin>
 <body>
     <div class="msg" *ngIf="errormessage || success">
-        <div class="icon" *ngIf="success "><i class="fa fa-check"></i></div>
-        <div class="icon" *ngIf="errormessage "><i class="fa fa-exclamation-triangle"></i></div>
+        <div class="icon" *ngIf="success "><i class="bi bi-person-fill-check"></i></div>
+        <div class="icon" *ngIf="errormessage "><i class="bi bi-exclamation-triangle-fill"></i></div>
         <div *ngIf="errormessage " class="errorMessage">{{errormessage}}</div>
         <div *ngIf="success " class="success ">{{success}}</div>
         <!-- <div class="text">Add to card successfully <span>View Cart</span></div> -->
     </div>
 
-    <app-admin></app-admin>
+    <!-- <app-admin></app-admin>
     <section class="container" *ngIf="addadminform">
 
         <h3>Add Admin</h3><br>
@@ -50,7 +51,7 @@
             </div>
 
             <div class="ml-5 m-2 ">
-                <div *ngIf="errormessage " class="errorMessage ">{{errormessage}}</div>
+                <div *ngIf="errormessage " class="success">{{errormessage}}</div>
                 <div *ngIf="success " class="success ">{{success}}</div>
             </div>
 
@@ -87,6 +88,80 @@
     </section>
 
 
-</body>
+     </html> -->
+    
+ 
+<section  *ngIf="addadminform" >
+    <div class="container">
+      <div class="title">Add Admin</div>
+      <div class="content">
+        <form (ngSubmit)="signup(formdata) ">
+          <div class="user-details">
+            <div class="input-box">
+              <span class="details">Username</span>
+              <input type="text" class="form-control" name="username" id="username" [(ngModel)]="formdata.username" placeholder="Enter username" required>
+            </div>
+            <div class="input-box">
+              <span class="details">Email</span>
+              <input type="email" class="form-control " name="email " id="email " [(ngModel)]="formdata.email" placeholder="Enter email ">
+            </div>
+            <div class="input-box">
+              <span class="details">Phone No.</span>
+              <input type="number" class="form-control " name="phone " id="phone " [(ngModel)]="formdata.phone" placeholder="Enter phone number ">
+            </div>
+            <div class="input-box">
+              <span class="details">Address</span>
+              <input type="text" class="form-control " name="address " id="address " [(ngModel)]="formdata.address" placeholder="Enter address ">
+            </div>
+            <div class="input-box">
+              <span class="details">Password</span>
+              <input type="password" class=" form-control " name="password " id="password " [(ngModel)]="formdata.password" placeholder="Enter password ">
+            </div>
+            <div class="input-box">
+              <span class="details">Confirm Password</span>
+              <input type="password" class="form-control " name="cpassword " id="cpassword " [(ngModel)]="formdata.cpassword" placeholder="Enter confirm password ">
+            </div>
+          </div>
 
-</html>
+       
+          <div class="button">
+            <input type="submit" value="Add Admin">
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+  <section class="container" *ngIf="listofuser">
+    <h2>List of user</h2>
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th class="col-1">No.</th>
+                <th class="col-2 w-50">Username</th>
+                <th class="col-2">E-mail</th>
+                <th class="col-2">Role</th>
+            </tr>
+        </thead>
+    </table>
+    <div class="" *ngFor="let all of alluser; let i = index" >
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td class="col-1">{{i+1}}</td>
+                    <td class="col-2 w-50">{{all.username}}</td>
+                    <div>
+                        <td class="col-2">{{all.email}}</td>
+                    </div>
+                    <td class="col-3 " *ngIf="all.role==='admin'">
+                        <button class="button-62" role="button"  (click)="addadmin(all._id,all.role)">{{all.role | titlecase}}</button>
+                        <!-- <button class="btn btn-primary role" (click)="addadmin(all._id,all.role)">{{all.role | titlecase}}</button> -->
+                    </td>
+                    <td class="col-3" *ngIf="all.role==='user'">
+                        <button class="button-63" role="button"  (click)="addadmin(all._id,all.role)">{{all.role | titlecase}}</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+</body>

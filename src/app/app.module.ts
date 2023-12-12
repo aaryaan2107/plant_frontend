@@ -40,6 +40,7 @@ import {AdminPanelModule  } from './admin-panel/admin-panel.module';
 import { AddAdminComponent } from './admin-panel/add-admin/add-admin.component';
 import { AddPlantComponent } from './admin-panel/add-plant/add-plant.component';
 import { PlantDetailComponent } from './admin-panel/plant-detail/plant-detail.component';
+import { StockComponent } from './admin-panel/stock/stock.component';
 
 
 const routes: Routes = [
@@ -66,6 +67,7 @@ const routes: Routes = [
   {path:'order',component:CurrentorderComponent,canActivate:[AuthGuard]},
   {path:'admin',component:AdminComponent, canActivate: [AuthGuard], data: { expectedRole: 'admin' } },
   {path:'admin/add-admin/:act',component:AddAdminComponent, canActivate: [AuthGuard], data: { expectedRole: 'admin' }},
+  {path:'admin/stock',component:StockComponent, canActivate: [AuthGuard], data: { expectedRole: 'admin' }},
   {path:'admin/add-plant',component:AddPlantComponent, canActivate: [AuthGuard], data: { expectedRole: 'admin' }},
   {path:'admin/plant-details/:act',component:PlantDetailComponent, canActivate: [AuthGuard], data: { expectedRole: 'admin' }},
   {path :'orderlist',component:OrderlistComponent,canActivate: [AuthGuard]},

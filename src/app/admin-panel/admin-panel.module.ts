@@ -7,6 +7,7 @@ import { PlantDetailComponent } from './plant-detail/plant-detail.component';
 import { AddPlantComponent } from './add-plant/add-plant.component';
 import { AdminComponent } from './admin/admin.component';
 import { AppRoutingModule } from '../app-routing.module';
+import { StockComponent } from './stock/stock.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { AppRoutingModule } from '../app-routing.module';
     PlantDetailComponent,
     AddPlantComponent,
     AdminComponent,
+    StockComponent,
    
   ],
   imports: [
