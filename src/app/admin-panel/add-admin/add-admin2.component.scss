@@ -1,0 +1,92 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.role
+{
+  padding: 5px;
+}
+.button-62 {
+  background: linear-gradient(to right, #06beb6, #48b1bf);
+  border: 0;
+  border-radius: 12px;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 2.5;
+  outline: transparent;
+  padding: 0 1rem;
+  text-align: center;
+  text-decoration: none;
+  transition: box-shadow .2s ease-in-out;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+}
+
+.button-62:not([disabled]):focus {
+  box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(6, 190, 182, 0.5), .125rem .125rem 1rem rgba(72, 177, 191, 0.5);
+}
+
+.button-62:not([disabled]):hover {
+  box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(6, 190, 182, 0.5), .125rem .125rem 1rem rgba(72, 177, 191, 0.5);
+}
+.button-63 {
+  background: linear-gradient(to right, #ed213a, #93291e);
+  border: 0;
+  border-radius: 12px;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 2.5;
+  outline: transparent;
+  padding: 0 1rem;
+  text-align: center;
+  text-decoration: none;
+  transition: box-shadow .2s ease-in-out;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+}
+
+.button-63:not([disabled]):focus {
+  box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(237, 33, 58, 0.5), .125rem .125rem 1rem rgba(248, 73, 54, 0.5);
+}
+
+.button-63:not([disabled]):hover {
+  box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(237, 33, 58, 0.5), .125rem .125rem 1rem rgba(248, 73, 54, 0.5);
+}
+@media(max-width: 584px){
+    .container{
+     max-width: 100%;
+   }
+   form .user-details .input-box{
+       margin-bottom: 15px;
+       width: 100%;
+     }
+     form .category{
+       width: 100%;
+     }
+     .content form .user-details{
+       max-height: 300px;
+       overflow-y: scroll;
+     }
+     .user-details::-webkit-scrollbar{
+       width: 5px;
+     }
+     }
+     @media(max-width: 459px){
+     .container .content .category{
+       flex-direction: column;
+     }
+   }
+   
