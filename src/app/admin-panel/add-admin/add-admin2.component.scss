@@ -89,4 +89,23 @@ input::-webkit-inner-spin-button {
        flex-direction: column;
      }
    }
-   
+   .list-container {
+    width: 100%; /* Set the width of the container */
+    height: 350px; /* Set the height of the container */
+    overflow-y: scroll; /* Enable vertical scrollbar */
+   background-color: transparent;
+}
+.list-container::-webkit-scrollbar-track {
+  background-color:transparent ;/* Make the scrollbar track transparent */
+}
+.list-container::-webkit-scrollbar-thumb {
+  background-color: gray; 
+  border-radius: 20px;
+}
+.list-container::-webkit-scrollbar {
+  width: 12px; 
+}
+/* Style for the list items */
+.list-item {
+    padding: 10px;
+}

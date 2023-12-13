@@ -368,11 +368,16 @@ plantinfo6(id:string | null): Observable<any> {
   return this.http.get(`${this.url}/Apis/plantinfo6/${id}`);
 }
 
+
+//stock part
+
 stock_details(userdata:any){ 
   console.log(userdata);
   
     return this.http.post(`${this.url}/admin/stock-details`,userdata);
 }
-
+Allstock(id:any):Observable<any> { 
+  return this.http.post(`${this.url}/admin/Allstock`,{id:id});
+}
 
 }

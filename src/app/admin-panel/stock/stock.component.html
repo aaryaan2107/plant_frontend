@@ -1,46 +1,103 @@
 <app-admin></app-admin>
-<body>
-    <div class="container">
-      <div class="title">New Stock</div>
-      <div class="content">
-        <form  (ngSubmit)="stock(formdata)">
-          <div class="user-details">
-            <div class="input-box">
-              <span class="details">Plant Name</span>
-              <input type="text" [(ngModel)]="formdata.plantName" (input)="realTimeSearch()" placeholder="Enter Plant Name" name="plant_name" id="plant_name" required>
-                  <div class="dropdown" *ngIf="searchdata">
-                  <div class="bg-white" *ngFor="let plant of serachplant" style="width: 100%; background-color: red;">
-                      <button style="width: 21vw;" class="dropdown-item" type="button" (click)="setInputValue(plant.Common_Name)">{{ plant.Common_Name }}</button>
-                  </div>
-              </div> 
-            </div>
-            <div class="input-box">
-              <span class="details">Vender Name</span>
-              <input type="text" placeholder="Enter Vender Name" name="vender_name" id="vender_name" [(ngModel)]="formdata.vendername"   required>
-            </div>
-            <div class="input-box">
-              <span class="details">Invoice No.</span>
-              <input type="number" placeholder="Enter Invoice Number" name="invoice_no." id="invoice_no." [(ngModel)]="formdata.invoiceNumber" required>
-            </div>
-            <div class="input-box">
-              <span class="details">Invoice Date</span>
-              <input type="date" placeholder="Enter Invoice Date" name="invoice_dt" id="invoice_dt" [(ngModel)]="formdata.invoiceDate" required>
-            </div>
-            <div class="input-box">
-              <span class="details">Quantity</span>
-              <input type="number" placeholder="Enter Quantity" name="qty" id="qty" [(ngModel)]="formdata.quantity" required>
-            </div>
-            <div class="input-box">
-              <span class="details">Price</span>
-              <input type="number" placeholder="Enter Price" name="price" id="price" [(ngModel)]="formdata.price" required>
-            </div>
-          </div>
 
-       
-          <div class="button">
-            <input type="submit" value="Add Stock">
-          </div>
-        </form>
-      </div>
-    </div>
-  </body>
+<body>
+    <section class="container" *ngIf="addstock">
+        <div class="title">New Stock</div>
+        <div class="content">
+            <form (ngSubmit)="stock(formdata)">
+                <div class="user-details">
+                    <div class="input-box">
+                        <span class="details">Plant Name</span>
+                        <input type="text" [(ngModel)]="formdata.plantName" (input)="realTimeSearch()" placeholder="Enter Plant Name" name="plant_name" id="plant_name" required>
+                        <div class="dropdown" *ngIf="searchdata">
+                            <div class="bg-white" *ngFor="let plant of serachplant" style="width: 100%; background-color: red;">
+                                <button style="width: 21vw;" class="dropdown-item" type="button" (click)="setInputValue(plant.Common_Name)">{{ plant.Common_Name }}</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Vender Name</span>
+                        <input type="text" placeholder="Enter Vender Name" name="vender_name" id="vender_name" [(ngModel)]="formdata.vendername" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Invoice No.</span>
+                        <input type="number" placeholder="Enter Invoice Number" name="invoice_no." id="invoice_no." [(ngModel)]="formdata.invoiceNumber" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Invoice Date</span>
+                        <input type="date" placeholder="Enter Invoice Date" name="invoice_dt" id="invoice_dt" [(ngModel)]="formdata.invoiceDate" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Quantity</span>
+                        <input type="number" placeholder="Enter Quantity" name="qty" id="qty" [(ngModel)]="formdata.quantity" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Price</span>
+                        <input type="number" placeholder="Enter Price" name="price" id="price" [(ngModel)]="formdata.price" required>
+                    </div>
+                </div>
+
+
+                <div class="button">
+                    <input type="submit" value="Add Stock">
+                </div>
+            </form>
+        </div>
+    </section>
+    <section *ngIf="totalstock" class="container">
+
+
+        <div style="display: flex; justify-content:space-between; margin-bottom: 20px;">
+            <h2>List of Stock</h2>
+            <span> <input type="text" id="input" [(ngModel)]="formdata.plantName" (input)="realTimeSearch()"  class="form-control" placeholder="Enter plant name" style="width: 300px; padding-left: 20px;" /></span>
+
+
+        </div>
+        <div class="dropdown" *ngIf="searchdata && serachplant" style="position: fixed; z-index:1; left: 52.5%; padding:10px; background: #fff;  ;  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);  ;">
+            <div class="bg-white" *ngFor="let plant of serachplant" style="width: 100%; ">
+                <button style="width: 21vw;" class="dropdown-item" type="button" (click)="stockget(plant.ID)">{{ plant.Common_Name }}</button>
+            </div>
+        </div>
+
+        <!--  <input  class=" col-sm-10 form-control"
+          placeholder="Enter plant name" />
+ 
+
+-->
+        <table class="table mt-2">
+            <thead class="thead-light">
+                <tr>
+                    <th class="col-1">No.</th>
+                    <th class="col-3 w-50">Common Name</th>
+                    <th class="col-1">Stock</th>
+                    <th class="col-1">Size</th>
+                    <th class="col-1  ">Delete</th>
+                </tr>
+            </thead>
+        </table>
+        <div class="list-container">
+            <div class="list-item" *ngFor="let stock of stockinfo; let i = index">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td class="col-1">{{i+1}}</td>
+                            <td class="col-3 w-50">{{stock.Common_Name}}</td>
+
+                            <td class="col-1">{{stock.Stock}}</td>
+                            <td class="col-1"></td>
+                            <td class="col-1"></td>
+
+                            <!-- <td class="col-3 " *ngIf="all.role==='admin'">
+                            <button class="button-62" role="button" (click)="addadmin(all._id,all.role)">{{all.role | titlecase}}</button>
+                            <button class="btn btn-primary role" (click)="addadmin(all._id,all.role)">{{all.role | titlecase}}</button>
+                        </td>
+                        <td class="col-3" *ngIf="all.role==='user'">
+                            <button class="button-63" role="button" (click)="addadmin(all._id,all.role)">{{all.role | titlecase}}</button>
+                        </td> -->
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</body>

@@ -62,7 +62,7 @@ const routes: Routes = [
   {path:'admin/add-admin/:act',component:AddAdminComponent, canActivate: [AuthGuard], data: { expectedRole: 'admin' }},
   {path:'admin/add-plant',component:AddPlantComponent, canActivate: [AuthGuard], data: { expectedRole: 'admin' }},
   {path:'admin/plant-details/:act',component:PlantDetailComponent, canActivate: [AuthGuard], data: { expectedRole: 'admin' }},
-  {path:'admin/stock',component:StockComponent, canActivate: [AuthGuard], data: { expectedRole: 'admin' }},
+  {path:'admin/stock/:act',component:StockComponent, canActivate: [AuthGuard], data: { expectedRole: 'admin' }},
   {path :'orderlist',component:OrderlistComponent,canActivate: [AuthGuard]},
   {path :'orderinfo/:id',component:OrderinfoComponent,canActivate: [AuthGuard]},
   {path:'orderlist/payment/:id',component:PaymentComponent,canActivate:[AuthGuard]},
