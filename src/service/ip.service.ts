@@ -15,7 +15,7 @@ export class IpService {
 
 
   localurl() {
-    return this.urllocal;
+    return this.url;
   }
 
 
