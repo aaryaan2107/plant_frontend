@@ -169,33 +169,33 @@ console.log(filters);
 
 
 
-  addtocart(id:string){
-    console.log(id);
+  // addtocart(id:string){
+  //   console.log(id);
     
-    if(this.plants)
-    {
-      if(!localStorage.getItem('token')) {  
-        this.plantservice.localcartdata(this.plants.filter(plant => String(plant.ID).includes(id)),this.productquantity);
-        this.addcart = 'Add to cart Successfully';
-        setTimeout(() => {
-          this.addcart = '';
-        }, 5000);
-      }
-      else{
-        this.oneplants = this.plants.filter(plant => String(plant.ID).includes(id));
-        this.plantservice.addToCart(this.userID, id, this.productquantity,this.oneplants[0].Price,this.oneplants[0].Common_Name,this.oneplants[0].Botanical_Name,this.oneplants[0].Photo_1).subscribe(
-          (res) =>{
-            this.addcart = 'Add to cart Successfully';
-            setTimeout(() => {
-            this.addcart = '';
-            }, 5000);
-        });
-      }
+  //   if(this.plants)
+  //   {
+  //     if(!localStorage.getItem('token')) {  
+  //       this.plantservice.localcartdata(this.plants.filter(plant => String(plant.ID).includes(id)),this.productquantity);
+  //       this.addcart = 'Add to cart Successfully';
+  //       setTimeout(() => {
+  //         this.addcart = '';
+  //       }, 5000);
+  //     }
+  //     else{
+  //       this.oneplants = this.plants.filter(plant => String(plant.ID).includes(id));
+  //       this.plantservice.addToCart(this.userID, id, this.productquantity,this.oneplants[0].Price,this.oneplants[0].Common_Name,this.oneplants[0].Botanical_Name,this.oneplants[0].Photo_1).subscribe(
+  //         (res) =>{
+  //           this.addcart = 'Add to cart Successfully';
+  //           setTimeout(() => {
+  //           this.addcart = '';
+  //           }, 5000);
+  //       });
+  //     }
       
       
-    }
+  //   }
 
-  }
+  // }
   
 
 

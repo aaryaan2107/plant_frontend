@@ -66,7 +66,7 @@ this.getwishlist();
 
     console.log(productId);
     
-    this.plantservice.addToCart(userId,productId,this.productquantity,Price,Common_Name,Botanical_Name,Photo_1).subscribe(
+    this.plantservice.addToCart(userId,productId,this.productquantity,Price,Common_Name,Botanical_Name,Photo_1,"Small").subscribe(
       (res) => {
             this.message = '     View Cart    ';
          

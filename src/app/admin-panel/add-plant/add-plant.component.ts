@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PlantserviceService } from 'src/service/plantservice.service';
 
@@ -40,14 +41,18 @@ export class AddPlantComponent {
   navOpen: boolean = false;
   errormessage: string = '';
   success: String = '';
+  Size:any;
 
+  radiobtn = new FormGroup({
+    Size: new FormControl(''),
+  });
   constructor(private plantservice: PlantserviceService,private router:Router) {}
   ngOnInit() {
   }
 
   addplant(userdata: any) {
      
-      this.plantservice.addplant(userdata).subscribe(
+      this.plantservice.addplant(userdata,this.Size).subscribe(
         (res) => {
           if(res){
            this.success =res.message;
@@ -77,6 +82,13 @@ export class AddPlantComponent {
   changeSection(section: string) {
 
     this.selectedSection = section;
+  }
+
+  form(){
+    this.Size = this.radiobtn.value.Size;
+  console.log(this.Size);
+  
+    
   }
 }
 

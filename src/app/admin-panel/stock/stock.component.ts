@@ -16,7 +16,8 @@ export class StockComponent implements OnInit {
     invoiceNumber: '',
     invoiceDate:'',
     quantity: '',
-    price: ''
+    price: '',
+    Size:''
   };
   searchQuery: string = '';
   serachplant:any;
@@ -24,6 +25,8 @@ export class StockComponent implements OnInit {
   totalstock:boolean=false;
   addstock:boolean=false;
   stockinfo:any[]=[];
+  a:any
+  success:string='';
   constructor(private plantservice: PlantserviceService,private activeroute:ActivatedRoute) { }
 
   ngOnInit() { 
@@ -44,7 +47,12 @@ export class StockComponent implements OnInit {
 
   stock(formdata:any){
    this.plantservice.stock_details(formdata).subscribe((res)=>{
-    console.log(res); 
+      this.a = res;
+      this.success = this.a.message;
+      setTimeout(() => {
+        this.success='';
+      }, 3000);
+      
    })
   }
 

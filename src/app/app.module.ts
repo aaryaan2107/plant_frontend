@@ -29,7 +29,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { CurrentorderComponent } from './currentorder/currentorder.component';
 import { AdminComponent } from './admin-panel/admin/admin.component';
-
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PaymentComponent } from './payment/payment.component';
 import { OrderlistComponent } from './orderlist/orderlist.component';
 import { LoaderComponent } from './loader/loader.component';
@@ -120,6 +120,7 @@ const routes: Routes = [
     FormsModule,
      Ng2SearchPipeModule,
      NgxPaginationModule,
+     ReactiveFormsModule,
      RouterModule.forRoot(routes, { useHash: true })
   ],
   exports: [RouterModule],

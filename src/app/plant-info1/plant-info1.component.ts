@@ -3,6 +3,7 @@ import { PlantserviceService } from 'src/service/plantservice.service';
 import { ActivatedRoute } from '@angular/router';
 import jwt_decode from "jwt-decode";
 import { IpService } from 'src/service/ip.service';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-plant-info1',
@@ -24,19 +25,28 @@ export class PlantInfo1Component {
   addcart: String = '';
   qrurl:any;
   userID:string = '';
+Size:any;
 
+radiobtn = new FormGroup({
+  Size: new FormControl(''),
+});
   constructor(private plantservice: PlantserviceService, private route: ActivatedRoute,private ipservice:IpService) { }
 
   ngOnInit() {
+    // this.plantSize = 
+
 
    this.qrurl =  this.ipservice.qrcode();
     this.route.paramMap.subscribe(params => {
     this.id = params.get('id');
   });
 
+
+ 
     this.plantservice.getplantid(this.id).subscribe(
       (res) => {
         this.plant = res.data;
+  
         this.loading = false;
         this.plantservice.getplantFamliy(this.plant[0].Family).subscribe(
               (res) => {
@@ -49,12 +59,20 @@ export class PlantInfo1Component {
     var decoded:any = jwt_decode(this.user);
     this.userID=decoded.userId;
   }
+form(){
+  this.Size = this.radiobtn.value.Size;
+console.log(this.Size);
+
+  
+}
 
   addtocart(id:string) {
     
     if(this.plant)
     {
       if(!localStorage.getItem('token')) {
+        console.log(this.plant);
+        
         this.plantservice.localcartdata(this.plant,this.productquantity);
         this.addcart = 'Add to cart Successfully';
         setTimeout(() => {
@@ -67,7 +85,7 @@ export class PlantInfo1Component {
         let userId = decoded.userId;
         let productId:any=this.id ;
             this.oneplant = this.refplant.filter(plant => String(plant.ID).includes(id));     
-            this.plantservice.addToCart(userId, this.oneplant[0].ID, this.productquantity,this.oneplant[0].Price,this.oneplant[0].Common_Name,this.oneplant[0].Botanical_Name,this.oneplant[0].Photo_1).subscribe(
+            this.plantservice.addToCart(userId, this.oneplant[0].ID, this.productquantity,this.oneplant[0].Price,this.oneplant[0].Common_Name,this.oneplant[0].Botanical_Name,this.oneplant[0].Photo_1,this.Size).subscribe(
             (response) => {
               this.addcart = 'Add to cart Successfully';
               setTimeout(() => {

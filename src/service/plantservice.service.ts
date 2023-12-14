@@ -151,8 +151,8 @@ getPlants(page: number,pageSize: number ): Observable<any> {
   
   //store
 
-  addToCart(userId: string, productId: string, quantity: number, Price: number,Common_Name:string,Botanical_Name:string,Photo_1:string) {
-    const body = { userId, productId, quantity, Price, Common_Name, Botanical_Name, Photo_1 };
+  addToCart(userId: string, productId: string, quantity: number, Price: number,Common_Name:string,Botanical_Name:string,Photo_1:string,Size:string) {
+    const body = { userId, productId, quantity, Price, Common_Name, Botanical_Name, Photo_1 ,Size};
     return this.http.post(`${this.url}/Apis/cart`, body);
   }
 
@@ -276,8 +276,10 @@ getorderid(): Observable<any> {
 //   return this.http.get(`${this.url}/admin/addplantid`);
 // }
 
-addplant(userdata: any): Observable<any> {
-  return this.http.post(`${this.url}/admin/addplant`, userdata);
+addplant(userdata: any,Size:String): Observable<any> {  
+  console.log(Size);
+  
+  return this.http.post(`${this.url}/admin/addplant`, {userdata:userdata,Size:Size});
 }
 
 

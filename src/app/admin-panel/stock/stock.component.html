@@ -1,6 +1,12 @@
 <app-admin></app-admin>
 
 <body>
+    <div class="msg" *ngIf="success">
+        <div class="icon" *ngIf="success "><i class="bi bi-person-fill-check"></i></div>
+        <!-- <div class="icon" *ngIf="errormessage "><i class="bi bi-exclamation-triangle-fill"></i></div> -->
+        <!-- <div *ngIf="errormessage " class="errorMessage">{{errormessage}}</div> -->
+        <div *ngIf="success " class="success ">{{success}}</div>
+    </div>
     <section class="container" *ngIf="addstock">
         <div class="title">New Stock</div>
         <div class="content">
@@ -34,6 +40,10 @@
                     <div class="input-box">
                         <span class="details">Price</span>
                         <input type="number" placeholder="Enter Price" name="price" id="price" [(ngModel)]="formdata.price" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Plant Size</span>
+                        <input type="string" placeholder="Enter plant size" name="size" id="size" [(ngModel)]="formdata.Size" required>
                     </div>
                 </div>
 
@@ -84,9 +94,28 @@
                             <td class="col-3 w-50">{{stock.Common_Name}}</td>
 
                             <td class="col-1">{{stock.Stock}}</td>
-                            <td class="col-1"></td>
-                            <td class="col-1"></td>
+                            <td class="col-1">{{stock.Size}}</td>
+                            <td class="col-1"><button class="btn btn-danger p-5" data-toggle="modal" data-target="#exampleModal">Remove</button></td>
 
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog p-5" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Stock remove</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            ...
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <!-- <td class="col-3 " *ngIf="all.role==='admin'">
                             <button class="button-62" role="button" (click)="addadmin(all._id,all.role)">{{all.role | titlecase}}</button>
                             <button class="btn btn-primary role" (click)="addadmin(all._id,all.role)">{{all.role | titlecase}}</button>

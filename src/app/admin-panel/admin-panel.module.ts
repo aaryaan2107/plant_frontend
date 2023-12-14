@@ -8,6 +8,7 @@ import { AddPlantComponent } from './add-plant/add-plant.component';
 import { AdminComponent } from './admin/admin.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { StockComponent } from './stock/stock.component';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { StockComponent } from './stock/stock.component';
     CommonModule,
     FormsModule,
     NgxPaginationModule,
+    ReactiveFormsModule,
     AppRoutingModule
   ],
   exports:[

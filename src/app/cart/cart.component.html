@@ -1,264 +1,94 @@
 <app-header></app-header>
 <div *ngIf="loading">
-<app-loader></app-loader>
+    <app-loader></app-loader>
 </div>
 <div *ngIf="!loading">
-<div *ngIf="!loggin">
-    <div *ngIf="cartData.length === 0">
-        <div class=" mb-5">
-            <div class="card-body cart" >
-                <div class="col-sm-12 empty-cart-cls text-center" style="margin-top:80px;" >
-                    <img src="https://i.imgur.com/dCdflKN.png"  width="130" height="130" class="img-fluid mb-4 mr-3">
-                    <h3><strong>Your Cart is Empty</strong></h3>
-                    <h4>Add something to make me happy</h4>
-                    <a class="btn cart-btn-transform m-3 text-white" style="background-color: #54caB0;" routerLink="/plants">continue shopping</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div *ngIf="cartData.length > 0 ">
-        <section class="h-100 gradient-custom">
-            <div class="container py-5">
-                <div class="row d-flex justify-content-center my-4">
-                    <div class="col-md-8">
-                        <div class="card mb-4">
-
-                            <!-- for localstorage  -->
-
-                            <div class="card-body " *ngFor="let item of cartData">
-
-                                <div class="row  p-2 " *ngFor="let product of item.product">
-                                    <div class="col-lg-3 col-md-12 mb-4 mb-lg-0 mt-3 ">
-
-                                        <div class="bg-image hover-overlay hover-zoom ripple rounded" data-mdb-ripple-color="light">
-                                            <img [src]="product.Photo_1" class="w-100" alt="Blue Jeans Jacket" />
-                                            <a href="#!">
-                                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
-                                            </a>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="col-lg-5 col-md-6 mb-4 mb-lg-0 ">
-
-                                        <p><strong>{{ product.Common_Name }}</strong></p>
-                                        <p>{{ product.Botanical_Name }}</p>
-                                        <p>PRICE: {{ product.Price }} Rs</p>
-                                        <p>Quantity: {{item.quantity}}</p>
-                                        <button type="button" class="btn btn-danger btn-sm me-1 mb-2" data-toggle="modal" data-target="#exampleModalCenter">
-                      <i class="fa fa-trash"></i><span> Remove </span>
-                    </button>
-
-                                        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLongTitle">Do You Want To Delete Plant</h5>
-
-                                                    </div>
-
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                        <button type="button" class="btn btn-danger" (click)="onDeleteUser2(product.ID)" data-dismiss="modal">Delete</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
-                                        <!-- Quantity -->
-                                        <div class="d-flex mb-4" style="max-width: 300px">
-                                            <button class="btn btn-success px-3 me-2" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" (click)="qtyminus(product._id)">
-                        <i class="fa fa-minus"></i>
-                      </button>
-
-                                            <div class="form-outline">
-                                                <input id="form1" min="1" max="20" name="quantity" [(ngModel)]="item.quantity" type="number" class="form-control" disabled />
-                                                <label class="form-label" for="form1">Quantity</label>
-                                            </div>
-
-                                            <button class="btn btn-success px-3 ms-2" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" (click)="qtyplus(product._id)">
-                        <i class="fa fa-plus"></i>
-                      </button>
-                                        </div>
-                                    </div>
-
-
-
-
-                                </div>
-                                <hr class="my-4" />
-                            </div>
-
-
-
-                        </div>
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                <p><strong>Expected shipping delivery</strong></p>
-                                <p class="mb-0">12.10.2020 - 14.10.2020</p>
-                            </div>
-                        </div>
-                        <div class="card mb-4 mb-lg-0">
-                            <div class="card-body">
-                                <p><strong>We accept</strong></p>
-
-                                <img class="me-2" width="45px" src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce-gateway-stripe/assets/images/visa.svg" alt="Visa" />
-                                <img class="me-2 m-2" width="45px" src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce-gateway-stripe/assets/images/amex.svg" alt="American Express" />
-                                <img class="me-2" width="45px" src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce-gateway-stripe/assets/images/mastercard.svg" alt="Mastercard" />
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card mb-4">
-                            <div class="card-header py-3">
-                                <h5 class="mb-0">Summary</h5>
-                            </div>
-                            <div class="card-body">
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
-                                        Products
-                                        <span>{{allq}}</span>
-                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center px-0">
-                                        Shipping
-                                        <span>Gratis</span>
-                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
-                                        <div>
-                                            <strong>Total amount</strong>
-                                            <strong>
-                        <p class="mb-0">(including TAX)</p>
-                      </strong>
-                                        </div>
-                                        <span><strong>{{total}}</strong></span>
-                                    </li>
-                                </ul>
-                                <button type="button" class="btn btn-primary btn-lg btn-block" routerLink="/login">
-                  Go to checkout
-                </button>
-                            </div>
-                        </div>
+    <div *ngIf="!loggin">
+        <div *ngIf="cartData.length === 0">
+            <div class=" mb-5">
+                <div class="card-body cart">
+                    <div class="col-sm-12 empty-cart-cls text-center" style="margin-top:80px;">
+                        <img src="https://i.imgur.com/dCdflKN.png" width="130" height="130" class="img-fluid mb-4 mr-3">
+                        <h3><strong>Your Cart is Empty</strong></h3>
+                        <h4>Add something to make me happy</h4>
+                        <a class="btn cart-btn-transform m-3 text-white" style="background-color: #54caB0;" routerLink="/plants">continue shopping</a>
                     </div>
                 </div>
             </div>
-        </section>
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div *ngIf="loggin ">
-    <div *ngIf="item.length === 0">
-        <div class=" mt-5 mb-5">
-            <div class="card-body cart">
-                <div class="col-sm-12 empty-cart-cls text-center">
-                    <img src="https://i.imgur.com/dCdflKN.png" width="130" height="130" class="img-fluid mb-4 mr-3">
-                    <h3><strong>Your Cart is Empty</strong></h3>
-                    <h4>Add Something To Make Me Happy</h4>
-                    <a class="btn cart-btn-transform m-3 text-white" style="background-color: #54caB0;" routerLink="/plants">Continue Shopping</a>
-                </div>
-            </div>
         </div>
-    </div>
 
 
-    <div *ngIf="item.length > 0 ">
-        <div *ngIf="!login">
+        <div *ngIf="cartData.length > 0 ">
             <section class="h-100 gradient-custom">
                 <div class="container py-5">
                     <div class="row d-flex justify-content-center my-4">
                         <div class="col-md-8">
                             <div class="card mb-4">
 
-                                <div *ngFor="let c of item">
-                                    <div>
-                                        <div class="card-body">
+                                <!-- for localstorage  -->
 
-                                            <div class="row">
-                                                <div class="col-lg-3 col-md-12 mb-4 mb-lg-0 ">
+                                <div class="card-body " *ngFor="let item of cartData">
 
-                                                    <div class="bg-image hover-overlay hover-zoom ripple rounded" data-mdb-ripple-color="light">
-                                                        <img [src]="c.Photo_1" class="w-100" alt="Blue Jeans Jacket" />
-                                                        <a href="#!">
-                                                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
-                                                        </a>
-                                                    </div>
+                                    <div class="row  p-2 " *ngFor="let product of item.product">
+                                        <div class="col-lg-3 col-md-12 mb-4 mb-lg-0 mt-3 ">
 
-                                                </div>
+                                            <div class="bg-image hover-overlay hover-zoom ripple rounded" data-mdb-ripple-color="light">
+                                                <img [src]="product.Photo_1" class="w-100" alt="Blue Jeans Jacket" />
+                                                <a href="#!">
+                                                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
+                                                </a>
+                                            </div>
 
-                                                <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
+                                        </div>
 
+                                        <div class="col-lg-5 col-md-6 mb-4 mb-lg-0 ">
 
-                                                    <p><strong>{{ c.Common_Name }}</strong></p>
-                                                    <p>{{ c.Botanical_Name }}</p>
-                                                    <p>Price: {{ c.Price }} Rs</p>
-                                                    <p>Quantity: {{c.quantity}}</p>
+                                            <p><strong>{{ product.Common_Name }}</strong></p>
+                                            <p>{{ product.Botanical_Name }}</p>
+                                            <p>PRICE: {{ product.Price }} Rs</p>
+                                            <p>Quantity: {{item.quantity}}</p>
+                                            <button type="button" class="btn btn-danger btn-sm me-1 mb-2" data-toggle="modal" data-target="#exampleModalCenter">
+                      <i class="fa fa-trash"></i><span> Remove </span>
+                    </button>
 
+                                            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLongTitle">Do You Want To Delete Plant</h5>
 
-
-                                                    <button type="button" class="btn btn-danger btn-sm me-1 mb-2" data-toggle="modal" data-target="#exampleModalCenter" (click)="deleteId(c._id)">
-                            <i class="fa fa-trash"></i><span> Remove </span>
-                          </button>
-
-                                                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLongTitle">Do You Want To Delete Plant</h5>
-
-                                                                </div>
-
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                                    <button type="button" class="btn btn-danger" (click)="onDeleteUser(deleteId1)" data-dismiss="modal">Delete</button>
-
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-
-                                                </div>
-
-                                                <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
-                                                    <div class="d-flex mb-4" style="max-width: 300px">
-                                                        <button class="btn btn-success px-3 me-2" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" (click)="qtyminus2({_id:c._id})">
-                              <i class="fa fa-minus"></i>
-                            </button>
-
-                                                        <div class="form-outline">
-                                                            <input id="form1" min="1" max="20" name="quantity" [(ngModel)]="c.quantity" type="number" class="form-control" disabled />
-                                                            <label class="form-label" for="form1">Quantity</label>
                                                         </div>
 
-                                                        <button class="btn btn-success px-3 ms-2" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" (click)="qtyplus2({_id:c._id})">
-                              <i class="fa fa-plus"></i>
-                            </button>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                            <button type="button" class="btn btn-danger" (click)="onDeleteUser2(product.ID)" data-dismiss="modal">Delete</button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
+
                                         </div>
+                                        <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                                            <!-- Quantity -->
+                                            <div class="d-flex mb-4" style="max-width: 300px">
+                                                <button class="btn btn-success px-3 me-2" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" (click)="qtyminus(product._id)">
+                        <i class="fa fa-minus"></i>
+                      </button>
+
+                                                <div class="form-outline">
+                                                    <input id="form1" min="1" max="20" name="quantity" [(ngModel)]="item.quantity" type="number" class="form-control" disabled />
+                                                    <label class="form-label" for="form1">Quantity</label>
+                                                </div>
+
+                                                <button class="btn btn-success px-3 ms-2" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" (click)="qtyplus(product._id)">
+                        <i class="fa fa-plus"></i>
+                      </button>
+                                            </div>
+                                        </div>
+
+
+
+
                                     </div>
                                     <hr class="my-4" />
                                 </div>
@@ -266,8 +96,22 @@
 
 
                             </div>
-                          
-                        
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <p><strong>Expected shipping delivery</strong></p>
+                                    <p class="mb-0">12.10.2020 - 14.10.2020</p>
+                                </div>
+                            </div>
+                            <div class="card mb-4 mb-lg-0">
+                                <div class="card-body">
+                                    <p><strong>We accept</strong></p>
+
+                                    <img class="me-2" width="45px" src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce-gateway-stripe/assets/images/visa.svg" alt="Visa" />
+                                    <img class="me-2 m-2" width="45px" src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce-gateway-stripe/assets/images/amex.svg" alt="American Express" />
+                                    <img class="me-2" width="45px" src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce-gateway-stripe/assets/images/mastercard.svg" alt="Mastercard" />
+
+                                </div>
+                            </div>
                         </div>
                         <div class="col-md-4">
                             <div class="card mb-4">
@@ -288,15 +132,15 @@
                                             <div>
                                                 <strong>Total amount</strong>
                                                 <strong>
-                          <p class="mb-0">(including TAX)</p>
-                        </strong>
+                        <p class="mb-0">(including TAX)</p>
+                      </strong>
                                             </div>
                                             <span><strong>{{total}}</strong></span>
                                         </li>
                                     </ul>
-                                    <button type="button" class="btn btn-primary btn-lg btn-block" routerLink="/checkout">
-                    Go To Checkout
-                  </button>
+                                    <button type="button" class="btn btn-primary btn-lg btn-block" routerLink="/login">
+                  Go to checkout
+                </button>
                                 </div>
                             </div>
                         </div>
@@ -305,7 +149,164 @@
             </section>
         </div>
     </div>
-</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div *ngIf="loggin ">
+        <div *ngIf="item.length === 0">
+            <div class=" mt-5 mb-5">
+                <div class="card-body cart">
+                    <div class="col-sm-12 empty-cart-cls text-center">
+                        <img src="https://i.imgur.com/dCdflKN.png" width="130" height="130" class="img-fluid mb-4 mr-3">
+                        <h3><strong>Your Cart is Empty</strong></h3>
+                        <h4>Add Something To Make Me Happy</h4>
+                        <a class="btn cart-btn-transform m-3 text-white" style="background-color: #54caB0;" routerLink="/plants">Continue Shopping</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div *ngIf="item.length > 0 ">
+            <div *ngIf="!login">
+                <section class="h-100 gradient-custom">
+                    <div class="container py-5">
+                        <div class="row d-flex justify-content-center my-4">
+                            <div class="col-md-8">
+                                <div class="card mb-4">
+
+                                    <div *ngFor="let c of item">
+                                        <div>
+                                            <div class="card-body">
+
+                                                <div class="row">
+                                                    <div class="col-lg-3 col-md-12 mb-4 mb-lg-0 ">
+
+                                                        <div class="bg-image hover-overlay hover-zoom ripple rounded" data-mdb-ripple-color="light">
+                                                            <img [src]="c.Photo_1" class="w-100" alt="Blue Jeans Jacket" />
+                                                            <a href="#!">
+                                                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
+                                                            </a>
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
+
+
+                                                        <p><strong>{{ c.Common_Name }}</strong></p>
+                                                        <p>{{ c.Botanical_Name }}</p>
+                                                        <p>Price: {{ c.Price }} Rs</p>
+                                                        <p>Quantity: {{c.quantity}}</p>
+                                                        <p>Size: {{c.Size}}</p>
+
+
+
+                                                        <button type="button" class="btn btn-danger btn-sm me-1 mb-2" data-toggle="modal" data-target="#exampleModalCenter" (click)="deleteId(c._id)">
+                            <i class="fa fa-trash"></i><span> Remove </span>
+                          </button>
+
+                                                        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="exampleModalLongTitle">Do You Want To Delete Plant</h5>
+
+                                                                    </div>
+
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                                        <button type="button" class="btn btn-danger" (click)="onDeleteUser(deleteId1)" data-dismiss="modal">Delete</button>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+                                                    </div>
+
+                                                    <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                                                        <div class="d-flex mb-4" style="max-width: 300px">
+                                                            <button class="btn btn-success px-3 me-2" onclick="this.parentNode.querySelector('input[type=number]').stepDown()" (click)="qtyminus2({_id:c._id})">
+                              <i class="fa fa-minus"></i>
+                            </button>
+
+                                                            <div class="form-outline">
+                                                                <input id="form1" min="1" max="20" name="quantity" [(ngModel)]="c.quantity" type="number" class="form-control" disabled />
+                                                                <label class="form-label" for="form1">Quantity</label>
+                                                            </div>
+
+                                                            <button class="btn btn-success px-3 ms-2" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" (click)="qtyplus2({_id:c._id})">
+                              <i class="fa fa-plus"></i>
+                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr class="my-4" />
+                                    </div>
+
+
+
+                                </div>
+
+
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card mb-4">
+                                    <div class="card-header py-3">
+                                        <h5 class="mb-0">Summary</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                                                Products
+                                                <span>{{allq}}</span>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                                Shipping
+                                                <span>Gratis</span>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                                                <div>
+                                                    <strong>Total amount</strong>
+                                                    <strong>
+                          <p class="mb-0">(including TAX)</p>
+                        </strong>
+                                                </div>
+                                                <span><strong>{{total}}</strong></span>
+                                            </li>
+                                        </ul>
+                                        <button type="button" class="btn btn-primary btn-lg btn-block" routerLink="/checkout">
+                    Go To Checkout
+                  </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
 </div>
 
 <app-footer></app-footer>

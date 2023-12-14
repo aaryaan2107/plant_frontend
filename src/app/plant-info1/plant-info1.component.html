@@ -1,153 +1,160 @@
 <app-header></app-header>
-<div *ngIf="loading" >
-  <app-loader></app-loader>
+<div *ngIf="loading">
+    <app-loader></app-loader>
 </div>
-<body  *ngIf="!loading">
-  
 
-<div style="margin-top: 80px;" *ngFor="let u of plant">
-  <br>
-  <h1 class="text-center">{{u.Common_Name}}</h1>   
-  <br> <br> 
-  <div class="row mb-5">
-    
-    <div class="col-sm-5 text-center ">
-      <!-- <img [src]="u.Photo" class="img-thumbnail image w-75"> -->
+<body *ngIf="!loading">
 
-        <div class="container">
-            <div class="carousel">
-                <input type="radio" name="slides" checked="checked" id="slide-1">
-                <input type="radio" name="slides" id="slide-2">
-                <input type="radio" name="slides" id="slide-3">
-                 <input type="radio" name="slides" id="slide-4">
-                <input type="radio" name="slides" id="slide-5">
-                <input type="radio" name="slides" id="slide-6">
-                <ul class="carousel__slides " style="border-radius: 40px; box-shadow: 3px 3px 5px black;">
-                    <li class="carousel__slide">
-                        <figure>
-                            <div>
-                                <img [src]="u.Photo_1" [alt]="u.Common_Name">
-                            </div>
-                        </figure>
-                    </li>
-                    <li class="carousel__slide">
-                        <figure>
-                            <div>
-                              <img [src]="u.Photo_2" [alt]="u.Common_Name">
-                            </div>
-                        </figure>
-                    </li>
-                    <li class="carousel__slide">
-                        <figure>
-                            <div>
-                              <img [src]="u.Photo_3" [alt]="u.Common_Name">
-                            </div>
-                  
-                        </figure>
-                    </li>
-                   
-                </ul>    
-                <ul class="carousel__thumbnails" style="margin-left: 120px;">
-                    <li>
-                        <label for="slide-1"><img [src]="u.Photo_1" [alt]="u.Common_Name"></label>
-                    </li>
-                    <li>
-                        <label for="slide-2"> <img [src]="u.Photo_2" [alt]="u.Common_Name"></label>
-                    </li>
-                    <li>
-                        <label for="slide-3"> <img [src]="u.Photo_3" [alt]="u.Common_Name"></label>
-                    </li>
-                
-                </ul>
+
+    <div style="margin-top: 80px;" *ngFor="let u of plant">
+        <br>
+        <h1 class="text-center">{{u.Common_Name}}</h1>
+        <br> <br>
+        <div class="row mb-5">
+
+            <div class="col-sm-5 text-center ">
+                <!-- <img [src]="u.Photo" class="img-thumbnail image w-75"> -->
+
+                <div class="container">
+                    <div class="carousel">
+                        <input type="radio" name="slides" checked="checked" id="slide-1">
+                        <input type="radio" name="slides" id="slide-2">
+                        <input type="radio" name="slides" id="slide-3">
+                        <input type="radio" name="slides" id="slide-4">
+                        <input type="radio" name="slides" id="slide-5">
+                        <input type="radio" name="slides" id="slide-6">
+                        <ul class="carousel__slides " style="border-radius: 40px; box-shadow: 3px 3px 5px black;">
+                            <li class="carousel__slide">
+                                <figure>
+                                    <div>
+                                        <img [src]="u.Photo_1" [alt]="u.Common_Name">
+                                    </div>
+                                </figure>
+                            </li>
+                            <li class="carousel__slide">
+                                <figure>
+                                    <div>
+                                        <img [src]="u.Photo_2" [alt]="u.Common_Name">
+                                    </div>
+                                </figure>
+                            </li>
+                            <li class="carousel__slide">
+                                <figure>
+                                    <div>
+                                        <img [src]="u.Photo_3" [alt]="u.Common_Name">
+                                    </div>
+
+                                </figure>
+                            </li>
+
+                        </ul>
+                        <ul class="carousel__thumbnails" style="margin-left: 120px;">
+                            <li>
+                                <label for="slide-1"><img [src]="u.Photo_1" [alt]="u.Common_Name"></label>
+                            </li>
+                            <li>
+                                <label for="slide-2"> <img [src]="u.Photo_2" [alt]="u.Common_Name"></label>
+                            </li>
+                            <li>
+                                <label for="slide-3"> <img [src]="u.Photo_3" [alt]="u.Common_Name"></label>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+
+                <qrcode class="qrscan1 qrcode2" qrdata="{{this.qrurl}}/#/plantinfo1/{{u.ID}}" [width]="250" [errorCorrectionLevel]="'M'"></qrcode>
+
+                <!-- <div class="col-sm-3 btn btn-success" routerLink="/plants/plantinfo2/{{u.ID}}">More Info</div> -->
             </div>
-        </div>
+            <div class="col-sm-6 mt-3 float-left">
+                <div class="scale shadow mb-2 " style="border-radius: 40px; padding: 10px; "><img height="48px" width=" 48px" src="../../assets/icon/common.png" class="mr-4" alt=""><span>Common Name : </span>{{u.Common_Name}}</div>
+                <div class="scale shadow  mb-2 " style="border-radius: 40px; padding: 10px; "><img height="48px" width=" 48px" src="../../assets/icon/bote.png" class="mr-4" alt=""><span>Botanical Name : </span>{{u.Botanical_Name}}</div>
+                <div class="scale shadow  mb-2 " style="border-radius: 40px; padding: 10px; "><img height="48px" width=" 48px" src="../../assets/icon/op.png" class="mr-4" alt=""><span>Category : </span>{{u.Category}}</div>
+                <div class="scale shadow  mb-2  " style="border-radius: 40px; padding: 10px; "><img height="48px" width=" 48px" src="../../assets/icon/ii.png" class="mr-4" alt=""><span>Growing Time : </span>{{u.Growing_Time}}</div>
+                <div class="scale shadow  mb-2  " style="border-radius: 40px; padding: 10px; "><img height="48px" width=" 48px" src="../../assets/icon/toxic.png" class="mr-4" alt=""><span>Maintenance : </span>{{u.Maintenance}}</div>
+                <div class="scale shadow  mb-2  " style="border-radius: 40px; padding: 10px; "><img height="48px" width=" 48px" src="../../assets/icon/special.png" class="mr-4" alt=""><span>Special_Properties : </span>{{u.Special_Properties}}</div>
+                <div class="scale shadow  mb-2  " style="border-radius: 40px; padding: 10px; "><img height="48px" width=" 48px" src="../../assets/icon/price.png" class="mr-4" alt=""><span>Price : </span>{{u.Price}}</div>
+                <div class=" shadow  mb-2  " style="border-radius: 40px; padding: 10px;display: flex; align-items: center;  gap:10px;"><img height="48px" width=" 48px" src="../../assets/icon/special.png" class="mr-4" alt=""><span>Price : </span>
+                    <form class="rdb_btn " [formGroup]="radiobtn" (change)="form()" style="display: flex; gap:10px;">
+                        <input type="radio" name="size" class="radioBtn" formControlName="Size" value="Medium">Medium
+                        <input type="radio" name="size" class="radioBtn" formControlName="Size" value="Small">Small
+                        <input type="radio" name="size" class="radioBtn" formControlName="Size" value="Large">large
 
-        <qrcode class="qrscan1 qrcode2" qrdata="{{this.qrurl}}/#/plantinfo1/{{u.ID}}" [width]="250" [errorCorrectionLevel]="'M'" ></qrcode>
-
-        <!-- <div class="col-sm-3 btn btn-success" routerLink="/plants/plantinfo2/{{u.ID}}">More Info</div> -->
-    </div>
-    <div class="col-sm-6 mt-3 float-left">
-      <div class="scale shadow mb-2 " style="border-radius: 40px; padding: 10px; "><img height="48px" width=" 48px" src="../../assets/icon/common.png" class="mr-4" alt=""><span>Common Name : </span>{{u.Common_Name}}</div>
-      <div class="scale shadow  mb-2 " style="border-radius: 40px; padding: 10px; "><img height="48px" width=" 48px" src="../../assets/icon/bote.png" class="mr-4" alt=""><span>Botanical Name : </span>{{u.Botanical_Name}}</div>
-      <div class="scale shadow  mb-2 " style="border-radius: 40px; padding: 10px; "><img height="48px" width=" 48px" src="../../assets/icon/op.png" class="mr-4" alt=""><span>Category : </span>{{u.Category}}</div>
-      <div class="scale shadow  mb-2  " style="border-radius: 40px; padding: 10px; "><img height="48px" width=" 48px" src="../../assets/icon/ii.png" class="mr-4" alt=""><span>Growing Time : </span>{{u.Growing_Time}}</div>
-      <div class="scale shadow  mb-2  " style="border-radius: 40px; padding: 10px; "><img height="48px" width=" 48px" src="../../assets/icon/toxic.png" class="mr-4" alt=""><span>Maintenance : </span>{{u.Maintenance}}</div>
-      <div class="scale shadow  mb-2  " style="border-radius: 40px; padding: 10px; "><img height="48px" width=" 48px" src="../../assets/icon/special.png" class="mr-4" alt=""><span>Special_Properties : </span>{{u.Special_Properties}}</div>
-      <div class="scale shadow  mb-2  " style="border-radius: 40px; padding: 10px; "><img height="48px" width=" 48px" src="../../assets/icon/price.png" class="mr-4" alt=""><span>Price : </span>{{u.Price}}</div>
-      <div class="row m-3 p-2 button2" style="gap:20px; " >
-      <div class=" button btn-success b" routerLink="/plantinfo3/{{u.ID}}">CARING INSTRUCTION<i class="m-2	fa fa-info-circle"></i></div>
-      <div class=" button btn-success b" routerLink="/plantinfo2/{{u.ID}}">PLANTING INSTRUCTION<i class="m-2	fa fa-info-circle"></i></div>
-      <div class=" button btn-success b" routerLink="/plantinfo4/{{u.ID}}">MORE INFO<i class="m-2	fa fa-info-circle"></i></div>
-      <div class=" quantity" style="align-items: center; justify-content: center;">
-      </div>
-      <div class="input-group col-sm-3 quantity" style="align-items: center; justify-content: center;">
-        <span class="input-group-btn">
+                    </form>
+                </div>
+                <div class="row m-3 p-2 button2" style="gap:20px; ">
+                    <div class=" button btn-success b" routerLink="/plantinfo3/{{u.ID}}">CARING INSTRUCTION<i class="m-2	fa fa-info-circle"></i></div>
+                    <div class=" button btn-success b" routerLink="/plantinfo2/{{u.ID}}">PLANTING INSTRUCTION<i class="m-2	fa fa-info-circle"></i></div>
+                    <div class=" button btn-success b" routerLink="/plantinfo4/{{u.ID}}">MORE INFO<i class="m-2	fa fa-info-circle"></i></div>
+                    <div class=" quantity" style="align-items: center; justify-content: center;">
+                    </div>
+                    <div class="input-group col-sm-3 quantity" style="align-items: center; justify-content: center;">
+                        <span class="input-group-btn">
           <button type="button" class="btn btn-success btn-number"  (click)="quantity('min')">
             <span class="fa fa-minus"></span>
-          </button>
-        </span>
-        <input type="text" name="quant[1]" class="form-control input-number" value="{{productquantity}}"  min="1" max="20" disabled>
-        <span class="input-group-btn">
+                        </button>
+                        </span>
+                        <input type="text" name="quant[1]" class="form-control input-number" value="{{productquantity}}" min="1" max="20" disabled>
+                        <span class="input-group-btn">
           <button type="button" class="btn btn-success btn-number" (click)="quantity('plus')" >
             <span class="fa fa-plus"></span>
-          </button>
-        </span>
-      </div>
-      <div class="col-sm-3 btn p-1 btn-success "(click)="addtocart(u.ID)">Add to Cart <i class="m-2 fa fa-cart-plus"></i></div>
-      </div>
-     
-       <qrcode class="qrcode qrscan2 "  qrdata="{{this.qrurl}}/#/plantinfo1/{{u.ID}}" [width]="250" [errorCorrectionLevel]="'M'" ></qrcode> 
+                        </button>
+                        </span>
+                    </div>
+                    <div class="col-sm-3 btn p-1 btn-success " (click)="addtocart(u.ID)">Add to Cart <i class="m-2 fa fa-cart-plus"></i></div>
+                </div>
+
+                <qrcode class="qrcode qrscan2 " qrdata="{{this.qrurl}}/#/plantinfo1/{{u.ID}}" [width]="250" [errorCorrectionLevel]="'M'"></qrcode>
+            </div>
+
+        </div>
     </div>
+    <div class="msg" *ngIf="addcart">
+        <div class="icon"><i class="fa fa-check"></i></div>
+        <div class="success">{{addcart}}<span routerLink="/cart" style="margin-left:5px ; cursor: pointer; color: red; font-weight: 700;">View Cart</span></div>
+    </div>
+    <!-- =[===========-=======] -->
 
-  </div>
-</div>
-<div class="msg" *ngIf="addcart">
-  <div class="icon"><i class="fa fa-check"></i></div>
-  <div class="success">{{addcart}}<span routerLink="/cart" style="margin-left:5px ; cursor: pointer; color: red; font-weight: 700;">View Cart</span></div>
-</div>
-<!-- =[===========-=======] -->
-
-<section class="plant_section layout_padding" style="background-color: rgba(236, 236, 236,0.2);">
-  <div class="container">
-      <div class="search-hero">
-<div class="go">
-  <div class="row">
-      <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let plant of refplant">
-          <div class="box hover txt" style="box-shadow: 3px 3px 20px rgb(0, 0, 0,0.3);">
-              <div *ngFor="let w of data">
-                  <a (click)="deletewishlist(w._id)" *ngIf="w.productId == plant.ID">
-                      <i class="fa fa-heart mb-1" [ngClass]="w.class"></i>
-                  </a>
-              </div>
-              <a
-                  (click)="wishlist({productId:plant.ID,userId:userID,Photo_1:plant.Photo_1,Common_Name:plant.Common_Name,Botanical_Name:plant.Botanical_Name,Price:plant.Price})">
-                  <i class="fa fa-heart mb-1 fix"></i>
-              </a>
-              <a routerLink="/plantinfo1/{{plant.ID}}" style="text-decoration: none;">
-                  <div class="img-box">
-                      <img [src]="plant.Photo_1" [alt]="plant.Common_Name">
-                  </div>
-                  <div class="detail-box">
-                      <a href="#" style="text-decoration: none;">
+    <section class="plant_section layout_padding" style="background-color: rgba(236, 236, 236,0.2);">
+        <div class="container">
+            <div class="search-hero">
+                <div class="go">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let plant of refplant">
+                            <div class="box hover txt" style="box-shadow: 3px 3px 20px rgb(0, 0, 0,0.3);">
+                                <div *ngFor="let w of data">
+                                    <a (click)="deletewishlist(w._id)" *ngIf="w.productId == plant.ID">
+                                        <i class="fa fa-heart mb-1" [ngClass]="w.class"></i>
+                                    </a>
+                                </div>
+                                <a (click)="wishlist({productId:plant.ID,userId:userID,Photo_1:plant.Photo_1,Common_Name:plant.Common_Name,Botanical_Name:plant.Botanical_Name,Price:plant.Price})">
+                                    <i class="fa fa-heart mb-1 fix"></i>
+                                </a>
+                                <a routerLink="/plantinfo1/{{plant.ID}}" style="text-decoration: none;">
+                                    <div class="img-box">
+                                        <img [src]="plant.Photo_1" [alt]="plant.Common_Name">
+                                    </div>
+                                    <div class="detail-box">
+                                        <a href="#" style="text-decoration: none;">
                           {{plant.Botanical_Name}}<span class="s">{{plant.Price}}</span>
                       </a>
 
-                      <!-- <h5>
+                                        <!-- <h5>
                           &#8377;{{plant.Price}}
                       </h5> -->
-                  </div>
-              </a>
-              <span class="spans" id="span" (click)="addtocart(plant.ID)"><a>Add to cart</a></span>
+                                    </div>
+                                </a>
+                                <span class="spans" id="span" (click)="addtocart(plant.ID)"><a>Add to cart</a></span>
 
-          </div>
+                            </div>
 
-      </div><br><br>
-  </div>
-</div>
-</div>
-</div>
-</section>
+                        </div><br><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 </body>
 <app-footer></app-footer>
-

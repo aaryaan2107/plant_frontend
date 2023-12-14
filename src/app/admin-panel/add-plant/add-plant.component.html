@@ -3,161 +3,172 @@
 
 <head>
 </head>
-
+<app-admin></app-admin>
 <body>
     <div class="msg" *ngIf="errormessage || success">
-        <div class="icon" *ngIf="success "><i class="fa fa-check"></i></div>
-        <div class="icon" *ngIf="errormessage "><i class="fa fa-exclamation-triangle"></i></div>
+        <div class="icon" *ngIf="success "><i class="bi bi-person-fill-check"></i></div>
+        <div class="icon" *ngIf="errormessage "><i class="bi bi-exclamation-triangle-fill"></i></div>
         <div *ngIf="errormessage " class="errorMessage">{{errormessage}}</div>
         <div *ngIf="success " class="success ">{{success}}</div>
         <!-- <div class="text">Add to card successfully <span>View Cart</span></div> -->
     </div>
 
-    <app-admin></app-admin>
-    <section class="container">
-        <h3>Add New Plant</h3>
+    
+    
 
-        <div class="second " style="overflow-y:scroll;">
-
-            <form class="text" (ngSubmit)="addplant(plantdata)">
-
-                <div class="form-group">
-                    <label for="username">Family</label>
-                    <input type="text" class="form-control" name="Family" id="Family" [(ngModel)]="plantdata.Family" placeholder="Enter Family">
-                </div>
-
-                <div class="form-group">
-                    <label for="username">Botanical Name</label>
-                    <input type="text" class="form-control" name="Botanical_Name" id="Botanical_Name" [(ngModel)]="plantdata.Botanical_Name" placeholder="Enter Botanical Name">
-                </div>
-
-                <div class="form-group">
-                    <label for="username">Common Name</label>
-                    <input type="text" class="form-control" name="Common_Name" id="Common_Name" [(ngModel)]="plantdata.Common_Name" placeholder="Enter Common Name">
-                </div>
-
-                <div class="form-group">
-                    <label for="username">Photo 1</label>
-                    <input type="file" class="form-control" name="Photo_1" id="Photo_1" [(ngModel)]="plantdata.Photo_1" placeholder="Enter Photo 1">
-                </div>
-
-                <div class="form-group">
-                    <label for="username">Photo 2</label>
-                    <input type="file" class="form-control" name="Photo_2" id="Photo_2" [(ngModel)]="plantdata.Photo_2" placeholder="Enter Photo 2">
-                </div>
-
-                <div class="form-group">
-                    <label for="username">Photo 3</label>
-                    <input type="file" class="form-control" name="Photo_3" id="Photo_3" [(ngModel)]="plantdata.Photo_3" placeholder="Enter Photo 3">
-                </div>
-
-                <div class="form-group">
-                    <label for="username">Category</label>
-                    <select class="form-control" name="Category" id="Category" [(ngModel)]="plantdata.Category">
-                <option value="">--Select Values--</option>
-                <option value="Both">Both</option>
-                <option value="Indoor">Indoor</option>
-                <option value="Outdoor">Outdoor</option>
-            </select>
-
-                    <div class="form-group">
-                        <label for="username">Growing Time</label>
-                        <select class="form-control" name="Growing_Time" id="Growing_Time" [(ngModel)]="plantdata.Growing_Time">
-                    <option value="">--Select Values--</option>
-                    <option value="Long">Long</option>
-                    <option value="Medium">Medium</option>
-                    <option value="Quick">Quick</option>
-                </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="username">Maintenance</label>
-                        <select class="form-control" name="Maintenance" id="Maintenance" [(ngModel)]="plantdata.Maintenance">
-                    <option value="">--Select Values--</option>
-                    <option value="Easy">Easy</option>
-                    <option value="Mid">Mid</option>
-                    <option value="Pro">Pro</option>
-                </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="username">Special Properties</label>
-                        <textarea class="form-control" name="Special_Properties" id="Special_Properties" placeholder="Special Properties" [(ngModel)]="plantdata.Special_Properties" rows="3" cols="20"></textarea>
-                    </div>
+         
 
 
-                    <div class="form-group">
-                        <label for="username">Location</label>
-                        <input type="text" class="form-control" name="Location" id="Location" [(ngModel)]="plantdata.Location" placeholder="Enter Location">
-                    </div>
+<section>
+   <div class="container">
+      <div class="title">Add Plant</div>
+      <div class="content">
+        <form (ngSubmit)="addplant(plantdata) ">
+          <div class="user-details">
+            <div class="input-box">
+              <span class="details">Family</span>
+              <input type="text" class="form-control" name="Family" id="Family" [(ngModel)]="plantdata.Family" placeholder="Enter Family" >
+            </div>
+            <div class="input-box">
+              <span class="details">Botanical Name</span>
+              <input type="text"  class="form-control" name="Botanical_Name" id="Botanical_Name" [(ngModel)]="plantdata.Botanical_Name" placeholder="Enter Botanical Name">
+            </div>
+            <div class="input-box">
+              <span class="details">Common Name</span>
+              <input type="text"  class="form-control" name="Common_Name" id="Common_Name" [(ngModel)]="plantdata.Common_Name" placeholder="Enter Common Name">
+            </div>
+            <div class="input-box">
+              <span class="details">Photo 1</span>
+              <input type="file" class="form-control file" name="Photo_1" id="Photo_1" [(ngModel)]="plantdata.Photo_1" >
+            </div>
+          
+            <div class="input-box">
+             <span class="details">Photo 2</span>
+                <input type="file" class="form-control file" name="Photo_2" id="Photo_2" [(ngModel)]="plantdata.Photo_2" >
+            </div>
 
-                    <div class="form-group">
-                        <label for="username">Container</label>
-                        <input type="text" class="form-control" name="Container" id="Container" [(ngModel)]="plantdata.Container" placeholder="Enter Container">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="username">Sowing Period</label>
-                        <input type="text" class="form-control" name="Sowing_Period" id="Sowing_Period" [(ngModel)]="plantdata.Sowing_Period" placeholder="Enter Months">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="username">Blooming Period</label>
-                        <input type="text" class="form-control" name="Blooming_Period" id="Blooming_Period" [(ngModel)]="plantdata.Blooming_Period" placeholder="Enter Months">
-                    </div>
-
-
-                    <div class="form-group">
-                        <label for="username">Direction</label>
-                        <input type="text" class="form-control" name="Direction" id="Direction" [(ngModel)]="plantdata.Direction" placeholder="Enter Direction">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="username">Exposure</label>
-                        <select class="form-control" name="Exposure" id="Exposure" [(ngModel)]="plantdata.Exposure">
-                    <option value="">--Select Values--</option>
-                    <option value="Bright">Bright</option>
-                    <option value="Partial">Partial</option>
-                    <option value="Shade">Shade</option>
-                </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="username">Soil</label>
-                        <input type="text" class="form-control" name="Soil" id="Soil" [(ngModel)]="plantdata.Soil" placeholder="Enter Soil">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="username">Sunlight Frequency </label>
-                        <input type="text" class="form-control" name="Sunlight_Freq" id="Sunlight_Freq" [(ngModel)]="plantdata.Sunlight_Freq" placeholder="Enter Hours">
-                    </div>
-
-
-                    <div class="form-group">
-                        <label for="username">WaterReq</label>
-                        <input type="text" class="form-control" name="WaterReq" id="WaterReq" [(ngModel)]="plantdata.WaterReq" placeholder="Enter WaterReq">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="username">WaterFreq</label>
-                        <input type="text" class="form-control" name="WaterFreq" id="WaterFreq" [(ngModel)]="plantdata.WaterFreq" placeholder="Enter WaterFreq">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="username">Humidity</label>
-                        <input type="text" class="form-control" name="Humidity" id="Humidity" [(ngModel)]="plantdata.Humidity" placeholder="Enter Humidity">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="username">Price</label>
-                        <input type="number" class="form-control" name="Price" id="Price" [(ngModel)]="plantdata.Price" placeholder="Enter Price">
-                    </div>
-
-
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-            </form>
+            <div class="input-box">
+                <span class="details">Photo 3</span>
+                <input type="file" class="form-control file" name="Photo_3" id="Photo_3" [(ngModel)]="plantdata.Photo_3" >
+            </div>
+            
+            <div class="input-box">
+                <span for="details">Category</span>
+                <select class="form-control" name="Category" id="Category" [(ngModel)]="plantdata.Category">
+            <option value="">--Select Values--</option>
+            <option value="Both">Both</option>
+            <option value="Indoor">Indoor</option>
+            <option value="Outdoor">Outdoor</option>
+        </select>
         </div>
-    </section>
+        <div class="input-box">
+            <span for="details">Growing Time</span>
+            <select class="form-control" name="Growing_Time" id="Growing_Time" [(ngModel)]="plantdata.Growing_Time">
+        <option value="">--Select Values--</option>
+        <option value="Long">Long</option>
+        <option value="Medium">Medium</option>
+        <option value="Quick">Quick</option>
+    </select>
+        </div>
+        <div class="input-box">
+            <span for="details">Maintenance</span>
+            <select class="form-control" name="Maintenance" id="Maintenance" [(ngModel)]="plantdata.Maintenance">
+        <option value="">--Select Values--</option>
+        <option value="Easy">Easy</option>
+        <option value="Mid">Mid</option>
+        <option value="Pro">Pro</option>
+    </select>
+        </div>
+        <div class="input-box">
+            <span for="username">Special Properties</span>
+            <textarea class="form-control" name="Special_Properties" id="Special_Properties" placeholder="Special Properties" [(ngModel)]="plantdata.Special_Properties" rows="3" cols="20"></textarea>
+        </div>
+
+
+        <div class="input-box">
+            <span for="username">Location</span>
+            <input type="text" class="form-control" name="Location" id="Location" [(ngModel)]="plantdata.Location" placeholder="Enter Location">
+        </div>
+
+        <div class="input-box">
+            <span for="username">Container</span>
+            <input type="text" class="form-control" name="Container" id="Container" [(ngModel)]="plantdata.Container" placeholder="Enter Container">
+        </div>
+
+        <div class="input-box">
+            <span for="username">Sowing Period</span>
+            <input type="text" class="form-control" name="Sowing_Period" id="Sowing_Period" [(ngModel)]="plantdata.Sowing_Period" placeholder="Enter Months">
+        </div>
+
+        <div class="input-box">
+            <span for="username">Blooming Period</span>
+            <input type="text" class="form-control" name="Blooming_Period" id="Blooming_Period" [(ngModel)]="plantdata.Blooming_Period" placeholder="Enter Months">
+        </div>
+
+
+        <div class="input-box">
+            <span for="username">Direction</span>
+            <input type="text" class="form-control" name="Direction" id="Direction" [(ngModel)]="plantdata.Direction" placeholder="Enter Direction">
+        </div>
+
+        <div class="input-box">
+            <span for="username">Exposure</span>
+            <select class="form-control" name="Exposure" id="Exposure" [(ngModel)]="plantdata.Exposure">
+        <option value="">--Select Values--</option>
+        <option value="Bright">Bright</option>
+        <option value="Partial">Partial</option>
+        <option value="Shade">Shade</option>
+    </select>
+        </div>
+
+        <div class="input-box">
+            <span for="username">Soil</span>
+            <input type="text" class="form-control" name="Soil" id="Soil" [(ngModel)]="plantdata.Soil" placeholder="Enter Soil">
+        </div>
+
+        <div class="input-box">
+            <span for="username">Sunlight Frequency </span>
+            <input type="text" class="form-control" name="Sunlight_Freq" id="Sunlight_Freq" [(ngModel)]="plantdata.Sunlight_Freq" placeholder="Enter Hours">
+        </div>
+
+
+        <div class="input-box">
+            <span for="username">WaterReq</span>
+            <input type="text" class="form-control" name="WaterReq" id="WaterReq" [(ngModel)]="plantdata.WaterReq" placeholder="Enter WaterReq">
+        </div>
+
+        <div class="input-box">
+            <span for="username">WaterFreq</span>
+            <input type="text" class="form-control" name="WaterFreq" id="WaterFreq" [(ngModel)]="plantdata.WaterFreq" placeholder="Enter WaterFreq">
+        </div>
+
+        <div class="input-box">
+            <span for="username">Humidity</span>
+            <input type="text" class="form-control" name="Humidity" id="Humidity" [(ngModel)]="plantdata.Humidity" placeholder="Enter Humidity">
+        </div>
+
+        <div class="input-box">
+            <span for="username">Price</span>
+            <input type="number" class="form-control" name="Price" id="Price" [(ngModel)]="plantdata.Price" placeholder="Enter Price">
+        </div>
+
+          </div>
+          <div class="button">
+            <!-- <input type="submit" value="Add Plant"> -->
+            <!-- <button class="button-37" role="button">Add Plant</button>  -->
+            <button class="button-21" role="button">Add Plant</button>  
+        </div>
+<div>
+  <form class="rdb_btn " [formGroup]="radiobtn" (change)="form()" style="display: flex; gap:10px;">
+                            <input type="radio" name="size" class="radioBtn" formControlName="Size" value="Medium">Medium
+                            <input type="radio" name="size" class="radioBtn" formControlName="Size" value="Small">Small
+                            <input type="radio" name="size" class="radioBtn" formControlName="Size" value="Large">large
+
+                        </form></div>
+        </form>
+      </div>
+    </div>
+</section>
 </body>
 
 </html>
