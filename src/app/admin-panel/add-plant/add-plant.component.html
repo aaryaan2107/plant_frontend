@@ -153,18 +153,18 @@
         </div>
 
           </div>
-          <div>Plant Size
-            <form class="rdb_btn " [formGroup]="radiobtn" (change)="form()" style="display: flex; gap:10px;">
-                                      <input type="radio" name="size" class="radioBtn" formControlName="Size" value="Medium">Medium
-                                      <input type="radio" name="size" class="radioBtn" formControlName="Size" value="Small">Small
-                                      <input type="radio" name="size" class="radioBtn" formControlName="Size" value="Large">large
-          
-                                  </form></div>
           <div class="button">
             <!-- <input type="submit" value="Add Plant"> -->
             <!-- <button class="button-37" role="button">Add Plant</button>  -->
             <button class="button-21" role="button">Add Plant</button>  
         </div>
+<div>
+  <form class="rdb_btn " [formGroup]="radiobtn" (change)="form()" style="display: flex; gap:10px;">
+                            <input type="radio" name="size" class="radioBtn" formControlName="Size" value="Medium">Medium
+                            <input type="radio" name="size" class="radioBtn" formControlName="Size" value="Small">Small
+                            <input type="radio" name="size" class="radioBtn" formControlName="Size" value="Large">large
+
+                        </form></div>
         </form>
       </div>
     </div>
