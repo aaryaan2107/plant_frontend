@@ -137,7 +137,7 @@
             </div>
         </div>
     </section>
-    <section class="container" *ngIf="listofuser" style="margin-top:620px;overflow: scroll;">
+    < class="container" *ngIf="listofuser">
         <h2>List of user</h2>
         <table class="table">
             <thead class="thead-light">
@@ -149,7 +149,8 @@
                 </tr>
             </thead>
         </table>
-        <div class="" *ngFor="let all of alluser; let i = index">
+        <div class="list-container"></div>
+        <div class="list-item *ngFor="let all of alluser; let i = index">
             <table class="table">
                 <tbody>
                     <tr>
@@ -169,5 +170,6 @@
                 </tbody>
             </table>
         </div>
+    </div>
     </section>
 </body>
