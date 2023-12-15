@@ -1,3 +1,137 @@
-section {
-    margin-top: 80px;
+// section {
+//     margin-top: 50%;
+// }
+/* Add these styles to your global styles or component-specific styles */
+
+    // .container {
+    //     max-width: 800px;
+    //     margin: 0 auto;
+    //     padding: 20px;
+    //     background-color: #f8f9fa;
+    //     border-radius: 8px;
+    //     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    // }
+
+    // h3 {
+    //     color: #007bff;
+    // }
+
+    // .alert {
+    //     background-color: #cce5ff;
+    //     color: #004085;
+    //     border-color: #b8daff;
+    // }
+
+    // .table {
+    //     width: 100%;
+    //     margin-bottom: 1rem;
+    //     color: #212529;
+    // }
+
+    // .table th,
+    // .table td {
+    //     padding: 0.75rem;
+    //     vertical-align: top;
+    //     border-top: 1px solid #dee2e6;
+    // }
+
+    // .btn-info {
+    //     background-color: #17a2b8;
+    //     color: #fff;
+    // }
+
+    // .btn-danger {
+    //     background-color: #dc3545;
+    //     color: #fff;
+    // }
+
+    // /* Optional: Add hover styles for buttons */
+
+    // .btn-info:hover,
+    // .btn-danger:hover {
+    //     filter: brightness(90%);
+    //     transition: filter 0.3s ease-in-out;
+    // }
+
+    // /* Optional: Style the 'View plant' link within the alert */
+
+    // .alert span {
+    //     text-decoration: underline;
+    //     cursor: pointer;
+    //     color: #dc3545;
+    // }
+
+    // .alert span:hover {
+    //     color: #721c24;
+    // }
+/* Add these styles to your global styles or component-specific styles */
+
+.container {
+    max-width: 800px;
+    margin: 10% auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+h3 {
+    color: #3498db;
+    margin-bottom: 20px;
+}
+
+.alert {
+    background-color: #3498db;
+    color: #fff;
+    border: 1px solid #3498db;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.alert span {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.alert span:hover {
+    color: #c0392b;
+}
+
+.table {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.table th,
+.table td {
+    padding: 15px;
+    vertical-align: top;
+    border-top: 1px solid #ecf0f1;
+}
+
+.btn-info {
+    background-color: #2ecc71;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-info:hover {
+    background-color: #27ae60;
+}
+
+.btn-danger {
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-danger:hover {
+    background-color: #c0392b;
 }

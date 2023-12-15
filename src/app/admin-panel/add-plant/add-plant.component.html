@@ -80,39 +80,39 @@
     </select>
         </div>
         <div class="input-box">
-            <span for="username">Special Properties</span>
+            <span for="details">Special Properties</span>
             <textarea class="form-control" name="Special_Properties" id="Special_Properties" placeholder="Special Properties" [(ngModel)]="plantdata.Special_Properties" rows="3" cols="20"></textarea>
         </div>
 
 
         <div class="input-box">
-            <span for="username">Location</span>
+            <span for="details">Location</span>
             <input type="text" class="form-control" name="Location" id="Location" [(ngModel)]="plantdata.Location" placeholder="Enter Location">
         </div>
 
         <div class="input-box">
-            <span for="username">Container</span>
+            <span for="details">Container</span>
             <input type="text" class="form-control" name="Container" id="Container" [(ngModel)]="plantdata.Container" placeholder="Enter Container">
         </div>
 
         <div class="input-box">
-            <span for="username">Sowing Period</span>
+            <span for="details">Sowing Period</span>
             <input type="text" class="form-control" name="Sowing_Period" id="Sowing_Period" [(ngModel)]="plantdata.Sowing_Period" placeholder="Enter Months">
         </div>
 
         <div class="input-box">
-            <span for="username">Blooming Period</span>
+            <span for="details">Blooming Period</span>
             <input type="text" class="form-control" name="Blooming_Period" id="Blooming_Period" [(ngModel)]="plantdata.Blooming_Period" placeholder="Enter Months">
         </div>
 
 
         <div class="input-box">
-            <span for="username">Direction</span>
+            <span for="details">Direction</span>
             <input type="text" class="form-control" name="Direction" id="Direction" [(ngModel)]="plantdata.Direction" placeholder="Enter Direction">
         </div>
 
         <div class="input-box">
-            <span for="username">Exposure</span>
+            <span for="details">Exposure</span>
             <select class="form-control" name="Exposure" id="Exposure" [(ngModel)]="plantdata.Exposure">
         <option value="">--Select Values--</option>
         <option value="Bright">Bright</option>
@@ -122,50 +122,51 @@
         </div>
 
         <div class="input-box">
-            <span for="username">Soil</span>
+            <span for="details">Soil</span>
             <input type="text" class="form-control" name="Soil" id="Soil" [(ngModel)]="plantdata.Soil" placeholder="Enter Soil">
         </div>
 
         <div class="input-box">
-            <span for="username">Sunlight Frequency </span>
+            <span for="details">Sunlight Frequency </span>
             <input type="text" class="form-control" name="Sunlight_Freq" id="Sunlight_Freq" [(ngModel)]="plantdata.Sunlight_Freq" placeholder="Enter Hours">
         </div>
 
 
         <div class="input-box">
-            <span for="username">WaterReq</span>
+            <span for="details">WaterReq</span>
             <input type="text" class="form-control" name="WaterReq" id="WaterReq" [(ngModel)]="plantdata.WaterReq" placeholder="Enter WaterReq">
         </div>
 
         <div class="input-box">
-            <span for="username">WaterFreq</span>
+            <span for="details">WaterFreq</span>
             <input type="text" class="form-control" name="WaterFreq" id="WaterFreq" [(ngModel)]="plantdata.WaterFreq" placeholder="Enter WaterFreq">
         </div>
 
         <div class="input-box">
-            <span for="username">Humidity</span>
+            <span for="details">Humidity</span>
             <input type="text" class="form-control" name="Humidity" id="Humidity" [(ngModel)]="plantdata.Humidity" placeholder="Enter Humidity">
         </div>
 
         <div class="input-box">
-            <span for="username">Price</span>
+            <span for="details">Price</span>
             <input type="number" class="form-control" name="Price" id="Price" [(ngModel)]="plantdata.Price" placeholder="Enter Price">
         </div>
 
-          </div>
+    </div>
+    <div class="input-box">Size
+      <form class="details" [formGroup]="radiobtn" (change)="form()" style="display: flex; gap:10px;">
+                                <input type="radio" name="size" class="radioBtn" formControlName="Size" value="Medium">Medium
+                                <input type="radio" name="size" class="radioBtn" formControlName="Size" value="Small">Small
+                                <input type="radio" name="size" class="radioBtn" formControlName="Size" value="Large">large
+    
+                            </form></div>
+                  </form>
           <div class="button">
             <!-- <input type="submit" value="Add Plant"> -->
             <!-- <button class="button-37" role="button">Add Plant</button>  -->
             <button class="button-21" role="button">Add Plant</button>  
         </div>
-<div>
-  <form class="rdb_btn " [formGroup]="radiobtn" (change)="form()" style="display: flex; gap:10px;">
-                            <input type="radio" name="size" class="radioBtn" formControlName="Size" value="Medium">Medium
-                            <input type="radio" name="size" class="radioBtn" formControlName="Size" value="Small">Small
-                            <input type="radio" name="size" class="radioBtn" formControlName="Size" value="Large">large
 
-                        </form></div>
-        </form>
       </div>
     </div>
 </section>

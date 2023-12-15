@@ -20,10 +20,9 @@
                 </thead>
                 <tbody>
                     <tr>
-
+                        <td class="col-1"><img [src]="a.Photo_1"  height="48px" width="48px" style="border-radius: 0px;" alt=""></td>
                         <td class="col-5">{{a.Common_Name}}</td>
                         <td class="col-3">{{a.Botanical_Name}}</td>
-                        <td class="col-1">{{a.Price}}</td>
                         <td><button class="btn btn-danger" (click)="removetrend(a.ID)">Remove</button></td>
 
                     </tr>
@@ -41,7 +40,17 @@
                 <div>{{message}}<span class="text-danger" style="cursor: pointer;">View plant</span></div>
             </div>
         </div>
-        <div *ngFor="let a of plant">
+        <table>
+            <tr>
+                
+                <th class="col-3 w-50">Common Name</th>
+                <th class="col-3  ">Botanical Name</th>
+                <th class="col-1">Trending</th>
+                <th class="col-1">Edit</th>
+            </tr>
+           
+            </table>
+            <div *ngFor="let a of plant">
             <table class="table table-striped ">
                 <thead>
                     <tr>
@@ -49,6 +58,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                
                     <tr>
 
                         <td class="col-5">{{a.Common_Name}}</td>

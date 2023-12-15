@@ -51,6 +51,7 @@ export class PlantDetailComponent {
     this.plantservice.Allplant().subscribe(
       (data)=>{
         this.plant=data;     
+        console.log(this.plant);
       }
     )
     
