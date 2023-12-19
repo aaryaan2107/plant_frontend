@@ -41,10 +41,7 @@ export class StockComponent implements OnInit {
  
 
    this.model = document.getElementById('model');
-   if(this.model){
-    this.model.style.visibility ="hidden" ;
-    this.model.style.transition="all ease 0.1s";
-   }
+
     this.activeroute.paramMap.subscribe((p)=>{
       let act = p.get('act');
     if(act=="add-new-stock"){

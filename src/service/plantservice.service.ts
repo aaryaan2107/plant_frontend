@@ -392,7 +392,10 @@ Allstock(id:any):Observable<any> {
 }
 
 deadstock(formdata:any,id:String):Observable<any> {
-  return this.http.post(`${this.url}/admin/deadstock`,{formdata:formdata,id:id});
+  const headers = {
+    'Authorization':"Bearer " + localStorage.getItem('token')
+  }
+  return this.http.post(`${this.url}/admin/deadstock`,{formdata:formdata,id:id},{headers:headers});
 }
 
 
