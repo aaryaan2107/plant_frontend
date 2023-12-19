@@ -77,7 +77,9 @@ plantdata(nid:any){
       this.loading = false;
       this.plantservice.getplantFamliy(this.plant[0].Family,this.id).subscribe(
             (res) => {
-              this.refplant = res.data;    
+              this.refplant = res.data;
+              console.log(res);
+                  
             }
           )
     }
