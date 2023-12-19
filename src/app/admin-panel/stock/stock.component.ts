@@ -1,6 +1,6 @@
-
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { subscribeOn } from 'rxjs';
 import { PlantserviceService } from 'src/service/plantservice.service';
 
 @Component({
@@ -19,6 +19,11 @@ export class StockComponent implements OnInit {
     price: '',
     Size:''
   };
+  feedback = {
+    reason: '',
+    quantity: ''
+  };
+  searchitem:String='';
   searchQuery: string = '';
   serachplant:any;
   searchdata:boolean = false;
@@ -27,9 +32,14 @@ export class StockComponent implements OnInit {
   stockinfo:any[]=[];
   a:any
   success:string='';
+  model:any;
+  stockid:string='';
   constructor(private plantservice: PlantserviceService,private activeroute:ActivatedRoute) { }
 
   ngOnInit() { 
+ 
+
+   this.model = document.getElementById('model');
 
     this.activeroute.paramMap.subscribe((p)=>{
       let act = p.get('act');
@@ -44,8 +54,31 @@ export class StockComponent implements OnInit {
 
   }
 
+  remove(id:any){
+
+    this.stockid = id;
+  this.model.style.visibility="visible";
+  this.model.style.transition="all ease 0.4s";
+}
+
+close(){
+    this.model.style.visibility="hidden";
+}
+
+
+feedbackdata(feedback:any){
+this.plantservice.deadstock(feedback,this.stockid).subscribe((res)=>{
+  console.log(res);
+  if(res){
+    this.close();
+  }
+});
+}
+
+
 
   stock(formdata:any){
+ 
    this.plantservice.stock_details(formdata).subscribe((res)=>{
       this.a = res;
       this.success = this.a.message;
@@ -81,6 +114,28 @@ export class StockComponent implements OnInit {
     }
   }
 
+
+totalstocksearch(){
+  console.log(this.searchitem);
+  
+    if (this.searchitem.trim() !== '') {
+
+      this.plantservice.searchPlants3(this.searchitem).subscribe(
+        (res: any) => {
+         this.serachplant = res;
+       if(this.serachplant.length ==0){
+          this.searchdata = false;
+       }       
+          }); 
+      this.searchdata = true;
+    } else {
+      this.searchdata = false;
+      console.log('error');
+    }
+  
+}
+
+
   stockget(id:any){
     this.plantservice.Allstock(id).subscribe((res)=>{     
       this.stockinfo = res;
@@ -88,7 +143,8 @@ export class StockComponent implements OnInit {
       this.searchdata= false;
     this.formdata.plantName ='';
     let textbox = document.getElementById("input");
-  textbox?.focus();
+    textbox?.focus();
+
     });
   }
 

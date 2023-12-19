@@ -21,6 +21,7 @@ export class CartComponent implements OnInit {
   allq!:number;
   loggin: boolean = false;
   deleteId1!:string;
+  deletedSize:any;
   constructor(private plantservice: PlantserviceService,private renderer: Renderer2, private elementRef: ElementRef) { }
 
 
@@ -56,13 +57,17 @@ cartdata()
 
 calculateTotal() {
     this.total = this.item.reduce((total: any,item: any) => total + ( item.Price* item.quantity) , 0);
+    console.log(this.total);
+    
   }
   calculateqtyTotal() {
     this.allq= this.item.reduce((total: any,item: any) => total + item.quantity , 0);
   }
 
   calculateTotall() {
-    this.total = this.cartData.reduce((total: number, cartItem: any) => total +(cartItem.product[0]?.Price * cartItem.quantity), 0);
+    this.total = this.cartData.reduce((total: number, cartItem: any) => total +(cartItem.Price * cartItem.quantity), 0);
+    console.log(this.total);
+    
   }
   calqty() {
     this.allq = this.cartData.reduce((total: number, cartItem: any) => total + cartItem.quantity, 0);
@@ -70,6 +75,13 @@ calculateTotal() {
   }
   deleteId(Id:string){
     this.deleteId1 = Id;
+  }
+
+
+  deleteItem(Size:String){
+    this.deletedSize = Size;
+    console.log(this.deletedSize);
+    
   }
   onDeleteUser(userId: string) {
     console.log(userId);
@@ -86,10 +98,10 @@ calculateTotal() {
     );
   }
 
-  onDeleteUser2(productID: string) {
+  onDeleteUser2(productID: string,Size:String) {
     
-    const cartData: { product: { ID: string }[], quantity: number }[] = JSON.parse(localStorage.getItem('cart') || '[]');
-    const updatedCartItems = cartData.filter(item => item.product[0]?.ID !== productID);
+    const cartData: { product: { ID: string }[], quantity: number ,Size:String}[] = JSON.parse(localStorage.getItem('cart') || '[]');
+    const updatedCartItems = cartData.filter(item => item.product[0]?.ID !== productID || item.Size !== Size);
     localStorage.setItem('cart', JSON.stringify(updatedCartItems));
     this.cartData = updatedCartItems;
     this.calculateTotall();
@@ -113,11 +125,16 @@ calculateTotal() {
     }
   }
 }
-  qtyminus(id: any) {
+  qtyminus(id: any,Size:String) {
+    
+    console.log(Size);
+    
     const localcart = localStorage.getItem('cart');
     if (localcart) {
+
+      
       const cartdata: any[] = JSON.parse(localcart);
-      const existingProductIndex = cartdata.findIndex((item) => item.product[0]._id === id);
+      const existingProductIndex = cartdata.findIndex((item) => item.product[0]._id === id && item.Size===Size);
       if (existingProductIndex !== -1  && cartdata[existingProductIndex].quantity > 0   ) {
     
         cartdata[existingProductIndex].quantity--;
@@ -125,7 +142,9 @@ calculateTotal() {
 
         
       if (cartdata[existingProductIndex].quantity === 0) {
-        this.onDeleteUser2(cartdata[existingProductIndex]?.product[0]?.ID);
+        this.onDeleteUser2(cartdata[existingProductIndex]?.product[0]?.ID,Size);
+        console.log(Size);
+        
 
       }
       

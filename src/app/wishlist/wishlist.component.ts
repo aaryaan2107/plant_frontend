@@ -48,7 +48,7 @@ this.getwishlist();
 
 
     if(!localStorage.getItem('token')) {
-      this.plantservice.localcartdata(this.plant,this.productquantity);
+      this.plantservice.localcartdata(this.plant,this.productquantity,"Small",100);
       this.addcart = 'Add to cart Successfully';
       setTimeout(() => {
         this.addcart = '';
@@ -66,7 +66,7 @@ this.getwishlist();
 
     console.log(productId);
     
-    this.plantservice.addToCart(userId,productId,this.productquantity,Price,Common_Name,Botanical_Name,Photo_1,"Small").subscribe(
+    this.plantservice.addToCart(userId,productId,this.productquantity,Price,Common_Name,Botanical_Name,Photo_1,"small").subscribe(
       (res) => {
             this.message = '     View Cart    ';
          

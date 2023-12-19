@@ -112,25 +112,31 @@ getPlants(page: number,pageSize: number ): Observable<any> {
 
   // localstorage 
 
-  localcartdata(data: any, quantity: number) {
+  localcartdata(data: any, quantity: number,Size:String,Price:Number) {
+
+    
     let cartdata: any[] = [];
     let localcart = localStorage.getItem('cart');
 
     if (!localcart) {
-      cartdata = [{ product: data, quantity }];
+      cartdata = [{ product: data, quantity,Size,Price }];
     } else {
       cartdata = JSON.parse(localcart);
-      const existIndex = cartdata.findIndex((item) => item.product[0]._id === data[0]._id);
+      const existIndex = cartdata.findIndex(
+        (item) => item.product[0].ID === data[0].ID && item.Size === Size
+      );
       if (existIndex !== -1) {
         cartdata[existIndex].quantity += quantity;
       } else {
-        cartdata.push({ product: data, quantity });
+        cartdata.push({ product: data, quantity,Size,Price });
       }
     }
-
     localStorage.setItem('cart', JSON.stringify(cartdata));
     this.cartdata.emit(cartdata.length);
   }
+
+
+
 
 
   getCartData(): any[] {
@@ -326,8 +332,10 @@ getRePayment(id:string | null): Observable<any> {
   return this.http.get(`${this.url}/Apis/getrepayment/${id}`);
 }
 
-getplantFamliy(id:string | null): Observable<any> {  
-  return this.http.get(`${this.url}/Apis/plant/${id}`);
+getplantFamliy(family:string,Id:any): Observable<any> {  
+
+  
+  return this.http.post(`${this.url}/Apis/plant/${family}`,{Id});
 }
 
 getplantid(id:string | null): Observable<any> {  
@@ -351,7 +359,8 @@ userdata(): Observable<any> {
   }
   return this.http.get(`${this.url}/Apis/username`, {headers:headers});
 }
-plantinfo1(id:string | null): Observable<any> {  
+plantinfo1(id:string | null): Observable<any> { 
+  
   return this.http.get(`${this.url}/Apis/plantinfo1/${id}`);
 }
 plantinfo2(id:string | null): Observable<any> {  
@@ -381,5 +390,10 @@ stock_details(userdata:any){
 Allstock(id:any):Observable<any> { 
   return this.http.post(`${this.url}/admin/Allstock`,{id:id});
 }
+
+deadstock(formdata:any,id:String):Observable<any> {
+  return this.http.post(`${this.url}/admin/deadstock`,{formdata:formdata,id:id});
+}
+
 
 }

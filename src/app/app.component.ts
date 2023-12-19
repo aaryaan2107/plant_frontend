@@ -16,4 +16,12 @@ export class AppComponent {
       this.plantservice.setAuthState(true);
     }
   }
+
+
+
+  
+  onactive(){
+ 
+    window.scroll();
+  }
 }

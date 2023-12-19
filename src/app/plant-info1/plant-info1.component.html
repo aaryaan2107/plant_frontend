@@ -74,11 +74,11 @@
                 <div class="scale shadow  mb-2  " style="border-radius: 40px; padding: 10px; "><img height="48px" width=" 48px" src="../../assets/icon/ii.png" class="mr-4" alt=""><span>Growing Time : </span>{{u.Growing_Time}}</div>
                 <div class="scale shadow  mb-2  " style="border-radius: 40px; padding: 10px; "><img height="48px" width=" 48px" src="../../assets/icon/toxic.png" class="mr-4" alt=""><span>Maintenance : </span>{{u.Maintenance}}</div>
                 <div class="scale shadow  mb-2  " style="border-radius: 40px; padding: 10px; "><img height="48px" width=" 48px" src="../../assets/icon/special.png" class="mr-4" alt=""><span>Special_Properties : </span>{{u.Special_Properties}}</div>
-                <div class="scale shadow  mb-2  " style="border-radius: 40px; padding: 10px; "><img height="48px" width=" 48px" src="../../assets/icon/price.png" class="mr-4" alt=""><span>Price : </span>{{u.Price}}</div>
+                <div class="scale shadow  mb-2  " style="border-radius: 40px; padding: 10px; "><img height="48px" width=" 48px" src="../../assets/icon/price.png" class="mr-4" alt=""><span>Price : </span>{{Price}}</div>
                 <div class=" shadow  mb-2  " style="border-radius: 40px; padding: 10px;display: flex; align-items: center;  gap:10px;"><img height="48px" width=" 48px" src="../../assets/icon/special.png" class="mr-4" alt=""><span>Price : </span>
                     <form class="rdb_btn " [formGroup]="radiobtn" (change)="form()" style="display: flex; gap:10px;">
-                        <input type="radio" name="size" class="radioBtn" formControlName="Size" value="Medium">Medium
                         <input type="radio" name="size" class="radioBtn" formControlName="Size" value="Small">Small
+                        <input type="radio" name="size" class="radioBtn" formControlName="Size" value="Medium">Medium
                         <input type="radio" name="size" class="radioBtn" formControlName="Size" value="Large">large
 
                     </form>
@@ -120,6 +120,7 @@
         <div class="container">
             <div class="search-hero">
                 <div class="go">
+                    <h2 style="border-bottom: 2px solid green;">Related Plants</h2>
                     <div class="row">
                         <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let plant of refplant">
                             <div class="box hover txt" style="box-shadow: 3px 3px 20px rgb(0, 0, 0,0.3);">
@@ -131,13 +132,13 @@
                                 <a (click)="wishlist({productId:plant.ID,userId:userID,Photo_1:plant.Photo_1,Common_Name:plant.Common_Name,Botanical_Name:plant.Botanical_Name,Price:plant.Price})">
                                     <i class="fa fa-heart mb-1 fix"></i>
                                 </a>
-                                <a routerLink="/plantinfo1/{{plant.ID}}" style="text-decoration: none;">
-                                    <div class="img-box">
-                                        <img [src]="plant.Photo_1" [alt]="plant.Common_Name">
+                                <a (click)="newplant(plant.ID)" style="text-decoration: none;">
+                                    <div class=" img-box ">
+                                        <img [src]="plant.Photo_1 " [alt]="plant.Common_Name ">
                                     </div>
-                                    <div class="detail-box">
-                                        <a href="#" style="text-decoration: none;">
-                          {{plant.Botanical_Name}}<span class="s">{{plant.Price}}</span>
+                                    <div class="detail-box ">
+                                        <a href="# " style="text-decoration: none; ">
+                          {{plant.Botanical_Name}}<span class="s ">{{plant.Price}}</span>
                       </a>
 
                                         <!-- <h5>
@@ -145,7 +146,7 @@
                       </h5> -->
                                     </div>
                                 </a>
-                                <span class="spans" id="span" (click)="addtocart(plant.ID)"><a>Add to cart</a></span>
+                                <span class="spans " id="span " (click)="addtocart(plant.ID) "><a>Add to cart</a></span>
 
                             </div>
 

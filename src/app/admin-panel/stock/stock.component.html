@@ -14,16 +14,16 @@
                 <div class="user-details">
                     <div class="input-box">
                         <span class="details">Plant Name</span>
-                        <input type="text" [(ngModel)]="formdata.plantName" (input)="realTimeSearch()" placeholder="Enter Plant Name" name="plant_name" id="plant_name" required>
-                        <div class="dropdown" *ngIf="searchdata">
-                            <div class="bg-white" *ngFor="let plant of serachplant" style="width: 100%; background-color: red;">
-                                <button style="width: 21vw;" class="dropdown-item" type="button" (click)="setInputValue(plant.Common_Name)">{{ plant.Common_Name }}</button>
+                        <input type="text" autocomplete="off" [(ngModel)]="formdata.plantName" (input)="realTimeSearch()" placeholder="Enter Plant Name" name="plant_name" id="plant_name" required>
+                        <div class="dropdown" *ngIf="searchdata" style="position: absolute; box-shadow: rgba(99, 99, 99, 0.3) 0px 2px 8px 0px;">
+                            <div class="bg-white" *ngFor="let plant of serachplant" style="width: 100%;">
+                                <button style="width: 21vw; padding: 1px 20px;" class="dropdown-item" type="button" (click)="setInputValue(plant.Common_Name)">{{ plant.Common_Name }}</button>
                             </div>
                         </div>
                     </div>
                     <div class="input-box">
                         <span class="details">Vender Name</span>
-                        <input type="text" placeholder="Enter Vender Name" name="vender_name" id="vender_name" [(ngModel)]="formdata.vendername" required>
+                        <input type="text" autocomplete="off" placeholder="Enter Vender Name" name="vender_name" id="vender_name" [(ngModel)]="formdata.vendername" required>
                     </div>
                     <div class="input-box">
                         <span class="details">Invoice No.</span>
@@ -41,13 +41,21 @@
                         <span class="details">Price</span>
                         <input type="number" placeholder="Enter Price" name="price" id="price" [(ngModel)]="formdata.price" required>
                     </div>
-                    <div class="input-box">
+                    <!-- <div class="input-box">
                         <span class="details">Plant Size</span>
                         <input type="string" placeholder="Enter plant size" name="size" id="size" [(ngModel)]="formdata.Size" required>
+                    </div> -->
+                    <div class="input-box">
+
+                        <span class="details">Plant Size</span>
+                        <select class="form-control" name="Size" id="Size" [(ngModel)]="formdata.Size">
+                        <option value="">--Select Values--</option>
+                        <option value="Small">Small</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Large">Large</option>
+                        </select>
                     </div>
                 </div>
-
-
                 <div class="button">
                     <input type="submit" value="Add Stock">
                 </div>
@@ -59,7 +67,7 @@
 
         <div style="display: flex; justify-content:space-between; margin-bottom: 20px;">
             <h2>List of Stock</h2>
-            <span> <input type="text" id="input" [(ngModel)]="formdata.plantName" (input)="realTimeSearch()"  class="form-control" placeholder="Enter plant name" style="width: 300px; padding-left: 20px;" /></span>
+            <span> <input autocomplete="off" type="text" id="input" [(ngModel)]="searchitem" (input)="totalstocksearch()"  class="form-control" placeholder="Enter plant name" style="width: 300px; padding-left: 20px;" /></span>
 
 
         </div>
@@ -69,11 +77,10 @@
             </div>
         </div>
 
-        <!--  <input  class=" col-sm-10 form-control"
-          placeholder="Enter plant name" />
- 
 
--->
+
+
+
         <table class="table mt-2">
             <thead class="thead-light">
                 <tr>
@@ -95,38 +102,30 @@
 
                             <td class="col-1">{{stock.Stock}}</td>
                             <td class="col-1">{{stock.Size}}</td>
-                            <td class="col-1"><button class="button-63">Remove</button></td>
-
-                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog p-5" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Stock remove</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            ...
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-primary">Save changes</button>
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- <td class="col-3 " *ngIf="all.role==='admin'">
-                            <button class="button-62" role="button" (click)="addadmin(all._id,all.role)">{{all.role | titlecase}}</button>
-                            <button class="btn btn-primary role" (click)="addadmin(all._id,all.role)">{{all.role | titlecase}}</button>
-                        </td>
-                        <td class="col-3" *ngIf="all.role==='user'">
-                            <button class="button-63" role="button" (click)="addadmin(all._id,all.role)">{{all.role | titlecase}}</button>
-                        </td> -->
-                        </tr>
+                            <td class="col-1"><button class="btn" (click)="remove(stock._id)">Remove</button></td>
                     </tbody>
                 </table>
             </div>
         </div>
     </section>
+    <div class="model" id="model">
+
+        <div class="content">
+            <form (ngSubmit)="feedbackdata(feedback)">
+                <h2>Reason</h2>
+                <div class="text">
+                    <textarea type="text" placeholder="Enter Reason" id="reason" name="reason" [(ngModel)]="feedback.reason"></textarea>
+                </div>
+                <div class="quantity">
+                    <h2>Quantity</h2>
+                    <div class="text">
+                        <input type="number" placeholder="Enter quantity" id="quantity" name="quantity" [(ngModel)]="feedback.quantity">
+                    </div>
+                </div>
+
+                <button class="btnclass" type="submit">Submit</button>
+            </form>
+        </div>
+        <i class="bi bi-x" (click)="close()"></i>
+    </div>
 </body>

@@ -1,43 +1,48 @@
 .gradient-custom {
     /* fallback for old browsers */
     // background: #ffffff;
-
-    
     /* Chrome 10-25, Safari 5.1-6 */
     // background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
-    
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     background: linear-gradient(to right, rgb(166, 202, 157), rgb(255, 255, 255))
-    }
+}
 
-    .pl-3, .px-3 {
-        padding-left: 1rem !important;
-        height: 37px;
-    }
+.pl-3,
+.px-3 {
+    padding-left: 1rem !important;
+    height: 37px;
+}
 
-  
-      .card-body {
-        flex: 1 1 auto;
-       
-        padding: 1.25rem;
-        // background-color: rgba(175, 202, 183,0.1);
-    }
+.card-body {
+    flex: 1 1 auto;
+    padding: 1.25rem;
+    // background-color: rgba(175, 202, 183,0.1);
+}
 
-    .list-group-flush .list-group-item:last-child {
-        margin-bottom: -1px;
-        // background-color: rgb(175, 202, 183);
-    }
+.list-group-flush .list-group-item:last-child {
+    margin-bottom: -1px;
+    // background-color: rgb(175, 202, 183);
+}
 
-    .list-group-flush .list-group-item {
-        border-right: 0;
-        border-left: 0;
-        border-radius: 0;
-        // background-color:rgb(175, 202, 183);
-    }
+.list-group-flush .list-group-item {
+    border-right: 0;
+    border-left: 0;
+    border-radius: 0;
+    // background-color:rgb(175, 202, 183);
+}
 
+.card-header:first-child {
+    // border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
+    // BACKGROUND-COLOR:rgb(175, 202, 183);
+}
 
-    .card-header:first-child {
-        // border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
-        // BACKGROUND-COLOR:rgb(175, 202, 183);
+@media screen and (max-width:687px) {
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
     }
-    
+    img {
+        width: 70%;
+        max-height: 50%;
+    }
+}
