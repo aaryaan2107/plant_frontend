@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { PlantserviceService } from 'src/service/plantservice.service';
-import { ActivatedRoute, Route, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import jwt_decode from "jwt-decode";
 import { IpService } from 'src/service/ip.service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -31,7 +31,7 @@ Price:number=0;
 radiobtn = new FormGroup({
   Size: new FormControl('Small'),
 });
-  constructor(private plantservice: PlantserviceService, private route: ActivatedRoute,private ipservice:IpService,private r:Router) { }
+  constructor(private plantservice: PlantserviceService, private route: ActivatedRoute,private ipservice:IpService) { }
 
   ngOnInit() {
    
@@ -40,12 +40,31 @@ radiobtn = new FormGroup({
     this.id = params.get('id');
   });
 
-  
-this.plantdata(this.id);
+  this.plantdata(this.id);
+
+    
     this.user = localStorage.getItem('token');
     var decoded:any = jwt_decode(this.user);
     this.userID=decoded.userId;
   }
+form(){
+  this.Size = this.radiobtn.value.Size;
+console.log(this.Size);
+
+
+if(this.Size==='Small'){
+  this.Price = this.plant[0].Sprice;
+}
+ if(this.Size==='Medium'){
+this.Price = this.plant[0].Mprice;
+}
+if(this.Size==='Large'){
+this.Price = this.plant[0].Lprice;
+}
+
+
+  
+}
 
 
 
@@ -65,27 +84,6 @@ plantdata(nid:any){
   )
 }
 
-
-
-
-form(){
-  this.Size = this.radiobtn.value.Size;
-console.log(this.Size);
-
-
-if(this.Size==='Small'){
-  this.Price = this.plant[0].Sprice;
-}
- if(this.Size==='Medium'){
-this.Price = this.plant[0].Mprice;
-}
-if(this.Size==='Large'){
-this.Price = this.plant[0].Lprice;
-}
-
-
-  
-}
 
   addtocart(id:string) {
     
@@ -132,14 +130,6 @@ this.Price = this.plant[0].Lprice;
     }
   }
   
-
-
-  newplant(id:any){
-
-    this.r.navigate(['/plantinfo1/'+id]);
-    this.plantdata(id);
-    window.scroll(0,0);
-  }
 getwishlist() {
   this.plantservice.getwishlist().subscribe(
   data => {

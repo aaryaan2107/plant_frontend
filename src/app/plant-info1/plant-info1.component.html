@@ -132,13 +132,13 @@
                                 <a (click)="wishlist({productId:plant.ID,userId:userID,Photo_1:plant.Photo_1,Common_Name:plant.Common_Name,Botanical_Name:plant.Botanical_Name,Price:plant.Price})">
                                     <i class="fa fa-heart mb-1 fix"></i>
                                 </a>
-                                <a (click)="newplant(plant.ID)" style="text-decoration: none;">
-                                    <div class=" img-box ">
-                                        <img [src]="plant.Photo_1 " [alt]="plant.Common_Name ">
+                                <a routerLink="/plantinfo1/{{plant.ID}}" style="text-decoration: none;">
+                                    <div class="img-box">
+                                        <img [src]="plant.Photo_1" [alt]="plant.Common_Name">
                                     </div>
-                                    <div class="detail-box ">
-                                        <a href="# " style="text-decoration: none; ">
-                          {{plant.Botanical_Name}}<span class="s ">{{plant.Price}}</span>
+                                    <div class="detail-box">
+                                        <a href="#" style="text-decoration: none;">
+                          {{plant.Botanical_Name}}<span class="s">{{plant.Price}}</span>
                       </a>
 
                                         <!-- <h5>
@@ -146,7 +146,7 @@
                       </h5> -->
                                     </div>
                                 </a>
-                                <span class="spans " id="span " (click)="addtocart(plant.ID) "><a>Add to cart</a></span>
+                                <span class="spans" id="span" (click)="addtocart(plant.ID)"><a>Add to cart</a></span>
 
                             </div>
 
