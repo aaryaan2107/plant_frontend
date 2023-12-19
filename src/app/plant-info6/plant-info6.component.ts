@@ -20,9 +20,9 @@ export class PlantInfo6Component {
     this.route.paramMap.subscribe(params => {
       this.id = params.get('id');
 
-      this.plantservice.getplantid(this.id).subscribe(
+      this.plantservice.plantinfo6(this.id).subscribe(
         (res) => {
-          this.plant = res.data
+          this.plant = res;
           this.loading = false;
           console.log(this.plant);
         },

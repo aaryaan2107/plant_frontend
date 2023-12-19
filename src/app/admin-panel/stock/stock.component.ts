@@ -34,13 +34,17 @@ export class StockComponent implements OnInit {
   success:string='';
   model:any;
   stockid:string='';
+  id:any;
   constructor(private plantservice: PlantserviceService,private activeroute:ActivatedRoute) { }
 
   ngOnInit() { 
  
 
    this.model = document.getElementById('model');
-
+   if(this.model){
+    this.model.style.visibility ="hidden" ;
+    this.model.style.transition="all ease 0.1s";
+   }
     this.activeroute.paramMap.subscribe((p)=>{
       let act = p.get('act');
     if(act=="add-new-stock"){
@@ -68,10 +72,9 @@ close(){
 
 feedbackdata(feedback:any){
 this.plantservice.deadstock(feedback,this.stockid).subscribe((res)=>{
+  this.stockget(this.id);
+  this.close();
   console.log(res);
-  if(res){
-    this.close();
-  }
 });
 }
 
@@ -116,7 +119,6 @@ this.plantservice.deadstock(feedback,this.stockid).subscribe((res)=>{
 
 
 totalstocksearch(){
-  console.log(this.searchitem);
   
     if (this.searchitem.trim() !== '') {
 
@@ -137,6 +139,7 @@ totalstocksearch(){
 
 
   stockget(id:any){
+    this.id = id;
     this.plantservice.Allstock(id).subscribe((res)=>{     
       this.stockinfo = res;
       if(res)
