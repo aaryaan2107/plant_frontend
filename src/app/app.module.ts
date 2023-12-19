@@ -121,7 +121,7 @@ const routes: Routes = [
      Ng2SearchPipeModule,
      NgxPaginationModule,
      ReactiveFormsModule,
-     RouterModule.forRoot(routes, { useHash: false })
+     RouterModule.forRoot(routes, { useHash: true })
   ],
   exports: [RouterModule],
   providers: [],
